@@ -8,6 +8,7 @@ class CreateRegisteredUsers < ActiveRecord::Migration[6.0]
       t.string :email_address
       t.string :google_account
       t.string :password
+      t.string :location
 
       t.timestamps
     end

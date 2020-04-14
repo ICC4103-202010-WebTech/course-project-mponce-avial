@@ -1,2 +1,0 @@
-class EventVote < ApplicationRecord
-end

@@ -1,0 +1,2 @@
+class EventGuest < ApplicationRecord
+end
