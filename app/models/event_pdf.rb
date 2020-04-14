@@ -1,0 +1,2 @@
+class EventPdf < ApplicationRecord
+end
