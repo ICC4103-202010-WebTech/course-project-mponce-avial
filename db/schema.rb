@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_233037) do
+ActiveRecord::Schema.define(version: 2020_04_18_233818) do
 
   create_table "blacklists", force: :cascade do |t|
+    t.integer "registered_user_id"
+    t.integer "banned_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registered_users_id"
-    t.index ["registered_users_id"], name: "index_blacklists_on_registered_users_id"
+    t.index ["banned_user_id"], name: "index_blacklists_on_banned_user_id"
+    t.index ["registered_user_id"], name: "index_blacklists_on_registered_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -74,24 +76,28 @@ ActiveRecord::Schema.define(version: 2020_04_14_233037) do
     t.string "date_rule"
     t.string "visibility"
     t.boolean "is_from_organization"
+    t.integer "registered_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registered_users_id"
-    t.index ["registered_users_id"], name: "index_events_on_registered_users_id"
+    t.index ["registered_user_id"], name: "index_events_on_registered_user_id"
   end
 
   create_table "menssages", force: :cascade do |t|
     t.string "text"
+    t.integer "sender_user_id"
+    t.integer "destination_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registered_users_id"
-    t.index ["registered_users_id"], name: "index_menssages_on_registered_users_id"
+    t.index ["destination_user_id"], name: "index_menssages_on_destination_user_id"
+    t.index ["sender_user_id"], name: "index_menssages_on_sender_user_id"
   end
 
   create_table "organization_members", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "registered_users_id"
+    t.integer "organization_members_id"
+    t.index ["organization_members_id"], name: "index_organization_members_on_organization_members_id"
     t.index ["registered_users_id"], name: "index_organization_members_on_registered_users_id"
   end
 
@@ -137,13 +143,12 @@ ActiveRecord::Schema.define(version: 2020_04_14_233037) do
   create_table "user_profiles", force: :cascade do |t|
     t.string "profile_picture"
     t.string "banner_picture"
+    t.integer "registered_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "registered_users_id"
-    t.index ["registered_users_id"], name: "index_user_profiles_on_registered_users_id"
+    t.index ["registered_user_id"], name: "index_user_profiles_on_registered_user_id"
   end
 
-  add_foreign_key "blacklists", "registered_users", column: "registered_users_id"
   add_foreign_key "comments", "events"
   add_foreign_key "comments", "registered_users", column: "registered_users_id"
   add_foreign_key "event_guests", "events", column: "events_id"
@@ -151,12 +156,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_233037) do
   add_foreign_key "event_images", "events", column: "events_id"
   add_foreign_key "event_pdfs", "events", column: "events_id"
   add_foreign_key "event_videos", "events", column: "events_id"
-  add_foreign_key "events", "registered_users", column: "registered_users_id"
-  add_foreign_key "menssages", "registered_users", column: "registered_users_id"
+  add_foreign_key "organization_members", "organization_members", column: "organization_members_id"
   add_foreign_key "organization_members", "registered_users", column: "registered_users_id"
   add_foreign_key "organizations", "registered_users", column: "registered_users_id"
   add_foreign_key "replies", "comments", column: "comments_id"
   add_foreign_key "replies", "registered_users", column: "registered_users_id"
   add_foreign_key "system_administrators", "registered_users", column: "registered_users_id"
-  add_foreign_key "user_profiles", "registered_users", column: "registered_users_id"
 end
