@@ -31,17 +31,28 @@ profileuser4 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.p
 profileuser4.registered_user = user4
 profileuser4.save!
 
-org1 = Organization.new(organization_banner: 'o1.png')
-org1.organization_admin = user1
-org1.save!
+org1 = Organization.create(organization_banner: 'o1.png')
 
-org2 = Organization.new(organization_banner: 'o2.png')
-org2.organization_admin = user2
-org2.save!
+org2 = Organization.create(organization_banner: 'o2.png')
 
-org3 = Organization.new(organization_banner: 'o3.png')
-org3.organization_admin = user3
-org3.save!
+org3 = Organization.create(organization_banner: 'o3.png')
+
+org_admin1 = OrganizationAdmin.new()
+org_admin1.organization = org1
+org_admin1.admin = user1
+org_admin1.save!
+
+org_admin2 = OrganizationAdmin.new()
+org_admin2.organization = org2
+org_admin2.admin = user2
+org_admin2.save!
+
+org_admin3 = OrganizationAdmin.new()
+org_admin3.organization = org3
+org_admin3.admin = user3
+org_admin3.save!
+
+
 
 orgmem1 = OrganizationMember.new()
 orgmem1.organization = org1

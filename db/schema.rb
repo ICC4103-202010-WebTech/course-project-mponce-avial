@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_232917) do
+ActiveRecord::Schema.define(version: 2020_04_19_212111) do
 
   create_table "blacklists", force: :cascade do |t|
     t.integer "blacklist_owner_id"
@@ -92,6 +92,15 @@ ActiveRecord::Schema.define(version: 2020_04_14_232917) do
     t.index ["sender_user_id"], name: "index_messages_on_sender_user_id"
   end
 
+  create_table "organization_admins", force: :cascade do |t|
+    t.integer "organization_id"
+    t.integer "admin_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_id"], name: "index_organization_admins_on_admin_id"
+    t.index ["organization_id"], name: "index_organization_admins_on_organization_id"
+  end
+
   create_table "organization_members", force: :cascade do |t|
     t.integer "registered_user_id"
     t.integer "organization_id"
@@ -103,10 +112,8 @@ ActiveRecord::Schema.define(version: 2020_04_14_232917) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "organization_banner"
-    t.integer "organization_admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organization_admin_id"], name: "index_organizations_on_organization_admin_id"
   end
 
   create_table "registered_users", force: :cascade do |t|

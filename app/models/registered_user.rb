@@ -4,7 +4,7 @@ class RegisteredUser < ApplicationRecord
   has_many :events
   has_one :user_profile
   has_one :blacklist
-  has_many :organizations
+  has_many :organization_admins
   has_many :comments
   has_many :replies
   has_many :event_guests
