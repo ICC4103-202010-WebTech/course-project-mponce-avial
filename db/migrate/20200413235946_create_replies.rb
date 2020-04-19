@@ -4,7 +4,8 @@ class CreateReplies < ActiveRecord::Migration[6.0]
       t.string :profile_picture
       t.string :text
       t.string :image
-
+      t.references :registered_user
+      t.references :comment
       t.timestamps
     end
   end
