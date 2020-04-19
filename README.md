@@ -1,5 +1,7 @@
 # README
 
+# AN UPDATED E-R MODEL IS IN THIS REPOSITORY, PLEASE CHECK IT OUT
+
 Matias Ponce : maponce@miuandes.cl
 Andres Vial : avial5@miuandes.cl
 
