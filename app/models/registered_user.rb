@@ -8,7 +8,7 @@ class RegisteredUser < ApplicationRecord
   has_many :comments
   has_many :replies
   has_many :event_guests
-  has_many :menssages
+  has_many :messages
   has_many :organization_members
   has_many :system_administrators
 end

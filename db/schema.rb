@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2020_04_14_232917) do
 
   create_table "blacklists", force: :cascade do |t|
-    t.integer "registered_user_id"
+    t.integer "blacklist_owner_id"
     t.integer "banned_user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["banned_user_id"], name: "index_blacklists_on_banned_user_id"
-    t.index ["registered_user_id"], name: "index_blacklists_on_registered_user_id"
+    t.index ["blacklist_owner_id"], name: "index_blacklists_on_blacklist_owner_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -76,10 +76,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_232917) do
     t.string "date_rule"
     t.string "visibility"
     t.boolean "is_from_organization"
-    t.integer "registered_user_id"
+    t.integer "event_creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["registered_user_id"], name: "index_events_on_registered_user_id"
+    t.index ["event_creator_id"], name: "index_events_on_event_creator_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -103,10 +103,10 @@ ActiveRecord::Schema.define(version: 2020_04_14_232917) do
 
   create_table "organizations", force: :cascade do |t|
     t.string "organization_banner"
-    t.integer "registered_user_id"
+    t.integer "organization_admin_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["registered_user_id"], name: "index_organizations_on_registered_user_id"
+    t.index ["organization_admin_id"], name: "index_organizations_on_organization_admin_id"
   end
 
   create_table "registered_users", force: :cascade do |t|

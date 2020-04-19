@@ -1,16 +1,19 @@
 user1 = RegisteredUser.create(name: "Andres", last_name: "Vial", username: "andresvial",age: 21, email_address: "avial5@miuandes.cl", google_account: "", password:"asdf", location: "Santiago")
 user2 = RegisteredUser.create(name: "Matias", last_name: "Ponce", username: "matijojo",age: 21, email_address: "maponce@miuandes.cl", google_account: "", password:"adfg", location: "Santiago")
-user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito",age: 22, email_address: "maponce@miuandes.cl", google_account: "", password:"sdfg", location: "Santiago")
+user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito",age: 22, email_address: "compumundo@miuandes.cl", google_account: "", password:"sdfg", location: "Santiago")
 user4 = RegisteredUser.create(name: "Julio", last_name: "Castro", username: "jululu",age: 28, email_address: "juliojaja@miuandes.cl", google_account: "", password:"toda", location: "Valparaiso")
 
 event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "admin choose")
 event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "guests choose")
+event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "admin choose")
 
-event1.registered_user = user2
-event2.registered_user = user1
+event1.event_creator = user2
+event2.event_creator = user1
+event3.event_creator = user1
 
 event1.save!
 event2.save!
+event3.save!
 
 profileuser1 = UserProfile.new(profile_picture: "p1.png", banner_picture: "p1b.png")
 profileuser1.registered_user = user1
@@ -29,15 +32,15 @@ profileuser4.registered_user = user4
 profileuser4.save!
 
 org1 = Organization.new(organization_banner: 'o1.png')
-org1.registered_user = user1
+org1.organization_admin = user1
 org1.save!
 
 org2 = Organization.new(organization_banner: 'o2.png')
-org2.registered_user = user2
+org2.organization_admin = user2
 org2.save!
 
 org3 = Organization.new(organization_banner: 'o3.png')
-org3.registered_user = user3
+org3.organization_admin = user3
 org3.save!
 
 orgmem1 = OrganizationMember.new()
@@ -52,7 +55,7 @@ orgmem2.save!
 
 orgmem3 = OrganizationMember.new()
 orgmem3.organization = org3
-orgmem3.registered_user = user3
+orgmem3.registered_user = user4
 orgmem3.save!
 
 admin1 = SystemAdministrator.new()
@@ -60,17 +63,17 @@ admin1.registered_user = user1
 admin1.save!
 
 bck_ls_1 = Blacklist.new()
-bck_ls_1.registered_user = user1
+bck_ls_1.blacklist_owner = user1
 bck_ls_1.banned_user = user2
 bck_ls_1.save!
 
 bck_ls_2 = Blacklist.new()
-bck_ls_2.registered_user = user2
+bck_ls_2.blacklist_owner = user2
 bck_ls_2.banned_user = user3
 bck_ls_2.save!
 
 bck_ls_3 = Blacklist.new()
-bck_ls_3.registered_user = user3
+bck_ls_3.blacklist_owner = user3
 bck_ls_3.banned_user = user1
 bck_ls_3.save!
 
@@ -78,7 +81,6 @@ com1 = Comment.new(profile_picture: 'p1.png',text: 'hola',image: 'p2.png')
 com1.event = event1
 com1.registered_user = user1
 com1.save!
-
 
 com2 = Comment.new(profile_picture: 'p3.png',text: 'wow!',image: 'p4.png')
 com2.event = event2
