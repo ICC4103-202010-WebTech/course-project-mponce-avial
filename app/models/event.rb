@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :event_creator, :class_name => 'RegisteredUser', :foreign_key => 'event_creator_id'
+  belongs_to :organization,optional: true
   has_many :comments
   has_many :event_guests
   has_many :event_images

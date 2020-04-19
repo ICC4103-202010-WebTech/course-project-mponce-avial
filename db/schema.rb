@@ -75,11 +75,12 @@ ActiveRecord::Schema.define(version: 2020_04_19_212111) do
     t.datetime "final_date"
     t.string "date_rule"
     t.string "visibility"
-    t.boolean "is_from_organization"
+    t.integer "organization_id"
     t.integer "event_creator_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_creator_id"], name: "index_events_on_event_creator_id"
+    t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
   create_table "messages", force: :cascade do |t|

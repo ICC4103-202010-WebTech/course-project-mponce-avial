@@ -8,7 +8,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :final_date
       t.string :date_rule
       t.string :visibility
-      t.boolean :is_from_organization
+      t.references :organization
       t.references :event_creator
 
       t.timestamps
