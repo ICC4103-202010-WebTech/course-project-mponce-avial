@@ -3,17 +3,29 @@ user2 = RegisteredUser.create(name: "Matias", last_name: "Ponce", username: "mat
 user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito",age: 22, email_address: "compumundo@miuandes.cl", google_account: "", password:"sdfg", location: "Santiago")
 user4 = RegisteredUser.create(name: "Julio", last_name: "Castro", username: "jululu",age: 28, email_address: "juliojaja@miuandes.cl", google_account: "", password:"toda", location: "Valparaiso")
 
+org1 = Organization.create(organization_banner: 'o1.png')
+
+org2 = Organization.create(organization_banner: 'o2.png')
+
+org3 = Organization.create(organization_banner: 'o3.png')
+
 event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "admin choose")
 event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "guests choose")
-event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "admin choose")
+event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "admin choose",visibility: "private")
+event4 = Event.new(title: "RichardCon", description: "Convencion de richards", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "guests choose",visibility: "public")
 
 event1.event_creator = user2
 event2.event_creator = user1
 event3.event_creator = user1
+event4.event_creator = user3
+
+event3.organization = org1
+event4.organization = org3
 
 event1.save!
 event2.save!
 event3.save!
+event4.save!
 
 profileuser1 = UserProfile.new(profile_picture: "p1.png", banner_picture: "p1b.png")
 profileuser1.registered_user = user1
@@ -31,11 +43,6 @@ profileuser4 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.p
 profileuser4.registered_user = user4
 profileuser4.save!
 
-org1 = Organization.create(organization_banner: 'o1.png')
-
-org2 = Organization.create(organization_banner: 'o2.png')
-
-org3 = Organization.create(organization_banner: 'o3.png')
 
 org_admin1 = OrganizationAdmin.new()
 org_admin1.organization = org1
@@ -66,7 +73,7 @@ orgmem2.save!
 
 orgmem3 = OrganizationMember.new()
 orgmem3.organization = org3
-orgmem3.registered_user = user4
+orgmem3.registered_user = user3
 orgmem3.save!
 
 admin1 = SystemAdministrator.new()
@@ -137,6 +144,11 @@ eguest2 = EventGuest.new(date_vote: 2)
 eguest2.event = event2
 eguest2.registered_user = user2
 eguest2.save!
+
+eguest3 = EventGuest.new(date_vote: 1)
+eguest3.event = event2
+eguest3.registered_user = user3
+eguest3.save!
 
 eimg1 = EventImage.new(image: 'a1.png')
 eimg1.event = event1
