@@ -1,0 +1,2 @@
+module EventPdfsHelper
+end
