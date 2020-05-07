@@ -3,11 +3,11 @@ user2 = RegisteredUser.create(name: "Matias", last_name: "Ponce", username: "mat
 user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito",age: 22, email_address: "compumundo@miuandes.cl", google_account: "", password:"sdfg", location: "Santiago")
 user4 = RegisteredUser.create(name: "Julio", last_name: "Castro", username: "jululu",age: 28, email_address: "juliojaja@miuandes.cl", google_account: "", password:"toda", location: "Valparaiso")
 
-org1 = Organization.create(organization_banner: 'o1.png')
+org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png')
 
-org2 = Organization.create(organization_banner: 'o2.png')
+org2 = Organization.create(name: "Organization 2",organization_banner: 'o2.png')
 
-org3 = Organization.create(organization_banner: 'o3.png')
+org3 = Organization.create(name: "Organization 3",organization_banner: 'o3.png')
 
 event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "admin choose")
 event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "guests choose")

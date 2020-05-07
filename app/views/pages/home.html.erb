@@ -1,0 +1,23 @@
+<h4>UPCOMING EVENTS</h4>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Event Name</th>
+    <th>Description</th>
+    <th>Date</th>
+    <th>User Creator</th>
+    <th>Organization</th>
+  </tr>
+
+  <%@upcoming_event.each_with_index do |event,i | %>
+    <tr>
+      <td><%=i %></td>
+      <td><%=event.title %></td>
+      <td><%=event.description %></td>
+      <td><%=event.final_date%></td>
+      <td><%=event.event_creator_id%></td>
+      <td><%=event.organization_id%></td>
+    </tr>
+  <% end %>
+</table>
+<!-- TODO: Generate a table contaning the latest five events in the database -->
