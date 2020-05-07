@@ -6,20 +6,24 @@ class API::V1::CommentsController < APIController
   def index
     #@comments = Comment.all
     @comments = Comment.where(event_id: params[:event_id])
+    render json: @comments
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    render json: @comment
   end
 
   # GET /comments/new
   def new
     @comment = Comment.new
+    render json: @comment
   end
 
   # GET /comments/1/edit
   def edit
+    render json: @comment
   end
 
   # POST /comments
@@ -37,7 +41,7 @@ class API::V1::CommentsController < APIController
   # PATCH/PUT /comments/1.json
   def update
     if @comment.update(comment_params)
-      render :show, status: :ok, location: api_v1_comments_path(@comment)
+      render :show, status: :ok, location: api_v1_event_comment_path(@comment)
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -47,10 +51,7 @@ class API::V1::CommentsController < APIController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    head :no_content
   end
 
   private
@@ -61,6 +62,6 @@ class API::V1::CommentsController < APIController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.fetch(:comment, {})
+      params.fetch(:comment, {}).permit(:id, :profile_picture, :text ,:image ,:registered_user_id ,:event_id)
     end
 end

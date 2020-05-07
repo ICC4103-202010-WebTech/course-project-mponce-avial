@@ -5,16 +5,19 @@ class API::V1::EventsController < APIController
   # GET /events.json
   def index
     @events = Event.all
+    render json: @events
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    render json: @event
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    render json: @event
   end
 
   # GET /events/1/edit
@@ -60,6 +63,6 @@ class API::V1::EventsController < APIController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.fetch(:event, {}).permit(:id, :title, :description, :banner, :location, :final_date, :date_rule, :visibility, :organization_id, :event_creator_id)
     end
 end
