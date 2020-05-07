@@ -36,4 +36,37 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :blacklists
+
+  resources :events do
+    resources :event_guests
+    resources :event_images
+    resources :event_pdfs
+    resources :event_videos
+    resources :comments, shallow: true do
+      resources :replies
+    end
+  end
+
+  resources :organization do
+    resources :events
+    resources :organization_admins
+    resources :organization_members
+  end
+
+  resources :registered_users do
+    resources :user_profiles
+    resources :blacklists
+    resources :events
+    resources :messages
+    resources :comments, shallow: true do
+      resources :replies
+    end
+  end
+
+  resource :system_administrators do
+    resources :registered_users
+  end
+
 end
