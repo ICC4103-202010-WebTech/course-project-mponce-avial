@@ -69,4 +69,19 @@ Rails.application.routes.draw do
     resources :registered_users
   end
 
+  resources :system_administrators, defaults: { format: :html }
+  resources :registered_users, defaults: { format: :html }
+  resources :user_profiles, defaults: { format: :html }
+  resources :events, defaults: { format: :html }
+  resources :messages, defaults: { format: :html }
+  resources :comments, defaults: { format: :html }
+  resources :replies, defaults: { format: :html }
+  resources :organizations, defaults: { format: :html }
+  resources :organization_admins, defaults: { format: :html }
+  resources :organization_members, defaults: { format: :html }
+  resources :event_guests, defaults: { format: :html }
+  resources :event_images, defaults: { format: :html }
+  resources :event_pdfs, defaults: { format: :html }
+  resources :event_videos, defaults: { format: :html }
+  resources :blacklists, defaults: { format: :html }
 end
