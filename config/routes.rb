@@ -11,11 +11,29 @@ Rails.application.routes.draw do
         resources :event_pdfs
         resources :event_videos
         resources :comments, shallow: true do
-          resources :replies, shallow: true
+          resources :replies
         end
       end
 
-      resources :messages
+      resources :organization do
+        resources :events
+        resources :organization_admins
+        resources :organization_members
+      end
+
+      resources :registered_users do
+        resources :user_profiles
+        resources :blacklists
+        resources :events
+        resources :messages
+        resources :comments, shallow: true do
+          resources :replies
+        end
+      end
+      
+      resource :system_administrators do
+        resources :registered_users
+      end
     end
   end
 end
