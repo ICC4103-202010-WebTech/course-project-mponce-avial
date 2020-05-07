@@ -12,7 +12,7 @@
     <ul>
       <li><%= link_to "E-Calendar", root_path %></li>
       <li><%= link_to "Inbox", root_path%></li>
-      <li><%= link_to "User", root_path %></li>
+      <li><%= link_to "User", controller: "registered_users", action: "show", id: 1 %></li>
       <li><%= link_to "LogOut", root_path %></li>
     </ul>
   </nav>
