@@ -1,25 +1,31 @@
-<p id="notice"><%= notice %></p>
+<h4>USER ORGANIZATIONS</h4>
 
-<h1>Organizations</h1>
-
+<h2>Organizations created</h2>
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <tr>
+    <th>ID</th>
+    <th>Organization Name</th>
+  </tr>
 
-  <tbody>
-    <% @organizations.each do |organization| %>
-      <tr>
-        <td><%= link_to 'Show', organization %></td>
-        <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-        <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <%@organizations_created.each do |org| %>
+    <tr>
+      <td><%=org.id %></td>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+    </tr>
+  <% end %>
 </table>
 
-<br>
+<h2>Organizations joined</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Organization Name</th>
+  </tr>
 
-<%= link_to 'New Organization', new_organization_path %>
+  <%@organizations_joined.each do |org| %>
+    <tr>
+      <td><%=org.id %></td>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+    </tr>
+  <% end %>
+</table>
