@@ -3,11 +3,11 @@ user2 = RegisteredUser.create(name: "Matias", last_name: "Ponce", username: "mat
 user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito",age: 22, email_address: "compumundo@miuandes.cl", google_account: "", password:"sdfg", location: "Santiago")
 user4 = RegisteredUser.create(name: "Julio", last_name: "Castro", username: "jululu",age: 28, email_address: "juliojaja@miuandes.cl", google_account: "", password:"toda", location: "Valparaiso")
 
-org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png')
+org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png',description: "The best organization in the world")
 
-org2 = Organization.create(name: "Organization 2",organization_banner: 'o2.png')
+org2 = Organization.create(name: "Organization 2",organization_banner: 'o2.png',description: "The best organization in the world")
 
-org3 = Organization.create(name: "Organization 3",organization_banner: 'o3.png')
+org3 = Organization.create(name: "Organization 3",organization_banner: 'o3.png',description: "The best organization in the world")
 
 event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "admin choose")
 event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "guests choose")
@@ -27,19 +27,19 @@ event2.save!
 event3.save!
 event4.save!
 
-profileuser1 = UserProfile.new(profile_picture: "p1.png", banner_picture: "p1b.png")
+profileuser1 = UserProfile.new(profile_picture: "p1.png", banner_picture: "p1b.png",biography: "Hi, hi, hi")
 profileuser1.registered_user = user1
 profileuser1.save!
 
-profileuser2 = UserProfile.new(profile_picture: "p2.png", banner_picture: "p2b.png")
+profileuser2 = UserProfile.new(profile_picture: "p2.png", banner_picture: "p2b.png",biography: "Hola Hola Hola")
 profileuser2.registered_user = user2
 profileuser2.save!
 
-profileuser3 = UserProfile.new(profile_picture: "p3.png", banner_picture: "p3b.png")
+profileuser3 = UserProfile.new(profile_picture: "p3.png", banner_picture: "p3b.png",biography: "Ora Ora Ora")
 profileuser3.registered_user = user3
 profileuser3.save!
 
-profileuser4 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.png")
+profileuser4 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.png",biography: "Hola, Buenas Tardes")
 profileuser4.registered_user = user4
 profileuser4.save!
 
