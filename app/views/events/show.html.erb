@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
+<h1><%=@event.title%> </h1>
+<ul>
+  <li><b>Description:</b> <%=@event.description%></li>
+  <li><b>Location:</b> <%=@event.location%></li>
+  <li><b>Create at:</b> <%=@event.created_at%></li>
+</ul>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
