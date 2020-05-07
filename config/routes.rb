@@ -44,9 +44,6 @@ Rails.application.routes.draw do
     resources :event_images
     resources :event_pdfs
     resources :event_videos
-    resources :comments, shallow: true do
-      resources :replies
-    end
   end
 
   resources :organization do
@@ -60,9 +57,6 @@ Rails.application.routes.draw do
     resources :blacklists
     resources :events
     resources :messages
-    resources :comments, shallow: true do
-      resources :replies
-    end
   end
 
   resource :system_administrators do
