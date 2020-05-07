@@ -114,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_212111) do
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.string "organization_banner"
+    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
