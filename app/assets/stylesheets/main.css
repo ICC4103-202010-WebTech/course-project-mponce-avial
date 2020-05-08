@@ -50,8 +50,8 @@ main {
 footer {
     color: white;
     background: #0D5AFF;
-    padding: 1em;
-    height: 6em;
+    padding: 2em;
+    height: 5em;
 }
 
 ul#navbar {
@@ -84,4 +84,9 @@ ul#navbar li a:hover {
 td,th {
     padding: 0.2em;
     text-align: left;
+}
+
+hr {
+    width: 100%;
+    background-color: black;
 }
