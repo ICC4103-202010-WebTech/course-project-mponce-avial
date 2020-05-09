@@ -13,19 +13,23 @@ event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banne
 event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "guests choose")
 event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: "admin choose",visibility: "private")
 event4 = Event.new(title: "RichardCon", description: "Convencion de richards", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: "guests choose",visibility: "public")
+event5 = Event.new(title: "WebCon", description: "Convencion de Web", banner:"banner.png", location: "Arica", final_date: DateTime.now ,date_rule: "guests choose",visibility: "public")
 
 event1.event_creator = user2
 event2.event_creator = user1
 event3.event_creator = user1
 event4.event_creator = user3
+event5.event_creator = user1
 
 event3.organization = org1
 event4.organization = org3
+event5.organization = org1
 
 event1.save!
 event2.save!
 event3.save!
 event4.save!
+event5.save!
 
 profileuser1 = UserProfile.new(profile_picture: "p1.png", banner_picture: "p1b.png",biography: "Hi, hi, hi")
 profileuser1.registered_user = user1
