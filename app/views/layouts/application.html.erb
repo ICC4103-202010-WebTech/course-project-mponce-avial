@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+<%= stylesheet_link_tag "sidebar_and _topbar" %>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 
-  <nav>
-    <ul id="navbar">
-      <li><%= link_to "E-Calendar", root_path %></li>
-      <li><%= link_to "User", controller: "user_profiles", action: "show", id: 1 %></li>
-      <li><%= link_to "Inbox", root_path%></li>
-      <li><%= link_to "Organizations", organizations_path %></li>
-      <li><%= link_to "LogOut", root_path %></li>
-    </ul>
-  </nav>
+<body>
+<nav>
+  <ul class="topbar">
+    <li><%= link_to "E-Calendar", root_path %></li>
+    <li><%= link_to "User", controller: "user_profiles", action: "show", id: 1 %></li>
+    <li><%= link_to "Inbox", root_path%></li>
+    <li><%= link_to "Organizations", organizations_path %></li>
+    <li><%= link_to "LogOut", root_path %></li>
+  </ul>
+</nav>
 
-  <body>
-  <div id="container">
-    <aside id="options_bar">
-      <h3>Barra</h3>
-    </aside>
-    <main>
-      <%=yield %>
-    </main>
-  </div>
-  </body>
+<div class="sidebar">
+  <a href="#home"><i class="fa fa-user-circle-o fa-2x "></i>
+    <p>Profile</p></a>
+  <a href="#services"><i class="fa fa-users fa-2x "></i>
+    <p>Jojo</p></a>
+  <a href="#clients"><i class="fa fa-fw fa-user fa-2x "></i>
+    <p>Matias Jojo</p></a>
+  <a href="#contact"><i class="fa fa-fw fa-envelope fa-2x "></i>
+    <p>Claudio</p></a>
+</div>
+
+<div class="main">
+  <%=yield %>
+</div>
+
+</body>
 </html>
