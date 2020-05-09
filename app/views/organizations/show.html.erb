@@ -1,2 +1,13 @@
 <h2><%=@organization.name%> </h2>
 <p><%=@organization.organization_banner%></p>
+<h2>Events</h2>
+<hr>
+<%@organization_events.each_with_index do |event,i | %>
+  <tr>
+    <td><%= link_to event.title,  controller: "events", action: "show", id: event.id %></td>
+    <td><%=event.description %></td>
+    <td><%=event.final_date%></td>
+    <td><%=event.event_creator_id%></td>
+  </tr>
+<% end %>
+
