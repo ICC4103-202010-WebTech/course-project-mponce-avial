@@ -10,5 +10,33 @@
   <li><b>Profile Picture:</b> <%=@user_profile.profile_picture%></li>
   <li><b>Banner Picture:</b> <%=@user_profile.banner_picture%></li>
 </ul>
-<%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |
-<%= link_to 'Back', user_profiles_path %>
+
+<h2>Events created</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Event Name</th>
+  </tr>
+
+  <%@user_events_created.each do |event| %>
+    <tr>
+      <td><%=event.id %></td>
+      <td><%= link_to event.title, controller: "events", action: "show", id: event.id%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Events joined</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Event Name</th>
+  </tr>
+
+  <%@user_events_joined.each do |event| %>
+    <tr>
+      <td><%=event.id %></td>
+      <td><%= link_to event.title, controller: "events", action: "show", id: event.id%></td>
+    </tr>
+  <% end %>
+</table>
