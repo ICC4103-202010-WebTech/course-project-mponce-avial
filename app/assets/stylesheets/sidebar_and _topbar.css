@@ -56,7 +56,7 @@ body {font-family: "Lato", sans-serif;}
 .sidebar {
     text-align: center;
     height: 100%;
-    width: 90px;
+    width: 60px;
     position: fixed;
     z-index: 1;
     top: 54px;
@@ -68,9 +68,9 @@ body {font-family: "Lato", sans-serif;}
 }
 
 .sidebar a {
-    padding: 6px 8px 6px 8px;
+    padding: 15px 8px 15px 8px;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 15px;
     color: #ffffff;
     display: block;
 }
@@ -80,6 +80,6 @@ body {font-family: "Lato", sans-serif;}
 }
 
 .main {
-    margin-left: 110px; /* Same as the width of the sidenav */
+    margin-left: 80px; /* Same as the width of the sidenav */
     padding: 0px 0px;
 }
