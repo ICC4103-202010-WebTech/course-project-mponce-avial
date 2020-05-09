@@ -6,5 +6,19 @@
   <li><b>Create at:</b> <%=@event.created_at%></li>
 </ul>
 
+<h2><%="Comments"%> </h2>
+<table>
+  <tr>
+  <th>ID</th>
+  <th>Comment Text</th>
+  </tr>
+  <%@event_comments.each do |comment| %>
+    <tr>
+      <td><%=comment.id %></td>
+      <td><%=comment.text%></td>
+    </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
