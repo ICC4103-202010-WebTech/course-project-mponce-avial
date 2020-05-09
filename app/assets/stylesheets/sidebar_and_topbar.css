@@ -4,6 +4,7 @@ body {font-family: "Lato", sans-serif;}
     list-style-type: none;
     margin-left: -10px; /* Same as the width of the sidenav */
     margin-top: -10px;
+    margin-bottom: 25px;
     padding: 0px 0px;
     overflow: hidden;
     background-color: #0D5AFF;

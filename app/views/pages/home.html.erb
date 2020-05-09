@@ -1,24 +1,49 @@
-<h2>UPCOMING EVENTS</h2>
-<hr>
-<table id = "table">
-  <tr>
-    <th>ID</th>
-    <th>Event Name</th>
-    <th>Description</th>
-    <th>Date</th>
-    <th>User Creator</th>
-    <th>Organization</th>
-  </tr>
+<!DOCTYPE html>
+<html>
 
-  <%@upcoming_event.each_with_index do |event,i | %>
-    <tr>
-      <td><%=event.id %></td>
-      <td><%= link_to event.title,  controller: "events", action: "show", id: event.id %></td>
-      <td><%=event.description %></td>
-      <td><%=event.final_date%></td>
-      <td><%=event.event_creator_id%></td>
-      <td><%=event.organization_id%></td>
-    </tr>
-  <% end %>
-</table>
-<!-- TODO: Generate a table contaning the latest five events in the database -->
+<head>
+  <%= stylesheet_link_tag "homepage" %>
+</head>
+
+<body>
+
+<div class="sections">
+  <div class="sections_left">
+    <h2>Upcoming Events</h2>
+    <hr>
+
+    <%@upcoming_event.each do |event| %>
+      <div class="event_square">
+        <img src="">
+        <div>
+          <ul>
+            <li><b><%=event.title%></b></li>
+            <li><%=event.final_date%></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+
+
+
+
+  <div class="sections_right">
+    <h2>What do you want to do?</h2>
+    <hr>
+
+    <div class="button">
+      Create Event
+    </div>
+    <div class="button">
+      Edit Event
+    </div>
+    <div class="button">
+      Create Organization
+    </div>
+
+  </div>
+
+</div>
+
