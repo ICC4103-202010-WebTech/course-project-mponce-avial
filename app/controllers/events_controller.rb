@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    #@events = Event.all
+    @events_created = Event.where(event_creator_id: 1)
+    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: 1})
   end
 
   # GET /events/1
