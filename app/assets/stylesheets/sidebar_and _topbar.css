@@ -1,5 +1,57 @@
 body {font-family: "Lato", sans-serif;}
 
+.topbar {
+    list-style-type: none;
+    margin-left: -10px; /* Same as the width of the sidenav */
+    margin-top: -10px;
+    padding: 0px 0px;
+    overflow: hidden;
+    background-color: #0D5AFF;
+    border-bottom: 2px solid black;
+}
+
+.topbar input[type=text] {
+    float: right;
+    padding: 6px 0px 6px 0px;
+    border: none;
+    margin-top: 12px;
+    margin-right: 16px;
+    margin-left: 16px;
+    font-size: 17px;
+}
+
+.topbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.topbar a {
+    display: block;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topbar a:hover {
+    background-color: #111;
+}
+
+.topbar-left {
+    float: left;
+}
+
+.topbar-left ul li {
+    float: left;
+}
+
+.topbar-right ul li {
+    float: right;
+}
+
 
 .sidebar {
     text-align: center;
@@ -7,7 +59,7 @@ body {font-family: "Lato", sans-serif;}
     width: 90px;
     position: fixed;
     z-index: 1;
-    top: 49px;
+    top: 54px;
     left: 0;
     background-color: #0D5AFF;
     overflow-x: hidden;
@@ -24,37 +76,8 @@ body {font-family: "Lato", sans-serif;}
 }
 
 .sidebar a:hover {
-    color: #111111;
-}
-
-.topbar{
-    list-style-type: none;
-    margin-left: -10px; /* Same as the width of the sidenav */
-    margin-top: -10px;
-    padding: 0px 0px;
-    overflow: hidden;
-    background-color: #0D5AFF;
-    border-bottom: 2px solid black;
-}
-
-
-.topbar li {
-    float: left;
-}
-
-.topbar a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-.topbar a:hover {
     background-color: #111;
 }
-
 
 .main {
     margin-left: 110px; /* Same as the width of the sidenav */

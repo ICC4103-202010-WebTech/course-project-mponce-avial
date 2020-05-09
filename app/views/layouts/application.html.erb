@@ -7,14 +7,22 @@
 </head>
 
 <body>
-<nav>
-  <ul class="topbar">
-    <li><%= link_to "E-Calendar", root_path %></li>
-    <li><%= link_to "User", controller: "user_profiles", action: "show", id: 1 %></li>
-    <li><%= link_to "Inbox", root_path%></li>
-    <li><%= link_to "Organizations", organizations_path %></li>
-    <li><%= link_to "LogOut", root_path %></li>
-  </ul>
+
+<nav class="topbar">
+  <div class="topbar-left">
+    <ul>
+      <li><%= link_to "E-Calendar", root_path %></li>
+      <li><%= link_to "User", controller: "user_profiles", action: "show", id: 1 %></li>
+      <li><%= link_to "Organizations", organizations_path %></li>
+    </ul>
+  </div>
+  <div class="topbar-right">
+    <ul>
+      <li><%= link_to "LogOut", root_path %></li>
+      <li><input type="text" placeholder="Search.."></li>
+      <li><%= link_to "Inbox", root_path%></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="sidebar">
