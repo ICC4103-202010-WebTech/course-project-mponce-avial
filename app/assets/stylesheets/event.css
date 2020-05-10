@@ -1,0 +1,30 @@
+.event_banner{
+    background-image: url(http://goo.gl/vyAs27);
+    height: 70vh;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-radius: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.event_banner h1{
+    border-radius: 5px;
+    height: 70%;
+}
+
+.event_banner_left_side {
+    float: left;
+    display: inline-block;
+    border-radius: 5px;
+    height: 20%;
+}
+
+.event_banner_right_side {
+    float: right;
+    display: inline-block;
+    border-radius: 5px;
+    height: 20%;
+}

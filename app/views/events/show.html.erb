@@ -1,3 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag "event" %>
+</head>
+
+<body>
+
+  <div class="event_banner">
+    <h1><%=@event.title%></h1>
+    <h2 class="event_banner_left_side">Creation Date: <%=@event.created_at%></h2>
+    <h2 class="event_banner_right_side">Location: <%=@event.location%></h2>
+  </div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 <h1><%=@event.title%> </h1>
 <ul>
