@@ -3,7 +3,6 @@
 
 <head>
   <%= stylesheet_link_tag "event" %>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
 <body>
@@ -30,87 +29,47 @@
     <section class="vote_box">
       <h2>Vote for the date here!!</h2>
     </section>
+
     <h2>Comments:</h2>
-
-
-    <hr>
-    <div class="container">
-      <div class="row">
-
+    <%@event_comments.each do |comment| %>
+      <div>
         <div class="comment">
-          <div class="media-left">
-            <img src="http://fakeimg.pl/50x50" class="media-object" style="width:40px">
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading title">Fahmi Arif</h4>
-            <p class="komen">
-              kalo bisa ya ndak usah gan biar cepet<br>
-              <a href="#">reply</a>
-            </p>
+          <img src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg" class="comment_left">
+          <div class="comment_right">
+            <div><%=comment.text%></div>
+            <h4>Reply</h4>
           </div>
         </div>
-
-        <div class="reply">
-          <div class="media">
-            <div class="media-left">
-              <img src="http://fakeimg.pl/50x50" class="media-object" style="width:40px">
-            </div>
-            <div class="media-body">
-              <h4 class="media-heading title">Fahmi Arif</h4>
-              <p class="komen">
-                kalo bisa ya ndak usahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh gan biar cepet<br>
-              </p>
-            </div>
+        <%@comment_replies.each do |reply| %>
+          <div class="reply">
+            <img src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg" class="comment_left">
+            <div class="comment_right"><%=reply.text%></div>
           </div>
-        </div>
-
-
+        <%end%>
       </div>
-    </div>
-
+    <% end %>
 
   </section>
 
-
-
-
   <aside class="section_right">
-    <p>defrfrfrfr</p>
+    <h2>Images</h2>
+    <%@event_images.each do |image| %>
+      <!-- <h3><%=image%></h3> -->
+      <img class="event_image">
+    <%end%>
+
+    <h2>Videos</h2>
+    <%@event_videos.each do |video| %>
+      <!-- <h3><%=video%></h3> -->
+      <img class="event_video">
+    <%end%>
+
+    <h2>PDF</h2>
+    <%@event_pdfs.each do |pdfs| %>
+      <!-- <h3><%=pdfs%></h3> -->
+      <img class="event_pdf">
+    <%end%>
   </aside>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2><%="Comments"%> </h2>
-<table>
-  <tr>
-  <th>ID</th>
-  <th>Comment Text</th>
-  </tr>
-  <%@event_comments.each do |comment| %>
-    <tr>
-      <td><%=comment.id %></td>
-      <td><%=comment.text%></td>
-    </tr>
-  <% end %>
-</table>

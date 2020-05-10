@@ -26,6 +26,10 @@
 </nav>
 
 <div class="sidebar">
+  <li><%= link_to(root_path)  do %>
+      <%=image_tag("logo2.png", size: "50x50")%>
+      Home
+    <% end %></li>
   <li><%= link_to(controller: "user_profiles", action: "show", id: 1 ) do %>
       <i class="fa fa-user-circle-o fa-2x"></i>
       Profile
@@ -39,11 +43,6 @@
   <li><%= link_to(organizations_path) do %>
       <i class="fa fa-users fa-2x"></i>
       Orgs.
-    <% end %></li>
-
-  <li><%= link_to(root_path) do %>
-      <i class="fa fa-info-circle fa-2x"></i>
-      Info
     <% end %></li>
 </div>
 

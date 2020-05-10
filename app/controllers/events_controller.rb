@@ -13,6 +13,10 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event_comments = Comment.joins(:event).where(event_id: params[:id])
+    @comment_replies = Reply.joins(:comment).where(comment_id: @event_comments)
+    @event_images = EventImage.joins(:event).where(event_id: params[:id])
+    @event_videos = EventVideo.joins(:event).where(event_id: params[:id])
+    @event_pdfs = EventPdf.joins(:event).where(event_id: params[:id])
   end
 
   # GET /events/new

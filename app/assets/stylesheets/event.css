@@ -34,25 +34,19 @@
     padding-right: 1%;
     padding-bottom: 1%;
     display: inline-block;
+    margin-right: 1%;
     width: 67%;
     float:left;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
 }
 
 .section_right{
+    text-align: center;
     padding-left: 1%;
     padding-right: 1%;
     padding-bottom: 1%;
     display: inline-block;
-    width: 28%;
-    float:right;
-    border-right: 2px solid black;
+    width: 27%;
     border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
 }
 
 .button_line{
@@ -100,10 +94,99 @@
 }
 
 .comment {
+    display: inline-block;
     font-size:14px;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    width: 100%;
+    border-radius: 5px;
 }
+
+.comment_left{
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    float: left;
+    border-radius: 50px;
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+
+.comment_right{
+    padding: 1%;
+    border-left: 2px solid black;
+    display: inline-block;
+    width: 87%;
+    height: 72px;
+}
+
+.comment_right h4{
+    color: #0D5AFF;
+}
+
 .reply {
+    border-radius: 5px;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     margin-left:55px;
-    margin-top:5px;
+    margin-bottom: 1%;
+}
+
+.reply_left{
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    float: left;
+    border-radius: 50px;
+    display: inline-block;
+    width: 10%;
+    height: 10%;
+}
+
+.reply_right{
+    padding: 1%;
+    border-left: 2px solid black;
+    display: inline-block;
+    width: 87%;
+    height: 72px;
+}
+.event_image{
+    display: inline-block;
+    height: 160px;
+    width: 50%;
+    background-image: url(http://goo.gl/vyAs27);
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.event_video{
+    display: inline-block;
+    height: 160px;
+    width: 50%;
+    background-image: url(http://goo.gl/vyAs27);
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.event_pdf{
+    display: inline-block;
+    height: 160px;
+    width: 50%;
+    background-image: url(http://goo.gl/vyAs27);
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
