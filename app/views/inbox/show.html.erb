@@ -1,4 +1,16 @@
-<p id="notice"><%= notice %></p>
+<h1>Inbox</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Message Text</th>
+  </tr>
+  <%@inbox_message_recived.each do |mng| %>
+    <tr>
+      <td><%=mng.id %></td>
+      <td><%=mng.text%></td>
+    </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Edit', edit_inbox_path(@inbox) %> |
 <%= link_to 'Back', inbox_index_path %>

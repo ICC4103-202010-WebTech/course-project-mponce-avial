@@ -10,6 +10,7 @@ class InboxController < ApplicationController
   # GET /inbox/1
   # GET /inbox/1.json
   def show
+    @inbox_message_recived = Message.where(destination_user_id: 3)
   end
 
   # GET /inbox/new
