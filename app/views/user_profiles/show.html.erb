@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
-<h1> User Profile </h1>
-<ul>
-  <li><b>Name:</b> <%=@user_profile.registered_user.name%></li>
-  <li><b>Lastname:</b> <%=@user_profile.registered_user.last_name%></li>
-  <li><b>Username:</b> <%=@user_profile.registered_user.username%></li>
-  <li><b>Biography:</b> <%=@user_profile.biography%></li>
-  <li><b>E-mail:</b> <%=@user_profile.registered_user.email_address%></li>
-  <li><b>Location:</b> <%=@user_profile.registered_user.location%></li>
-  <li><b>Profile Picture:</b> <%=@user_profile.profile_picture%></li>
-  <li><b>Banner Picture:</b> <%=@user_profile.banner_picture%></li>
-</ul>
+<%= stylesheet_link_tag "user_profile" %>
+<head>
+  <div class="user_banner">
+    <img
+        class="avatar"
+      src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg">
+    <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
+    <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
+  </div>
+</head>
+
+<body>
+  <div>
+    <h3>Biography:</h3>
+    <div class="biography">
+      <h3><%=@user_profile.biography%></h3>
+    </div>
+  </div>
+  <hr>
+</body>
 
 <h2>Events created</h2>
 <table>

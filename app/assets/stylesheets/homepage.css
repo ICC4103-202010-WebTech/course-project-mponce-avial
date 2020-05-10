@@ -42,12 +42,14 @@
     display: inline-block;
     width: 68%;
     height: 100%;
+    background: #999999;
 }
 
 .event_square ul{
     display: inline;
     list-style-type: none;
     overflow: hidden;
+    background: #999999
 }
 
 .event_square li{
