@@ -3,6 +3,7 @@
 
 <head>
   <%= stylesheet_link_tag "event" %>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 
 <body>
@@ -12,6 +13,70 @@
     <h2 class="event_banner_left_side">Creation Date: <%=@event.created_at%></h2>
     <h2 class="event_banner_right_side">Location: <%=@event.location%></h2>
   </div>
+
+  <section class="section_left">
+    <div class="button_line">
+      <div><h4>Edit Event</h4></div>
+      <div><h4>Delete</h4></div>
+      <div><h4>Upload Files</h4></div>
+      <div><h4>Invite</h4></div>
+      <div><h4>Report</h4></div>
+    </div>
+
+    <h2>Description:</h2>
+    <section class="rounded_box">
+      <%=@event.description%>
+    </section>
+    <section class="vote_box">
+      <h2>Vote for the date here!!</h2>
+    </section>
+    <h2>Comments:</h2>
+
+
+    <hr>
+    <div class="container">
+      <div class="row">
+
+        <div class="comment">
+          <div class="media-left">
+            <img src="http://fakeimg.pl/50x50" class="media-object" style="width:40px">
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading title">Fahmi Arif</h4>
+            <p class="komen">
+              kalo bisa ya ndak usah gan biar cepet<br>
+              <a href="#">reply</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="reply">
+          <div class="media">
+            <div class="media-left">
+              <img src="http://fakeimg.pl/50x50" class="media-object" style="width:40px">
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading title">Fahmi Arif</h4>
+              <p class="komen">
+                kalo bisa ya ndak usahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh gan biar cepet<br>
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+
+  <aside class="section_right">
+    <p>defrfrfrfr</p>
+  </aside>
 
 </body>
 </html>
@@ -31,13 +96,10 @@
 
 
 
-<p id="notice"><%= notice %></p>
-<h1><%=@event.title%> </h1>
-<ul>
-  <li><b>Description:</b> <%=@event.description%></li>
-  <li><b>Location:</b> <%=@event.location%></li>
-  <li><b>Create at:</b> <%=@event.created_at%></li>
-</ul>
+
+
+
+
 
 <h2><%="Comments"%> </h2>
 <table>
@@ -52,6 +114,3 @@
     </tr>
   <% end %>
 </table>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
