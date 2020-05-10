@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :blacklists
+      resources :inbox, only: [:show]
 
       resources :events do
         resources :event_guests
@@ -38,6 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :blacklists
+  resources :inbox, only: [:show]
 
   resources :events do
     resources :event_guests
@@ -63,6 +65,7 @@ Rails.application.routes.draw do
     resources :registered_users
   end
 
+  resources :inbox, defaults: { format: :html }
   resources :system_administrators, defaults: { format: :html }
   resources :registered_users, defaults: { format: :html }
   resources :user_profiles, defaults: { format: :html }
