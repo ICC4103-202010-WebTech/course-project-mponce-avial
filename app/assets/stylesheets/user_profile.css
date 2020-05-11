@@ -48,7 +48,8 @@
 }
 
 .event_created h3{
-    float: right;
+    margin-left: 3%;
+    float: left;
     margin-right: 22%;
 }
 
@@ -59,8 +60,6 @@
     margin-top: 3%;
     margin-left: 20px;
 }
-
-
 
 .event_joined{
     width: 40%;
@@ -80,7 +79,8 @@
 }
 
 .event_joined h3{
-    float: right;
+    margin-left: 3%;
+    float: left;
     margin-right: 22%;
 }
 
