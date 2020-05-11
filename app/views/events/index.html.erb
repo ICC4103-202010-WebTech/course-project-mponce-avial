@@ -1,31 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <%= stylesheet_link_tag "event" %>
+</head>
+
+<body>
+
 <h2>USER EVENTS</h2>
 
-<h2>Events created</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Event Name</th>
-  </tr>
-
+<div class ="event_created">
+  <h2>Events created</h2>
   <%@events_created.each do |event| %>
-    <tr>
-      <td><%=event.id %></td>
-      <td><%= link_to event.title, controller: "events", action: "show", id: event.id%></td>
-    </tr>
+    <div>
+      <img src="https://drivingschoolmiamifl.com/wp-content/uploads/2019/07/placeholder.png">
+      <h3><%= link_to event.title, controller: "events", action: "show", id: event.id%></h3>
+      <h3><%=event.final_date%></h3>
+    </div>
   <% end %>
-</table>
+</div>
 
-<h2>Events joined</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Event Name</th>
-  </tr>
+
+<div class="event_joined">
+  <h2>Events joined</h2>
 
   <%@events_joined.each do |event| %>
-    <tr>
-      <td><%=event.id %></td>
-      <td><%= link_to event.title, controller: "events", action: "show", id: event.id%></td>
-    </tr>
+    <div>
+      <img src="https://drivingschoolmiamifl.com/wp-content/uploads/2019/07/placeholder.png">
+      <h3><%= link_to event.title, controller: "events", action: "show", id: event.id%></h3>
+      <h3><%=event.final_date%></h3>
+    </div>
   <% end %>
-</table>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
