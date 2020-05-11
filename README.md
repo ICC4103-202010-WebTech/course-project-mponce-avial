@@ -63,3 +63,38 @@ After this, the callback of 13) will be called and the EventGuests assosiated wi
 * c) Go to the Comment table and first delete all replies that are assosiated with the foreign key of all the 
 comments_id made by the user and then delete all the entries that have the foreign key "registered_user" equal 
 to the user's id. 
+
+# Summary of implemented features
+
+* Added routes for api and non api page of:
+    * inbox
+    * system_administrators
+    * registered_users
+    * user_profiles
+    * events
+    * messages
+    * comments
+    * replies
+    * organizations
+    * organization_admins
+    * organization_members
+    * event_guests
+    * event_images
+    * event_pdfs
+    * event_videos
+    * blacklists
+
+* Added controllers and views for:
+    * All of te above
+    * Homepage
+    * Application layout
+
+* Added html elements to view and some css to some views
+
+# Summary of thing required for this assigment but pending
+
+We added everything
+
+# API Tests
+
+Postman link: https://www.getpostman.com/collections/6579499dc7e32a9305a1
