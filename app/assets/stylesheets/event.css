@@ -126,6 +126,12 @@
 
 .comment_right h4{
     color: #0D5AFF;
+    margin:  0px;
+}
+
+.comment_right div{
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .reply {
@@ -157,6 +163,17 @@
     width: 87%;
     height: 72px;
 }
+
+.reply_right h4{
+    color: #0D5AFF;
+    margin:  0px;
+}
+
+.reply_right div{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
 .event_image{
     display: inline-block;
     height: 160px;

@@ -36,6 +36,7 @@
         <div class="comment">
           <img src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg" class="comment_left">
           <div class="comment_right">
+            <h4><%=comment.registered_user.name %> <%=comment.registered_user.last_name %></h4>
             <div><%=comment.text%></div>
             <h4>Reply</h4>
           </div>
@@ -43,7 +44,10 @@
         <%@comment_replies.each do |reply| %>
           <div class="reply">
             <img src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg" class="comment_left">
-            <div class="comment_right"><%=reply.text%></div>
+            <div class="reply_right">
+              <h4><%=comment.registered_user.name %> <%=comment.registered_user.last_name %></h4>
+              <div><%=reply.text%></div>
+            </div>
           </div>
         <%end%>
       </div>
