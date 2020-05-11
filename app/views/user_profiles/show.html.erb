@@ -1,15 +1,17 @@
 <%= stylesheet_link_tag "user_profile" %>
 <head>
+
+</head>
+
+<body>
   <div class="user_banner">
     <img
-        class="avatar"
+      class="avatar"
       src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg">
     <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
     <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
   </div>
-</head>
 
-<body>
   <div>
     <button class="edit_profile"> Edit Profile </button>
     <h3>Biography:</h3>

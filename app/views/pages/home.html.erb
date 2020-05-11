@@ -13,20 +13,19 @@
     <hr>
 
     <%@upcoming_event.each do |event| %>
-      <div class="event_square">
-        <img src="">
-        <div>
-          <ul>
-            <li><b><%=event.title%></b></li>
-            <li><%=event.final_date%></li>
-          </ul>
-        </div>
-      </div>
+      <%= link_to root_path do %>
+        <button class="event_square">
+          <img src="">
+          <div>
+            <ul>
+              <li><b><%= link_to event.title, controller: "events", action: "show", id: event.id%></b></li>
+              <li><%=event.final_date%></li>
+            </ul>
+          </div>
+        </button>
+      <% end %>
     <% end %>
   </section>
-
-
-
 
 
   <section class="sections_right">
@@ -34,17 +33,16 @@
     <hr>
 
     <%= link_to root_path do %>
-      <div class="button">Create Event</div>
+      <button class="button">Create Event</button>
     <% end %>
 
     <%= link_to root_path do %>
-      <div class="button">Edit Event</div>
+      <button class="button">Edit Event</button>
     <% end %>
 
     <%= link_to root_path do %>
-      <div class="button">Create Organization</div>
+      <button class="button">Create Organization</button>
     <% end %>
-
   </section>
 
 </section>
