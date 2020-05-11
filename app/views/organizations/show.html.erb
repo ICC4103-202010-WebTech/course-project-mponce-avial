@@ -7,11 +7,11 @@
 <h2>Events</h2>
 <hr>
 <%@organization_events.each_with_index do |event,i | %>
-  <tr>
-    <td><%= link_to event.title,  controller: "events", action: "show", id: event.id %></td>
-    <td><%=event.description %></td>
-    <td><%=event.final_date%></td>
-    <td><%=event.event_creator_id%></td>
-  </tr>
+  <div class = "event">
+    <img src="https://drivingschoolmiamifl.com/wp-content/uploads/2019/07/placeholder.png">
+    <h3><%= link_to event.title,  controller: "events", action: "show", id: event.id %></h3>
+    <h3><%=event.description %></h3>
+    <h3><%=event.final_date%></h3>
+  </div>
 <% end %>
 
