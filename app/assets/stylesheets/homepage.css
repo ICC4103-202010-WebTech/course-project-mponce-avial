@@ -20,7 +20,7 @@
 .event_square {
     border-radius: 10px;
     display: inline-block;
-    background: azure;
+    background: #999999;
     width: 60%;
     height: 40%;
     border-right: 2px solid black;
@@ -43,14 +43,12 @@
     display: inline-block;
     width: 68%;
     height: 100%;
-    background: #999999;
 }
 
 .event_square ul{
     display: inline;
     list-style-type: none;
     overflow: hidden;
-    background: #999999
 }
 
 .event_square li{
@@ -64,7 +62,6 @@
     margin-bottom: 10%;
     margin-left: 5%;
     margin-right: 5%;
-    background: #666666;
     text-align: center;
     font-size: 40px;
 }
