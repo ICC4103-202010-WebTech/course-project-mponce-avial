@@ -93,7 +93,7 @@ to the user's id.
 
 # Summary of thing required for this assigment but pending
 
-We added everything
+We didn't make the CSS for the inbox view
 
 # API Tests
 
