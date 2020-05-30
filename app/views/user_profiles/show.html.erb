@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <button class="edit_profile"> Edit Profile </button>
+    <%= link_to "Edit Profile",edit_user_profile_path(:user_profile_id => @user_profile.id),class: ["btn", "btn-primary", "mr-4"] %>
     <h3>Biography:</h3>
     <div class="biography">
       <h3><%=@user_profile.biography%></h3>

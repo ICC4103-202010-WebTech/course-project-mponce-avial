@@ -22,6 +22,7 @@ class UserProfilesController < ApplicationController
 
   # GET /user_profiles/1/edit
   def edit
+    @user = RegisteredUser.find(params[:registered_user])
   end
 
   # POST /user_profiles
@@ -72,6 +73,6 @@ class UserProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_profile_params
-      params.fetch(:user_profile, {})
+      params.fetch(:user_profile, {}).permit(:registered_user)
     end
 end
