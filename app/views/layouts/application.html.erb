@@ -18,7 +18,7 @@
   <div class="topbar-right">
     <ul>
       <li><%= link_to "LogOut", root_path %></li>
-      <li><input type="text" placeholder="Search.."></li>
+      <li><%= search_field_tag :search, params[:search], placeholder: "Search...", class: "search_bar"%></li>
       <li><%= link_to(inbox_path) do %>
           <i class="fa fa-inbox"></i>
         <% end %></li>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/inbox/', to: 'inbox#show'
 
+  get '/search', to: 'pages#search'
+
   #Admin namespace
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
