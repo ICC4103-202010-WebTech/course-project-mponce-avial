@@ -4,6 +4,9 @@
     <h1><%=@organization.name%> </h1>
   </div>
 </head>
+<div>
+  <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
+</div>
 <h2>Events</h2>
 <hr>
 <%@organization_events.each_with_index do |event,i | %>

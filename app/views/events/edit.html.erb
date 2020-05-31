@@ -1,6 +1,39 @@
-<h1>Editing Event</h1>
+<div class="row ml-0 mt-3">
+  <h2>Edit Event</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Please enter the required information to edit the Event:</p>
+</div>
+<div class="row ml-0">
+  <%= form_with model: @event do |form| %>
 
-<%= render 'form', event: @event %>
-
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+    <div class="form-group">
+      <%= form.label :title %>
+      <%= form.text_field :title, class: "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :description %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :location %>
+      <%= form.text_field :location, class: "form-control"  %>
+    </div>
+    <div class="form-group">
+      <%= form.label :final_date %>
+      <%= form.datetime_local_field :final_date %>
+    </div>
+    <div class="form-group">
+      <%= form.label :date_rule %>
+      <%= form.datetime_local_field :date_rule %>
+    </div>
+    <div class="form-group">
+      <%= form.label :visibility %>
+      <%= form.text_field :visibility %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>
