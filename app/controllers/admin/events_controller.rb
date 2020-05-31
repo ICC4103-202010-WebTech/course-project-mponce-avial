@@ -1,12 +1,11 @@
-class ADMIN::EventsController < ApplicationController
+class Admin::EventsController < AdminController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    #@events = Event.all
-    @events_created = Event.where(event_creator_id: 1)
-    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: 1})
+    @events = Event.all
+    @users = RegisteredUser.all
   end
 
   # GET /events/1

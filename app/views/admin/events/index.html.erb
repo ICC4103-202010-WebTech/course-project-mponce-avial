@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<body>
+
+<h2>EVENTS</h2>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Event Name</th>
+    <th>Event Creator</th>
+  </tr>
+
+  <%@events.each do |e| %>
+    <tr>
+      <td><%=e.id %></td>
+      <td><%= link_to e.title, controller: "events", action: "show", id: e.id%></td>
+      <td><%= @users.find(e.event_creator_id).name + " " +@users.find(e.event_creator_id).last_name%></td>
+    </tr>
+  <% end %>
+</table>
+
+
+</body>
+</html>

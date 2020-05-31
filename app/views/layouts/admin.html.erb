@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+
+<head>
+  <%= stylesheet_link_tag "sidebar_and_topbar" %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+<nav class="topbar">
+
+</nav>
+
+<div class="sidebar">
+  <li><%= link_to "events", controller: "events", action: "index" do %>
+      <i class="fa fa-calendar fa-2x"></i>
+      Events
+    <% end %></li>
+
+  <li><%= link_to "organization", controller: "organization", action: "index" do %>
+      <i class="fa fa-users fa-2x"></i>
+      Orgs.
+    <% end %></li>
+</div>
+
+<div class="main">
+  <%=yield %>
+</div>
+
+</body>
+</html>

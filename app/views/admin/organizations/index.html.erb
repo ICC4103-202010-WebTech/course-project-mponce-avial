@@ -1,0 +1,31 @@
+<h2>USER ORGANIZATIONS</h2>
+
+<h2>Organizations created</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Organization Name</th>
+  </tr>
+
+  <%@organizations_created.each do |org| %>
+    <tr>
+      <td><%=org.id %></td>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>Organizations joined</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Organization Name</th>
+  </tr>
+
+  <%@organizations_joined.each do |org| %>
+    <tr>
+      <td><%=org.id %></td>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+    </tr>
+  <% end %>
+</table>

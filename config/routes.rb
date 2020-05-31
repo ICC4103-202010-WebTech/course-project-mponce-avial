@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get '/inbox/', to: 'inbox#show'
 
+  #Admin namespace
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :blacklists
@@ -43,7 +44,7 @@ Rails.application.routes.draw do
 
   ###############################################################
   #System administrator namespace
-  namespace :admin, defaults: { format: :json } do
+  namespace :admin do
 
     resources :organization do
       resources :events
