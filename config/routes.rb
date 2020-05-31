@@ -46,7 +46,7 @@ Rails.application.routes.draw do
   #System administrator namespace
   namespace :admin do
 
-    resources :organization do
+    resources :organizations do
       resources :events
       resources :organization_admins
       resources :organization_members
@@ -76,7 +76,7 @@ Rails.application.routes.draw do
     resources :event_videos
   end
 
-  resources :organization do
+  resources :organizations do
     resources :events
     resources :organization_admins
     resources :organization_members
