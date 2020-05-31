@@ -4,9 +4,9 @@ class Admin::OrganizationsController < AdminController
   # GET /organizations
   # GET /organizations.json
   def index
-    #@organizations = Organization.all
-    @organizations_created = Organization.joins(:organization_admins).where(organization_admins: {admin_id: 1})
-    @organizations_joined = Organization.joins(:organization_members).where(organization_members: {registered_user_id: 1})
+    @organizations = Organization.all
+    @admins = OrganizationAdmin.all
+    @users = RegisteredUser.all
   end
 
   # GET /organizations/1

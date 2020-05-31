@@ -9,11 +9,10 @@
 
 <body>
 
-<nav class="topbar">
-
-</nav>
 
 <div class="sidebar">
+  <h3>ADMIN</h3>
+
   <li><%= link_to "events", controller: "events", action: "index" do %>
       <i class="fa fa-calendar fa-2x"></i>
       Events
@@ -22,6 +21,11 @@
   <li><%= link_to "organizations", controller: "organizations", action: "index" do %>
       <i class="fa fa-users fa-2x"></i>
       Orgs.
+    <% end %></li>
+
+  <li><%= link_to "comments", controller: "oomments", action: "index" do %>
+      <i class="fa fa-comment fa-2x"></i>
+      Comme.
     <% end %></li>
 </div>
 

@@ -1,31 +1,28 @@
-<h2>USER ORGANIZATIONS</h2>
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+
+<h2>ORGANIZATIONS</h2>
 
 <h2>Organizations created</h2>
 <table>
   <tr>
     <th>ID</th>
     <th>Organization Name</th>
+    <th>Organization Admins</th>
   </tr>
 
-  <%@organizations_created.each do |org| %>
+  <%@organizations.each do |org| %>
     <tr>
       <td><%=org.id %></td>
       <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
-    </tr>
-  <% end %>
-</table>
-
-<h2>Organizations joined</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Organization Name</th>
-  </tr>
-
-  <%@organizations_joined.each do |org| %>
-    <tr>
-      <td><%=org.id %></td>
-      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+      <td>
+      <%@admins.where(organization_id: org.id).each do |a|%>
+       <%=@users.find(a.admin_id).name %>
+      <%end %>
+      </td>
     </tr>
   <% end %>
 </table>

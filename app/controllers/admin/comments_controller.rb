@@ -5,6 +5,8 @@ class Admin::CommentsController < AdminController
   # GET /comments.json
   def index
     @comments = Comment.all
+    @users = RegisteredUser.all
+    @events = Event.all
   end
 
   # GET /comments/1
