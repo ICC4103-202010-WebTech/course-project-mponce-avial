@@ -22,6 +22,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @user_creator = RegisteredUser.all.limit(1)
+    @organizations = Organization.joins(:organization_admins).where(organization_admins: {admin_id: 1})
   end
 
   # GET /events/1/edit
