@@ -57,11 +57,8 @@ Rails.application.routes.draw do
     resources :organization_members
   end
 
-  resources :registered_users do
-    resources :user_profiles
-    resources :blacklists
-    resources :events
-    resources :messages
+  resources :user_profiles do
+    resources :registered_users
   end
 
   resource :system_administrators do
