@@ -41,6 +41,30 @@ Rails.application.routes.draw do
     end
   end
 
+  ###############################################################
+  #System administrator namespace
+  namespace :admin, defaults: { format: :json } do
+
+    resources :organization do
+      resources :events
+      resources :organization_admins
+      resources :organization_members
+    end
+
+    resources :events do
+      resources :event_guests
+      resources :event_images
+      resources :event_pdfs
+      resources :event_videos
+    end
+
+    resources :comments
+
+  end
+
+  #################################################################################
+  # #Default namespace
+
   resources :blacklists
   resources :inbox, only: [:show]
 
