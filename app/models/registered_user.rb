@@ -1,14 +1,14 @@
 class RegisteredUser < ApplicationRecord
   validates :email_address, format: {with: /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i}, uniqueness: true
   validates :username, uniqueness: true
-  has_many :events
-  has_one :user_profile
-  has_one :blacklist
-  has_many :organization_admins
-  has_many :comments
-  has_many :replies
-  has_many :event_guests
-  has_many :messages
-  has_many :organization_members
-  has_many :system_administrators
+  has_many :events, dependent: :destroy
+  has_one :user_profile, dependent: :destroy
+  has_one :blacklist, dependent: :destroy
+  has_many :organization_admins, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :replies, dependent: :destroy
+  has_many :event_guests, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :organization_members, dependent: :destroy
+  has_many :system_administrators, dependent: :destroy
 end

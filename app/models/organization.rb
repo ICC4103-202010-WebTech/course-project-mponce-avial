@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  has_many :organization_members
-  has_many :organization_admins
-  has_many :events
+  has_many :organization_members, dependent: :destroy
+  has_many :organization_admins, dependent: :destroy
+  has_many :events, dependent: :destroy
 end
