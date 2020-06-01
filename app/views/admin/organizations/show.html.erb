@@ -1,9 +1,22 @@
 <%= stylesheet_link_tag "organization" %>
 <head>
-  <div class="org_banner">
-    <h1><%=@organization.name%> </h1>
+  <% if @organization.bannerOrg.attached? %>
+  <div>
+    <h1><%=@organization.name%></h1>
+    <%= image_tag(@organization.bannerOrg, class: "org_banner")%>
   </div>
+  <% else %>
+    <h1><%=@organization.name%></h1>
+  <div class="org_banner">
+  </div>
+  <% end %>
 </head>
+<div>
+  <%= link_to "Edit Organization",edit_admin_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
+</div>
+<div>
+  <%= link_to "Delete", @organization, :method => :delete %>
+</div>
 <h2>Events</h2>
 <hr>
 <%@organization_events.each_with_index do |event,i | %>
@@ -14,4 +27,3 @@
     <h3><%=event.final_date%></h3>
   </div>
 <% end %>
-

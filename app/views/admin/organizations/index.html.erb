@@ -20,7 +20,7 @@
       <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
       <td>
       <%@admins.where(organization_id: org.id).each do |a|%>
-       <%=@users.find(a.admin_id).name %>
+       <%=@users.find(a.admin_id).name + " " + @users.find(a.admin_id).last_name %>
       <%end %>
       </td>
     </tr>

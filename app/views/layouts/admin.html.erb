@@ -13,17 +13,17 @@
 <div class="sidebar">
   <h3>ADMIN</h3>
 
-  <li><%= link_to "events", controller: "events", action: "index" do %>
+  <li><%= link_to(admin_events_path)  do %>
       <i class="fa fa-calendar fa-2x"></i>
       Events
     <% end %></li>
 
-  <li><%= link_to "organizations", controller: "organizations", action: "index" do %>
+  <li><%= link_to(admin_organizations_path)  do %>
       <i class="fa fa-users fa-2x"></i>
       Orgs.
     <% end %></li>
 
-  <li><%= link_to "comments", controller: "oomments", action: "index" do %>
+  <li><%= link_to(admin_comments_path)  do %>
       <i class="fa fa-comment fa-2x"></i>
       Comme.
     <% end %></li>
