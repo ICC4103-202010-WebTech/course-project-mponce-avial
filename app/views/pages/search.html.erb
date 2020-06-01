@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Search Results</h2>
+
+<h3>Users Results:</h3>
+<ul>
+  <%@users.each do |u|%>
+    <li><%=link_to u.name + " " + u.last_name + " (" + u.username + ")", controller: "user_profiles", action: "show", id: UserProfile.find(u.id).id%></li>
+  <% end %>
+</ul>
+
+<h3>Organization Results:</h3>
+<ul>
+  <%@organizations.each do |o|%>
+    <li><%=link_to o.name, controller: "organizations", action: "show", id: o.id%></li>
+  <% end %>
+</ul>
+
+<h3>Events Results by title/description:</h3>
+<ul>
+  <%@events.each do |e|%>
+    <li><%=link_to e.title, controller: "events", action: "show", id: e.id%></li>
+  <% end %>
+</ul>
+
+<h3>Events Results by creator:</h3>
+<ul>
+  <%@users.each do |u|%>
+    <%Event.where(event_creator_id: u.id).each do |e|%>
+      <li><%=link_to e.title, controller: "events", action: "show", id: e.id%>   from   <%= link_to u.name + " " + u.last_name + " (" + u.username + ")", controller: "user_profiles", action: "show", id: UserProfile.find(u.id).id%></li>
+    <%end %>
+  <% end %>
+</ul>
+
+<h3>Events Results by organization:</h3>
+<ul>
+  <%@organizations.each do |o|%>
+    <%Event.where(organization_id: o.id).each do |e|%>
+      <li><%=link_to e.title, controller: "events", action: "show", id: e.id%>   from   <%= link_to o.name, controller: "organizations", action: "show", id: o.id%></li>
+    <%end %>
+  <% end %>
+</ul>
+</body>
+</html>
