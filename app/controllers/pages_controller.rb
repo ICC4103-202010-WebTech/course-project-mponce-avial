@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
   def search
     if params[:q].blank?
-      @results = {}
+      redirect_back(fallback_location: root_path)
     else
       @parameter = params[:q].downcase
       @users = RegisteredUser.all.where("lower(name) LIKE :search OR lower(last_name) LIKE :search OR lower(username) LIKE :search ", search: "%#{@parameter}%")
