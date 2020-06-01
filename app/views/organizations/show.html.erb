@@ -2,6 +2,7 @@
 <head>
   <% if @organization.bann.attached? %>
   <div>
+    <h1><%=@organization.name%></h1>
     <%= image_tag(@organization.bann, class: "org_banner")%>
   </div>
   <% else %>
