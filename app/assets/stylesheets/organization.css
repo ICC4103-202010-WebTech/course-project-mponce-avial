@@ -10,6 +10,10 @@
     padding-right: 20px;
 }
 
+.org_banner image {
+    border-right: 2px solid black;
+}
+
 .event{
     height: 170px;
     width: 45%;

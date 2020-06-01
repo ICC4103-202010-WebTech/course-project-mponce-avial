@@ -1,8 +1,10 @@
 <%= stylesheet_link_tag "organization" %>
 <head>
+  <% if @organization.bann.attached? %>
   <div class="org_banner">
     <%= image_tag(@organization.bann)%>
   </div>
+  <% end %>
 </head>
 <div>
   <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
