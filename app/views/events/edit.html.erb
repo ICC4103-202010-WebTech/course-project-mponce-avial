@@ -32,6 +32,10 @@
       <%= form.text_field :visibility %>
     </div>
     <div class="form-group">
+      <%= form.label :banner %>
+      <%= form.file_field :bannerEvent%>
+    </div>
+    <div class="form-group">
       <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
     </div>

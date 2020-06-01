@@ -2,16 +2,18 @@
 <head>
 
 </head>
-
-<body>
+<% if @user_profile.bannerProfile.attached? %>
+  <div>
+    <%= image_tag(@user_profile.bannerProfile, class: "user_banner")%>
+  </div>
+<% else %>
   <div class="user_banner">
-    <img
-      class="avatar"
-      src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg">
     <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
     <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
   </div>
+<% end %>
 
+<body>
   <div>
     <%= link_to "Edit Profile",edit_user_profile_path(:user_profile_id => @user_profile.id),class: ["btn", "btn-primary", "mr-4"] %>
     <h3>Biography:</h3>

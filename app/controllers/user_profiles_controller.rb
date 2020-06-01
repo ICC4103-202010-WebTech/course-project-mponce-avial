@@ -74,6 +74,6 @@ class UserProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_profile_params
-      params.fetch(:user_profile, {}).permit(:biography, :registered_users, registered_user_attributes: [:name, :last_name, :location])
+      params.fetch(:user_profile, {}).permit(:biography, :bannerProfile,:registered_users,registered_user_attributes: [:name, :last_name, :location])
     end
 end

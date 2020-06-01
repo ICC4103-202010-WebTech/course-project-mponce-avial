@@ -32,7 +32,6 @@ class EventsController < ApplicationController
 
   def remove
     @event = params[:event_id]
-    print("Holaaaaaaaaaaaaaaaaaaaaaaa",@event)
   end
 
   # POST /events
@@ -85,6 +84,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility,:organization_id,:event_creator_id)
+      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility,:organization_id,:event_creator_id,:bannerEvent)
     end
 end

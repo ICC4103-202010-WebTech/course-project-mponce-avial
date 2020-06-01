@@ -4,15 +4,20 @@
 <head>
   <%= stylesheet_link_tag "event" %>
 </head>
-
-<body>
-
-  <div class="event_banner">
+<% if @event.bannerEvent.attached? %>
+  <div>
     <h1><%=@event.title%></h1>
+    <%= image_tag(@event.bannerEvent, class: "event_banner")%>
     <h2 class="event_banner_left_side">Creation Date: <%=@event.created_at%></h2>
     <h2 class="event_banner_right_side">Location: <%=@event.location%></h2>
   </div>
+<% else %>
+  <h1><%=@event.title%></h1>
+  <div class="event_banner">
+  </div>
+<% end %>
 
+<body>
   <section class="section_left">
     <div class="button_line">
       <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>

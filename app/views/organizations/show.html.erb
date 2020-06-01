@@ -1,11 +1,12 @@
 <%= stylesheet_link_tag "organization" %>
 <head>
-  <% if @organization.bann.attached? %>
+  <% if @organization.bannerOrg.attached? %>
   <div>
     <h1><%=@organization.name%></h1>
-    <%= image_tag(@organization.bann, class: "org_banner")%>
+    <%= image_tag(@organization.bannerOrg, class: "org_banner")%>
   </div>
   <% else %>
+    <h1><%=@organization.name%></h1>
   <div class="org_banner">
   </div>
   <% end %>
