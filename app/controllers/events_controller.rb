@@ -76,6 +76,22 @@ class EventsController < ApplicationController
     end
   end
 
+  def create_comment
+    @comment = Comment.new(text: params[:text])
+    @comment.registered_user_id = 1
+    @comment.profile_picture = "j"
+    @comment.event_id = params[:events_id]
+
+    if @comment.save
+      print("Success")
+    else
+      print("Error")
+    end
+
+    redirect_back(fallback_location: root_path)
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

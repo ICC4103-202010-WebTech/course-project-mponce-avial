@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/search', to: 'pages#search'
 
+  post 'events/:events_id', to: "events#create_comment"
+
   #Admin namespace
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
