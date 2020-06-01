@@ -44,8 +44,7 @@ class UserProfilesController < ApplicationController
   # PATCH/PUT /user_profiles/1.json
   def update
     respond_to do |format|
-      print("dededededededededed",params)
-      if @user_profile.update(biography: params[:user_profile][:biography]) and @registered_user.update(name: params[:user_profile][:name], last_name: params[:user_profile][:last_name], location: params[:user_profile][:location])
+      if @user_profile.update(biography: params[:user_profile][:biography], bannerProfile: params[:user_profile][:bannerProfile], imageProfile: params[:user_profile][:imageProfile]) and @registered_user.update(name: params[:user_profile][:name], last_name: params[:user_profile][:last_name], location: params[:user_profile][:location])
         format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @user_profile }
       else
@@ -68,12 +67,13 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
+      print("doodoodododoodododododoodod",params)
       @user_profile = UserProfile.find(params[:id])
       @registered_user = @user_profile.registered_user
     end
 
     # Only allow a list of trusted parameters through.
     def user_profile_params
-      params.fetch(:user_profile, {}).permit(:biography, :bannerProfile,:registered_users,registered_user_attributes: [:name, :last_name, :location])
+      params.fetch(:user_profile, {}).permit(:biography, :bannerProfile, :imageProfile,:registered_users,registered_user_attributes: [:name, :last_name, :location])
     end
 end

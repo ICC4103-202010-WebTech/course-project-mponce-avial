@@ -2,12 +2,27 @@
 <head>
 
 </head>
-<% if @user_profile.bannerProfile.attached? %>
-  <div>
-    <%= image_tag(@user_profile.bannerProfile, class: "user_banner")%>
+<% if @user_profile.bannerProfile.attached? and @user_profile.imageProfile.attached?%>
+  <div class="user_banner" style="background-image: url(<%= rails_blob_url(@user_profile.bannerProfile) %>)">
+    <%= image_tag(@user_profile.imageProfile, class: "avatar")%>
+    <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
+    <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
   </div>
+<% elsif @user_profile.bannerProfile.attached?%>
+  <div class="user_banner" style="background-image: url(<%= rails_blob_url(@user_profile.bannerProfile) %>)">
+    <img class="avatar" src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg">
+    <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
+    <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
+  </div>
+<% elsif @user_profile.imageProfile.attached?%>
+  <div class="user_banner" style="background-image: url(<%=asset_path "placeholder-banner.svg"%>)">
+      <%= image_tag(@user_profile.imageProfile, class: "avatar")%>
+      <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
+      <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
+    </div>
 <% else %>
-  <div class="user_banner">
+  <div class="user_banner" style="background-image: url(<%=asset_path "placeholder-banner.svg"%>)">
+    <img class="avatar" src="https://www.bsn.eu/wp-content/uploads/2016/12/user-icon-image-placeholder-300-grey.jpg">
     <h3 class="user_name"><%=@user_profile.registered_user.name%></h3>
     <h3 class="user_name"><%=@user_profile.registered_user.last_name%></h3>
   </div>
