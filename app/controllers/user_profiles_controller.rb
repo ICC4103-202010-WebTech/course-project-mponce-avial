@@ -1,12 +1,6 @@
 class UserProfilesController < ApplicationController
   before_action :set_user_profile, only: [:show, :edit, :update, :destroy]
 
-  # GET /user_profiles
-  # GET /user_profiles.json
-  def index
-    @user_profiles = UserProfile.all
-  end
-
   # GET /user_profiles/1
   # GET /user_profiles/1.json
   def show
@@ -15,29 +9,8 @@ class UserProfilesController < ApplicationController
     @user_events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: @registered_user.id})
   end
 
-  # GET /user_profiles/new
-  def new
-    @user_profile = UserProfile.new
-  end
-
   # GET /user_profiles/1/edit
   def edit
-  end
-
-  # POST /user_profiles
-  # POST /user_profiles.json
-  def create
-    @user_profile = UserProfile.new(user_profile_params)
-
-    respond_to do |format|
-      if @user_profile.save
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
-        format.json { render :show, status: :created, location: @user_profile }
-      else
-        format.html { render :new }
-        format.json { render json: @user_profile.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /user_profiles/1
