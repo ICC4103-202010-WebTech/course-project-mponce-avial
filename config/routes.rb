@@ -97,6 +97,7 @@ Rails.application.routes.draw do
   resources :registered_users, defaults: { format: :html }
   resources :user_profiles, defaults: { format: :html }
   resources :events, defaults: { format: :html }
+  post 'events/remove/:event_id', to: "events#remove"
   resources :messages, defaults: { format: :html }
   resources :comments, defaults: { format: :html }
   resources :replies, defaults: { format: :html }
