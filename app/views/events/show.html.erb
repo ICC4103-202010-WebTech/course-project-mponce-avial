@@ -21,7 +21,7 @@
   <section class="section_left">
     <div class="button_line">
       <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= link_to "Delete Event", { controller: "events", action: "remove", event_id: @event.id }, method: :post, class: ["btn", "btn-primary"] %></div>
+      <div><%= link_to "Delete Event",model: @events, events_id: @event.id,method: :post, class: ["btn", "btn-primary"] %></div>
       <div><h4>Upload Files</h4></div>
       <div><h4>Invite</h4></div>
       <div><h4>Report</h4></div>

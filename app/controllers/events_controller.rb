@@ -32,6 +32,7 @@ class EventsController < ApplicationController
 
   def remove
     @event = params[:event_id]
+    print("JOOOOOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOO",@event)
   end
 
   # POST /events
