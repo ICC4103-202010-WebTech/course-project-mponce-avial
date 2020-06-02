@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     end
 
     resources :comments
+    resources :replies
 
   end
 
