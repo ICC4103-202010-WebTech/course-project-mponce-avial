@@ -59,7 +59,7 @@ class Admin::OrganizationsController < AdminController
   def destroy
     @organization = Organization.find(params[:id])
     @organization.destroy
-    redirect_to admin_organization_path
+    redirect_to admin_organizations_path
   end
 
   private

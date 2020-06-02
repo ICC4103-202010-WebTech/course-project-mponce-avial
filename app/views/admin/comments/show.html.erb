@@ -1,4 +1,6 @@
 <head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -11,7 +13,8 @@
       <h2 class="page-header">Comments</h2>
       <section class="comment-list">
         <!-- First Comment -->
-        <div>
+        <div class="row ml-0 mt-2 mb-3">
+          <%= button_to 'Edit Comment', edit_admin_comment_path, method: :get, class: ["btn", "btn-primary", "mr-4"]%>
           <%= button_to 'Delete Comment', admin_comment_path, method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
         </div>
         <article class="row">

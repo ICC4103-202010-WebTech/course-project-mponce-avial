@@ -61,10 +61,7 @@ class Admin::EventsController < AdminController
   # DELETE /events/1.json
   def destroy
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_events_path
   end
 
   private

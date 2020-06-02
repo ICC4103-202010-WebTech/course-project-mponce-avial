@@ -1,6 +1,20 @@
-<h1>Editing Comment</h1>
+<div class="row ml-0 mt-3">
+  <h2>Edit Comment</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Please enter the required information to edit the Comment:</p>
+</div>
+<div class="row ml-0">
+  <%= form_with model: @comment, url: admin_comment_path do |form| %>
 
-<%= render 'form', comment: @comment %>
+    <div class="form-group">
+      <%= form.label :text %>
+      <%= form.text_field :text, class: "form-control"  %>
+    </div>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+    <div class="form-group">
+      <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>
