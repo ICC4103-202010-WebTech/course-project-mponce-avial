@@ -8,6 +8,12 @@ Rails.application.routes.draw do
 
   get '/upload_files', to: 'events#upload_files'
 
+  get '/pdf', to: 'events#pdf'
+
+  get '/images', to: 'events#images'
+
+  get '/videos', to: 'events#videos'
+
   post 'events/:events_id', to: "events#create_comment"
 
   #Admin namespace

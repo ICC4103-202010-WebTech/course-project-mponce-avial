@@ -34,6 +34,18 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def images
+    @event = Event.find(params[:event_id])
+  end
+
+  def videos
+    @event = Event.find(params[:event_id])
+  end
+
+  def pdf
+    @event = Event.find(params[:event_id])
+  end
+
   def remove
     @event = params[:event_id]
   end

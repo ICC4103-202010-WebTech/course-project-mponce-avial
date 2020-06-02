@@ -82,19 +82,19 @@
   </section>
 
   <aside class="section_right">
-    <h2>Images</h2>
+    <h2><%= link_to "Images",images_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
     <%@event_images.each do |image| %>
       <!-- <h3><%=image%></h3> -->
       <img class="event_image">
     <%end%>
 
-    <h2>Videos</h2>
+    <h2><%= link_to "Videos",videos_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
     <%@event_videos.each do |video| %>
       <!-- <h3><%=video%></h3> -->
       <img class="event_video">
     <%end%>
 
-    <h2>PDF</h2>
+    <h2><%= link_to "PDF",pdf_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
     <%@event_pdfs.each do |pdfs| %>
       <!-- <h3><%=pdfs%></h3> -->
       <img class="event_pdf">
