@@ -9,7 +9,7 @@
 <% if @event.videosEvent.attached? %>
   <%@event.videosEvent.each do |videos| %>
     <div>
-      <h4><%=videos%></h4>
+      <h4><%=videos.filename%></h4>
     </div>
   <% end %>
 <% else %>

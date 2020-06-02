@@ -7,14 +7,15 @@
 </head>
 
 <% if @event.imgEvent.attached? %>
-  <h4>Images</h4>
+  <h2>Images</h2>
   <%@event.imgEvent.each do |img| %>
     <div>
       <%= image_tag(img,width: "15%")%>
+      <h4><%=img.filename%></h4>
     </div>
   <% end %>
 <% else %>
-  <h4>Images</h4>
+  <h2>Images</h2>
 <% end %>
 <div class="row ml-0">
   <%= form_with model: @event do |form| %>
@@ -29,14 +30,14 @@
 </div>
 <hr>
 <% if @event.videosEvent.attached? %>
-  <h4>Videos</h4>
+  <h2>Videos</h2>
   <%@event.videosEvent.each do |videos| %>
     <div>
-      <h4><%=videos%></h4>
+      <h4><%=videos.filename%></h4>
     </div>
   <% end %>
 <% else %>
-  <h4>Videos</h4>
+  <h2>Videos</h2>
 <% end %>
 <div class="row ml-0">
   <%= form_with model: @event do |form| %>
@@ -51,14 +52,14 @@
 </div>
 <hr>
 <% if @event.pdfEvent.attached? %>
-  <h4>Pdfs</h4>
+  <h2>Pdfs</h2>
   <%@event.pdfEvent.each do |pdf| %>
     <div>
-      <h4><%=pdf%></h4>
+      <h4><%=pdf.filename%></h4>
     </div>
   <% end %>
 <% else %>
-  <h4>Pdfs</h4>
+  <h2>Pdfs</h2>
 <% end %>
 
 <div class="row ml-0">

@@ -9,7 +9,7 @@
 <% if @event.pdfEvent.attached? %>
   <%@event.pdfEvent.each do |pdf| %>
     <div>
-      <h4><%=pdf%></h4>
+      <h4><%=pdf.filename%></h4>
     </div>
   <% end %>
 <% else %>
