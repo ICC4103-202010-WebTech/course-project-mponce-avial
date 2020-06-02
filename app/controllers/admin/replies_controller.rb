@@ -53,7 +53,6 @@ class Admin::RepliesController < AdminController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_reply
-    print("Dedededeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",params)
     begin
       @reply = Reply.find(params[:reply_id])
     rescue
