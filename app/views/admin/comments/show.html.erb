@@ -69,8 +69,8 @@
                       <%=reply.text%>
                     </p>
                     <div class="row ml-0 mt-2 mb-3">
-                      <%= button_to 'Edit Reply', edit_admin_reply_path, params: {reply_id: reply.id}, method: :get, class: ["btn", "btn-primary", "mr-4"]%>
-                      <%= button_to 'Delete Reply', admin_reply_path, method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+                      <%= button_to 'Edit Reply', edit_admin_reply_path(reply.id), method: :get, class: ["btn", "btn-primary", "mr-4"]%>
+                      <%= button_to 'Delete Reply', admin_reply_path(reply.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
                     </div>
                   </div>
                 </div>

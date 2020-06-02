@@ -28,16 +28,9 @@ class Admin::OrganizationsController < AdminController
   # POST /organizations.json
   def create
     @organization = Organization.new(organization_params)
+    @organization.save
 
-    respond_to do |format|
-      if @organization.save
-        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
-        format.json { render :show, status: :created, location: @organization }
-      else
-        format.html { render :new }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
-    end
+    redirect_to admin_organizations_path
   end
 
   # PATCH/PUT /organizations/1

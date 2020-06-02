@@ -1,10 +1,19 @@
-<style>
-  table, th, td {
-    border: 1px solid black;
-  }
-</style>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
 
 <h2>COMMENTS</h2>
+
+<div class="row ml-0 mt-2 mb-3">
+  <%= button_to 'Create Comment', new_admin_comment_path, method: :get, class: ["btn", "btn-primary"]%>
+</div>
 
 <table>
   <tr>

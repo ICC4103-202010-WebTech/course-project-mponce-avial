@@ -27,17 +27,18 @@ class Admin::CommentsController < AdminController
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(text: params[:text])
+    @comment.registered_user_id = 1
+    @comment.profile_picture = "j"
+    @comment.event_id = params[:event_id]
 
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.save
+      print("Success")
+    else
+      print("Error")
     end
+
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /comments/1
