@@ -5,11 +5,12 @@
   <h1>Upload Files</h1>
   <hr>
 </head>
+
 <% if @event.imgEvent.attached? %>
   <h4>Images</h4>
   <%@event.imgEvent.each do |img| %>
     <div>
-      <h4><%=img%></h4>
+      <%= image_tag(img,width: "15%")%>
     </div>
   <% end %>
 <% else %>
