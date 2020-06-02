@@ -5,3 +5,12 @@
   <h1>Pdf's</h1>
   <hr>
 </head>
+
+<% if @event.pdfEvent.attached? %>
+  <%@event.pdfEvent.each do |pdf| %>
+    <div>
+      <h4><%=pdf%></h4>
+    </div>
+  <% end %>
+<% else %>
+<% end %>

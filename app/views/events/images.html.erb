@@ -5,3 +5,12 @@
   <h1>Images</h1>
   <hr>
 </head>
+
+<% if @event.imgEvent.attached? %>
+  <%@event.imgEvent.each do |img| %>
+    <div>
+      <%= image_tag(img,width: "15%")%>
+    </div>
+  <% end %>
+<% else %>
+<% end %>
