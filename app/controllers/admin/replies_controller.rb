@@ -39,15 +39,8 @@ class Admin::RepliesController < AdminController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
-      if @reply.update(reply_params)
-        format.html { redirect_to @reply, notice: 'Reply was successfully updated.' }
-        format.json { render :show, status: :ok, location: @reply }
-      else
-        format.html { render :edit }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
-      end
-    end
+    @reply.update(text: params[:reply][:text])
+    redirect_to admin_comments_path
   end
 
   # DELETE /comments/1
@@ -60,7 +53,12 @@ class Admin::RepliesController < AdminController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_reply
-    @reply = Reply.find(params[:id])
+    print("Dedededeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",params)
+    begin
+      @reply = Reply.find(params[:reply_id])
+    rescue
+      @reply = Reply.find(params[:reply][:reply_id])
+    end
   end
 
   # Only allow a list of trusted parameters through.

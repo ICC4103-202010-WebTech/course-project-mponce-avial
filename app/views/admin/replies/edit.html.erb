@@ -1,0 +1,22 @@
+<div class="row ml-0 mt-3">
+  <h2>Edit Reply</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Please enter the required information to edit the Reply:</p>
+</div>
+<div class="row ml-0">
+  <%= form_with model: @reply, url: admin_reply_path do |form| %>
+
+    <%= form.hidden_field :reply_id, :value => @reply.id %>
+
+    <div class="form-group">
+      <%= form.label :text %>
+      <%= form.text_field :text, class: "form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>
