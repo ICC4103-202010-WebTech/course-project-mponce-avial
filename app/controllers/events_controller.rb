@@ -30,9 +30,12 @@ class EventsController < ApplicationController
   def edit
   end
 
+  def upload_files
+    @event = Event.find(params[:event_id])
+  end
+
   def remove
     @event = params[:event_id]
-    print("JOOOOOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOO",@event)
   end
 
   # POST /events
@@ -97,6 +100,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility,:organization_id,:event_creator_id,:bannerEvent)
+      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility,:organization_id,:event_creator_id,:bannerEvent,imgEvent: [],videosEvent: [],pdfEvent: [])
     end
 end

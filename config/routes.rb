@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   get '/search', to: 'pages#search'
 
+  get '/upload_files', to: 'events#upload_files'
+
   post 'events/:events_id', to: "events#create_comment"
 
   #Admin namespace

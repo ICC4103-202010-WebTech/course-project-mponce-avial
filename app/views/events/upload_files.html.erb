@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <h1>Upload Files</h1>
+  <hr>
+</head>
+<% if @event.imgEvent.attached? %>
+  <h4>Images</h4>
+  <%@event.imgEvent.each do |img| %>
+    <div>
+      <h4><%=img%></h4>
+    </div>
+  <% end %>
+<% else %>
+  <h4>Images</h4>
+<% end %>
+<div class="row ml-0">
+  <%= form_with model: @event do |form| %>
+    <div class="form-group">
+      <%= form.label :Images %>
+      <%= form.file_field :imgEvent,multiple: true%>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Upload File", class: ["btn", "btn-primary"] %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<% if @event.videosEvent.attached? %>
+  <h4>Videos</h4>
+  <%@event.videosEvent.each do |videos| %>
+    <div>
+      <h4><%=videos%></h4>
+    </div>
+  <% end %>
+<% else %>
+  <h4>Videos</h4>
+<% end %>
+<div class="row ml-0">
+  <%= form_with model: @event do |form| %>
+    <div class="form-group">
+      <%= form.label :Videos %>
+      <%= form.file_field :videoEvent,multiple: true%>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Upload File", class: ["btn", "btn-primary"] %>
+    </div>
+  <% end %>
+</div>
+<hr>
+<% if @event.pdfEvent.attached? %>
+  <h4>Pdfs</h4>
+  <%@event.pdfEvent.each do |pdf| %>
+    <div>
+      <h4><%=pdf%></h4>
+    </div>
+  <% end %>
+<% else %>
+  <h4>Pdfs</h4>
+<% end %>
+
+<div class="row ml-0">
+  <%= form_with model: @event do |form| %>
+    <div class="form-group">
+      <%= form.label :Pdf %>
+      <%= form.file_field :pdfEvent,multiple: true%>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Upload File", class: ["btn", "btn-primary"] %>
+    </div>
+  <% end %>
+</div>

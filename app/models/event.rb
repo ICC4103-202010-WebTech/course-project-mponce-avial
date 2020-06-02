@@ -7,4 +7,7 @@ class Event < ApplicationRecord
   has_many :event_pdfs, dependent: :destroy
   has_many :event_videos, dependent: :destroy
   has_one_attached :bannerEvent
+  has_many_attached :imgEvent
+  has_many_attached :videosEvent
+  has_many_attached :pdfEvent
 end
