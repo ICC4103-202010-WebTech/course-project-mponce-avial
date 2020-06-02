@@ -57,10 +57,9 @@ class Admin::OrganizationsController < AdminController
   # DELETE /organizations/1
   # DELETE /organizations/1.json
   def destroy
-    print("dudududududududududuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
     @organization = Organization.find(params[:id])
     @organization.destroy
-    redirect_to '/organizations/index'
+    redirect_to admin_organization_path
   end
 
   private

@@ -1,4 +1,80 @@
-<p id="notice"><%= notice %></p>
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="page-header">Comments</h2>
+      <section class="comment-list">
+        <!-- First Comment -->
+        <div>
+          <%= button_to 'Delete Comment', admin_comment_path, method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+        </div>
+        <article class="row">
+          <div class="col-md-2 col-sm-2 hidden-xs">
+            <figure class="thumbnail">
+              <% if UserProfile.find(@comment.registered_user.id).imageProfile.attached? %>
+                <%= image_tag(UserProfile.find(@comment.registered_user.id).imageProfile, class:"img-responsive")%>
+              <% else %>
+                <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+              <% end %>
+              <figcaption class="text-center"><%=@comment.registered_user.name %> <%=@comment.registered_user.last_name %></figcaption>
+            </figure>
+          </div>
+          <div class="col-md-10 col-sm-10">
+            <div class="panel panel-default arrow left">
+              <div class="panel-body">
+                <header class="text-left">
+                  <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=@comment.created_at%></time>
+                </header>
+                <div class="comment-post">
+                  <p>
+                    <%=@comment.text%>
+                  </p>
+                </div>
+                <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- Second Comment Reply -->
+        <%@comment_replies.where(comment_id: @comment.id).each do |reply| %>
+          <article class="row">
+            <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+              <figure class="thumbnail">
+                <% if UserProfile.find(reply.registered_user.id).imageProfile.attached? %>
+                  <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img-responsive")%>
+                <% else %>
+                  <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                <% end %>
+                <figcaption class="text-center"><%=reply.registered_user.name %> <%=reply.registered_user.last_name %></figcaption>
+              </figure>
+            </div>
+            <div class="col-md-9 col-sm-9">
+              <div class="panel panel-default arrow left">
+                <div class="panel-heading right">Reply</div>
+                <div class="panel-body">
+                  <header class="text-left">
+                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=@comment.created_at%></time>
+                  </header>
+                  <div class="comment-post">
+                    <p>
+                      <%=reply.text%>
+                    </p>
+                    <div>
+                      <%= button_to 'Delete Reply', admin_reply_path, method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        <% end %>
+      </section>
+    </div>
+  </div>
+</div>

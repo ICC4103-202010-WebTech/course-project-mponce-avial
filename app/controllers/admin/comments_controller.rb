@@ -12,6 +12,7 @@ class Admin::CommentsController < AdminController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comment_replies = Reply.joins(:comment).where(comment_id: @comment.id)
   end
 
   # GET /comments/new
@@ -57,10 +58,7 @@ class Admin::CommentsController < AdminController
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_comments_path
   end
 
   private
