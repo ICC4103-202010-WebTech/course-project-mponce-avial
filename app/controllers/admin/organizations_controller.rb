@@ -27,8 +27,11 @@ class Admin::OrganizationsController < AdminController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = Organization.new(organization_params)
-    @organization.save
+    @organization = Organization.new(name: params[:organization][:name], description: params[:organization][:description], bannerOrg: params[:organization][:bannerOrg])
+    if @organization.save
+      @organization_admin = OrganizationAdmin.new(admin_id: 1,organization_id: @organization.id)
+      @organization_admin.save
+    end
 
     redirect_to admin_organizations_path
   end
@@ -36,15 +39,8 @@ class Admin::OrganizationsController < AdminController
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update
-    respond_to do |format|
-      if @organization.update(organization_params)
-        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
-        format.json { render :show, status: :ok, location: @organization }
-      else
-        format.html { render :edit }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
-      end
-    end
+      @organization.update(organization_params)
+      redirect_to admin_organizations_path
   end
 
   # DELETE /organizations/1
@@ -63,6 +59,6 @@ class Admin::OrganizationsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def organization_params
-      params.fetch(:organization, {})
+      params.fetch(:organization).permit(:name,:description,:bannerOrg)
     end
 end

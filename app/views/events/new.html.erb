@@ -19,10 +19,6 @@
       <%= form.text_field :location, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :final_date %>
-      <%= form.datetime_local_field :final_date %>
-    </div>
-    <div class="form-group">
       <%= form.label :date_rule %>
       <%= form.datetime_local_field :date_rule %>
     </div>
@@ -41,6 +37,18 @@
     <div class="form-group">
       <%= form.label :banner %>
       <%= form.file_field :bannerEvent%>
+    </div>
+    <div class="form-group">
+      <%= form.label :Option_1_for_final_date %>
+      <%= form.date_select :date1 %>
+    </div>
+    <div class="form-group">
+      <%= form.label :Option_2_for_final_date %>
+      <%= form.date_select :date2 %>
+    </div>
+    <div class="form-group">
+      <%= form.label :Option_3_for_final_date %>
+      <%= form.date_select :date3 %>
     </div>
 
     <div class="form-group">

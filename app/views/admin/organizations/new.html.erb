@@ -5,9 +5,7 @@
   <p>Please enter the required information to create a New Organization:</p>
 </div>
 <div class="row ml-0">
-  <%= form_with url: admin_organizations_path, method: :post do |form| %>
-
-    <%= form.hidden_field :organization_admin_id, :value =>1%>
+  <%= form_with model: @organization, url: admin_organizations_path, method: :post do |form| %>
 
     <div class="form-group">
       <%= form.label :name %>

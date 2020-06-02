@@ -6,6 +6,9 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string :banner
       t.string :location
       t.datetime :final_date
+      t.datetime :date1
+      t.datetime :date2
+      t.datetime :date3
       t.string :date_rule
       t.string :visibility
       t.references :organization
