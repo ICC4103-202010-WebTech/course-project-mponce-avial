@@ -49,7 +49,7 @@
             </button>
           </div>
 
-          <%= form_with model: @comments, url: , method: :post do |form| %>
+          <%= form_with model: @comments, method: :post do |form| %>
           <div class="form-group">
             <%= form.label :Vote_for_a_final_date %>
             <h4>Date 1: <%=@event.date1 %></h4>
@@ -140,7 +140,7 @@
     </div>
 
     <div class="row ml-0">
-      <%= form_with model: @event_guest, method: :post do |form| %>
+      <%= form_with model: @comments, events_id: @event.id, method: :post do |form| %>
 
         <div class="form-group">
           <%= form.label :comment%>
