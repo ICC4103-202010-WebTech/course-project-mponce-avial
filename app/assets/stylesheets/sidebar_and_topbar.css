@@ -1,11 +1,17 @@
 body {font-family: "Lato", sans-serif;}
 
+.navbar-dark{
+    margin-left: 5%; /* Same as the width of the sidenav */
+    background-color: #0D5AFF;
+}
+
 .topbar {
     list-style-type: none;
     margin-left: 4%; /* Same as the width of the sidenav */
     margin-top: -10px;
     margin-bottom: 25px;
     padding: 0px 0px;
+    overflow: hidden;
     background-color: #0D5AFF;
     border-bottom: 2px solid black;
 }
