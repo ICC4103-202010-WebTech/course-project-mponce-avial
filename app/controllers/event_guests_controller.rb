@@ -14,7 +14,16 @@ class EventGuestsController < ApplicationController
 
   # GET /event_guests/new
   def new
+    @event = Event.find(params[:event_id])
     @event_guest = EventGuest.new
+
+    @already_invited=[]
+
+    EventGuest.where(event_id: params[:event_id]).each do |e|
+      @already_invited.push(e.registered_user_id)
+    end
+
+    @users= RegisteredUser.where.not(id: @already_invited )
   end
 
   # GET /event_guests/1/edit
@@ -26,16 +35,12 @@ class EventGuestsController < ApplicationController
   # POST /event_guests
   # POST /event_guests.json
   def create
-    @event_guest = EventGuest.new(event_guest_params)
+    @event_guest = EventGuest.new
+    @event_guest.event_id = params[:event_guest][:event]
+    @event_guest.registered_user_id = params[:event_guest][:invite]
 
-    respond_to do |format|
-      if @event_guest.save
-        format.html { redirect_to @event_guest, notice: 'Event guest was successfully created.' }
-        format.json { render :show, status: :created, location: @event_guest }
-      else
-        format.html { render :new }
-        format.json { render json: @event_guest.errors, status: :unprocessable_entity }
-      end
+    if @event_guest.save
+      redirect_to event_path(@event_guest.event.id)
     end
   end
 
