@@ -33,6 +33,7 @@
   <h2>Videos</h2>
   <%@event.videosEvent.each do |videos| %>
     <div>
+      <%= video_tag(rails_blob_path(videos),:size => "320x240", :controls => true) %>
       <h4><%=videos.filename%></h4>
     </div>
   <% end %>
