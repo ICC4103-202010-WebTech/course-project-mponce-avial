@@ -36,10 +36,11 @@
       <%=@event.description%>
     </section>
     <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
-      <h2>Vote for the date here!!</h2>
+      <h2><%= link_to "Vote for the date here", { controller: "event_guests", action: "edit", event_id: 1 }, method: :get, class: ["btn", "btn-primary"] %></h2>
     </section>
 
     <!-- Modal -->
+    <!--
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -49,15 +50,15 @@
             </button>
           </div>
 
-          <%= form_with model: @comments, method: :post do |form| %>
+          <%= form_with model: @event_guest do |form| %>
           <div class="form-group">
             <%= form.label :Vote_for_a_final_date %>
             <h4>Date 1: <%=@event.date1 %></h4>
-            <%= radio_button_tag(:vote, 1) %>
+            <%= radio_button_tag(:date_vote, 1) %>
             <h4>Date 2: <%=@event.date2 %></h4>
-            <%= radio_button_tag(:vote, 2) %>
+            <%= radio_button_tag(:date_vote, 2) %>
             <h4>Date 3: <%=@event.date3 %></h4>
-            <%= radio_button_tag(:vote, 3) %>
+            <%= radio_button_tag(:date_vote, 3) %>
           </div>
 
           <div class="modal-footer">
@@ -68,6 +69,7 @@
         </div>
       </div>
     </div>
+    -->
 
     <div class="container">
       <div class="row">

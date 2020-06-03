@@ -40,6 +40,7 @@ class EventGuestsController < ApplicationController
   # PATCH/PUT /event_guests/1
   # PATCH/PUT /event_guests/1.json
   def update
+    print("dddddddddddddddddddddddddddddddddddddddddddddddddddd")
     respond_to do |format|
       if @event_guest.update(event_guest_params)
         format.html { redirect_to @event_guest, notice: 'Event guest was successfully updated.' }
