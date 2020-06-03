@@ -39,4 +39,5 @@
     border-left: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
+    margin-block-end: 20px;
 }

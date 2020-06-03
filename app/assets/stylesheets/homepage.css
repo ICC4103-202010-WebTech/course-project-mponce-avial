@@ -70,3 +70,11 @@
     text-align: center;
     font-size: 40px;
 }
+
+.card{
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-block-end: 20px;
+}
