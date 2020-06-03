@@ -36,7 +36,8 @@
       <%=@event.description%>
     </section>
     <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
-      <h2><%= link_to "Vote for the date here", { controller: "event_guests", action: "edit", event_id: 1 }, method: :get, class: ["btn", "btn-primary"] %></h2>
+
+      <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
     </section>
 
     <!-- Modal -->

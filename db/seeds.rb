@@ -348,6 +348,11 @@ eguest6.event = event6
 eguest6.registered_user = user3
 eguest6.save!
 
+eguest7 = EventGuest.new(date_vote: 1)
+eguest7.event = event2
+eguest7.registered_user = user1
+eguest7.save!
+
 eimg1 = EventImage.new(image: 'a1.png')
 eimg1.event = event1
 eimg1.save!

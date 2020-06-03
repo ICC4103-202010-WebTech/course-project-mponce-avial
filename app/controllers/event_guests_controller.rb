@@ -19,6 +19,8 @@ class EventGuestsController < ApplicationController
 
   # GET /event_guests/1/edit
   def edit
+    @event = Event.find(params[:event_id])
+    @event_guest = EventGuest.find(params[:id])
   end
 
   # POST /event_guests
@@ -40,14 +42,9 @@ class EventGuestsController < ApplicationController
   # PATCH/PUT /event_guests/1
   # PATCH/PUT /event_guests/1.json
   def update
-    print("dddddddddddddddddddddddddddddddddddddddddddddddddddd")
-    respond_to do |format|
-      if @event_guest.update(event_guest_params)
-        format.html { redirect_to @event_guest, notice: 'Event guest was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event_guest }
-      else
-        format.html { render :edit }
-        format.json { render json: @event_guest.errors, status: :unprocessable_entity }
+    if params[:date_vote]!=nil
+      if @event_guest.update(date_vote: params[:date_vote])
+        redirect_to event_path(@event_guest.event.id)
       end
     end
   end
