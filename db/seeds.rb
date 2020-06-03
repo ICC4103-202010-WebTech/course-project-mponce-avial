@@ -335,7 +335,7 @@ eguest3.save!
 
 eguest4 = EventGuest.new(date_vote: 1)
 eguest4.event = event4
-eguest4.registered_user = user1
+eguest4.registered_user = user3
 eguest4.save!
 
 eguest5 = EventGuest.new(date_vote: 2)
@@ -345,13 +345,43 @@ eguest5.save!
 
 eguest6 = EventGuest.new(date_vote: 1)
 eguest6.event = event6
-eguest6.registered_user = user3
+eguest6.registered_user = user1
 eguest6.save!
 
 eguest7 = EventGuest.new(date_vote: 1)
 eguest7.event = event2
 eguest7.registered_user = user1
 eguest7.save!
+
+eguest8 = EventGuest.new(date_vote: 3)
+eguest8.event = event1
+eguest8.registered_user = user2
+eguest8.save!
+
+eguest8 = EventGuest.new(date_vote: 3)
+eguest8.event = event3
+eguest8.registered_user = user1
+eguest8.save!
+
+eguest9 = EventGuest.new(date_vote: 3)
+eguest9.event = event7
+eguest9.registered_user = user1
+eguest9.save!
+
+eguest10 = EventGuest.new(date_vote: 3)
+eguest10.event = event8
+eguest10.registered_user = user6
+eguest10.save!
+
+eguest11 = EventGuest.new(date_vote: 3)
+eguest11.event = event9
+eguest11.registered_user = user7
+eguest11.save!
+
+eguest12 = EventGuest.new(date_vote: 3)
+eguest12.event = event10
+eguest12.registered_user = user8
+eguest12.save!
 
 eimg1 = EventImage.new(image: 'a1.png')
 eimg1.event = event1
