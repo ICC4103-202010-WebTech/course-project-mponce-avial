@@ -56,7 +56,6 @@
   <h2>Pdfs</h2>
   <%@event.pdfEvent.each do |pdf| %>
     <div>
-      <%= image_tag pdf.preview(resize_to_limit: [100, 100])%>
       <h4><%=pdf.filename%></h4>
     </div>
   <% end %>

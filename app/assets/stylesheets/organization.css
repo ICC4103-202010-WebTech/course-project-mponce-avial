@@ -33,3 +33,10 @@
     margin-top: 3%;
     margin-left: 20px;
 }
+
+.card{
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
