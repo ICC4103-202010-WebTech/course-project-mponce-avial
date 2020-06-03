@@ -58,7 +58,7 @@
   <h2>Pdfs</h2>
   <%@event.pdfEvent.each do |pdf| %>
     <div>
-      <h4><%=pdf.filename%></h4>
+      <%= link_to pdf.filename, url_for(pdf) %>
     </div>
   <% end %>
 <% else %>

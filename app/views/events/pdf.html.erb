@@ -4,13 +4,13 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<h1>Videos</h1>
+<h1>PDF</h1>
 <hr>
 
 <% if @event.pdfEvent.attached? %>
   <%@event.pdfEvent.each do |pdf| %>
     <div>
-      <h4><%=pdf.filename%></h4>
+      <%= link_to pdf.filename, url_for(pdf) %>
     </div>
   <% end %>
 <% else %>
