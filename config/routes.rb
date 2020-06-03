@@ -58,6 +58,8 @@ Rails.application.routes.draw do
   #System administrator namespace
   namespace :admin do
 
+    root 'events#index'
+
     resources :organizations do
       resources :events
       resources :organization_admins

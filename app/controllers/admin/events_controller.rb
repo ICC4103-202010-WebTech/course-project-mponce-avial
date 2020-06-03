@@ -21,6 +21,8 @@ class Admin::EventsController < AdminController
   # GET /events/new
   def new
     @event = Event.new
+    @user_creator = RegisteredUser.all
+    @organizations = Organization.all
   end
 
   # GET /events/1/edit
@@ -31,30 +33,20 @@ class Admin::EventsController < AdminController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      @event_guest = EventGuest.new
+      @event_guest.event_id = @event.id
+      @event_guest.registered_user_id = @event.event_creator_id
+      @event_guest.save
+      redirect_to admin_event_path(@event.id)
     end
   end
 
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event.update(event_params)
+    redirect_to admin_event_path(@event.id)
   end
 
   # DELETE /events/1
@@ -72,6 +64,6 @@ class Admin::EventsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {})
+      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility, :date1, :date2, :date3, :organization_id,:event_creator_id,:bannerEvent,imgEvent: [],videosEvent: [],pdfEvent: [])
     end
 end
