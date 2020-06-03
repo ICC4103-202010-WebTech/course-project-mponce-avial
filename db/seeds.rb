@@ -126,9 +126,8 @@ org_admin6.admin = user7
 org_admin6.save!
 
 
-
 orgmem1 = OrganizationMember.new()
-orgmem1.organization = org1
+orgmem1.organization = org2
 orgmem1.registered_user = user1
 orgmem1.save!
 
