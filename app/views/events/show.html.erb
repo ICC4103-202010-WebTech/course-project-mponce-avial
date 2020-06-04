@@ -23,13 +23,17 @@
 
 <body>
   <section class="section_left">
-    <div class="button_line">
-      <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
-      <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
-      <div><h4>Report</h4></div>
-    </div>
+    <% if @event.event_creator_id == 1 %>
+      <div class="button_line">
+        <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
+        <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
+        <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
+        <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+        <div><h4>Report</h4></div>
+      </div>
+    <%else%>
+    <% end %>
+
 
     <h2>Description:</h2>
     <section class="rounded_box">
