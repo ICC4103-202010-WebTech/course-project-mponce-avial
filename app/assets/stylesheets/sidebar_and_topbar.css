@@ -3,6 +3,16 @@ body {font-family: "Lato", sans-serif;}
 .navbar-dark{
     margin-left: 5%; /* Same as the width of the sidenav */
     background-color: #0D5AFF;
+    margin-bottom: 10px;
+}
+
+.navbar-dark a{
+    color: white;
+    padding: 14px 0px;
+}
+
+.navbar-dark li{
+    margin-right: 10px;
 }
 
 .topbar {
