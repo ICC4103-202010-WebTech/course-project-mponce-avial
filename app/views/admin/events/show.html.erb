@@ -4,9 +4,9 @@
 <head>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <% if @event.bannerEvent.attached? %>
   <div>
@@ -37,81 +37,61 @@
     </section>
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h2 class="page-header">Comments</h2>
-          <section class="comment-list">
-            <!-- First Comment -->
-            <%@event_comments.each do |comment| %>
-              <div class="row ml-0 mt-2 mb-3">
-                <%= button_to 'Edit Comment', edit_admin_comment_path(comment.id),  method: :get, class: ["btn", "btn-primary", "mr-4"]%>
-                <%= button_to 'Delete Comment', admin_comment_path(comment.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+      <%@event_comments.each do |comment| %>
+        <div class="card">
+          <div class="card-body">
+            <div class="row ml-0 mt-2 mb-3">
+              <%= button_to 'Edit Comment', edit_admin_comment_path(comment.id),  method: :get, class: ["btn", "btn-primary", "mr-4"]%>
+              <%= button_to 'Delete Comment', admin_comment_path(comment.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+            </div>
+            <div class="row">
+              <div class="col-md-2">
+                <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
+                  <%= image_tag(UserProfile.find(comment.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
+                <% else %>
+                  <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                <% end %>
+                <p class="text-secondary text-center"><%= time_ago_in_words(comment.created_at) %></p>
               </div>
-              <article class="row">
-                <div class="col-md-2 col-sm-2 hidden-xs">
-                  <figure class="thumbnail">
-                    <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
-                      <%= image_tag(UserProfile.find(comment.registered_user.id).imageProfile, class:"img-responsive")%>
-                    <% else %>
-                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                    <% end %>
-                    <figcaption class="text-center"><%=comment.registered_user.name %> <%=comment.registered_user.last_name %></figcaption>
-                  </figure>
-                </div>
-                <div class="col-md-10 col-sm-10">
-                  <div class="panel panel-default arrow left">
-                    <div class="panel-body">
-                      <header class="text-left">
-                        <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=comment.created_at%></time>
-                      </header>
-                      <div class="comment-post">
-                        <p>
-                          <%=comment.text%>
-                        </p>
-                      </div>
-                      <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <!-- Second Comment Reply -->
-              <%@comment_replies.where(comment_id: comment.id).each do |reply| %>
-                <article class="row">
-                  <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
-                    <figure class="thumbnail">
+              <div class="col-md-10">
+                <p>
+                  <strong><%= link_to comment.registered_user.name+" "+comment.registered_user.last_name, user_profile_path(comment.registered_user.id) %></strong>
+                </p>
+                <div class="clearfix"></div>
+                <p><%=comment.text%></p>
+                <p>
+                  <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                </p>
+              </div>
+            </div>
+
+            <%@comment_replies.where(comment_id: comment.id).each do |reply| %>
+              <div class="card card-inner">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
                       <% if UserProfile.find(reply.registered_user.id).imageProfile.attached? %>
-                        <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img-responsive")%>
+                        <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
                       <% else %>
-                        <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                        <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
                       <% end %>
-                      <figcaption class="text-center"><%=reply.registered_user.name %> <%=reply.registered_user.last_name %></figcaption>
-                    </figure>
-                  </div>
-                  <div class="col-md-9 col-sm-9">
-                    <div class="panel panel-default arrow left">
-                      <div class="panel-heading right">Reply</div>
-                      <div class="panel-body">
-                        <header class="text-left">
-                          <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=comment.created_at%></time>
-                        </header>
-                        <div class="comment-post">
-                          <p>
-                            <%=reply.text%>
-                          </p>
-                          <div class="row ml-0 mt-2 mb-3">
-                            <%= button_to 'Edit Reply', edit_admin_reply_path(reply.id), method: :get, class: ["btn", "btn-primary", "mr-4"]%>
-                            <%= button_to 'Delete Reply', admin_reply_path(reply.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
-                          </div>
-                        </div>
+                      <p class="text-secondary text-center"><%= time_ago_in_words(comment.created_at) %></p>
+                    </div>
+                    <div class="col-md-10">
+                      <p><strong><%= link_to reply.registered_user.name+" "+reply.registered_user.last_name, user_profile_path(reply.registered_user.id) %></strong></p>
+                      <p><%=reply.text %></p>
+                      <div class="row ml-0 mt-2 mb-3">
+                        <%= button_to 'Edit Reply', edit_admin_reply_path(reply.id), method: :get, class: ["btn", "btn-primary", "mr-4"]%>
+                        <%= button_to 'Delete Reply', admin_reply_path(reply.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
                       </div>
                     </div>
                   </div>
-                </article>
-              <%end %>
+                </div>
+              </div>
             <% end %>
-          </section>
+          </div>
         </div>
-      </div>
+      <%end %>
     </div>
 
     <div class="row ml-0">
@@ -132,23 +112,15 @@
   </section>
 
   <aside class="section_right">
-    <h2>Images</h2>
-    <%@event_images.each do |image| %>
-      <!-- <h3><%=image%></h3> -->
-      <img class="event_image">
-    <%end%>
+    <h1>Files</h1>
+    <h2><%= link_to "Images",images_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
+    <img src = "https://cdn.icon-icons.com/icons2/317/PNG/512/file-picture-icon_34432.png", class="event_image">
 
-    <h2>Videos</h2>
-    <%@event_videos.each do |video| %>
-      <!-- <h3><%=video%></h3> -->
-      <img class="event_video">
-    <%end%>
+    <h2><%= link_to "Videos",videos_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
+    <img src = "data:image/png;base64,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", class="event_image">
 
-    <h2>PDF</h2>
-    <%@event_pdfs.each do |pdfs| %>
-      <!-- <h3><%=pdfs%></h3> -->
-      <img class="event_pdf">
-    <%end%>
+    <h2><%= link_to "PDF",pdf_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></h2>
+    <img src = "https://image.flaticon.com/icons/svg/337/337946.svg", class="event_image">
   </aside>
 
 </body>
