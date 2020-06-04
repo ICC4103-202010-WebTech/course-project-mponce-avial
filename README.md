@@ -107,6 +107,8 @@ Postman link: https://www.getpostman.com/collections/6579499dc7e32a9305a1
 
 ## Summary of implemented features
 
+NOTE: to access the admin namespace, you have to go to localhost:3000/admin
+
 * Added CRUD operations and namespace of system administration of:
     * Organizations
     * Events
