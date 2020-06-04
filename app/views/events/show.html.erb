@@ -4,9 +4,9 @@
 <head>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <% if @event.bannerEvent.attached? %>
   <div>
@@ -23,13 +23,16 @@
 
 <body>
   <section class="section_left">
-    <div class="button_line">
-      <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
-      <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
-      <div><h4>Report</h4></div>
-    </div>
+    <% if @event.event_creator_id == 1 %>
+      <div class="button_line">
+        <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
+        <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
+        <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
+        <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+        <div><h4>Report</h4></div>
+      </div>
+    <% end %>
+
 
     <h2>Description:</h2>
     <section class="rounded_box">
@@ -73,73 +76,53 @@
     -->
 
     <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-          <h2 class="page-header">Comments</h2>
-          <section class="comment-list">
-            <!-- First Comment -->
-            <%@event_comments.each do |comment| %>
-              <article class="row">
-                <div class="col-md-2 col-sm-2 hidden-xs">
-                  <figure class="thumbnail">
-                    <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
-                      <%= image_tag(UserProfile.find(comment.registered_user.id).imageProfile, class:"img-responsive")%>
-                    <% else %>
-                      <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
-                    <% end %>
-                    <figcaption class="text-center"><%=comment.registered_user.name %> <%=comment.registered_user.last_name %></figcaption>
-                  </figure>
-                </div>
-                <div class="col-md-10 col-sm-10">
-                  <div class="panel panel-default arrow left">
-                    <div class="panel-body">
-                      <header class="text-left">
-                        <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=comment.created_at%></time>
-                      </header>
-                      <div class="comment-post">
-                        <p>
-                          <%=comment.text%>
-                        </p>
-                      </div>
-                      <p class="text-right"><a href="#" class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>
-                    </div>
-                  </div>
-                </div>
-              </article>
-              <!-- Second Comment Reply -->
-              <%@comment_replies.where(comment_id: comment.id).each do |reply| %>
-                <article class="row">
-                  <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
-                    <figure class="thumbnail">
+      <%@event_comments.each do |comment| %>
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
+                  <%= image_tag(UserProfile.find(comment.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
+                <% else %>
+                  <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                <% end %>
+                <p class="text-secondary text-center"><%= time_ago_in_words(comment.created_at) %></p>
+              </div>
+              <div class="col-md-10">
+                <p>
+                  <strong><%= link_to comment.registered_user.name+" "+comment.registered_user.last_name, user_profile_path(comment.registered_user.id) %></strong>
+                </p>
+                <div class="clearfix"></div>
+                <p><%=comment.text%></p>
+                <p>
+                  <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+                </p>
+              </div>
+            </div>
+
+            <%@comment_replies.where(comment_id: comment.id).each do |reply| %>
+              <div class="card card-inner">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-2">
                       <% if UserProfile.find(reply.registered_user.id).imageProfile.attached? %>
-                        <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img-responsive")%>
+                        <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
                       <% else %>
-                        <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+                        <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
                       <% end %>
-                      <figcaption class="text-center"><%=reply.registered_user.name %> <%=reply.registered_user.last_name %></figcaption>
-                    </figure>
-                  </div>
-                  <div class="col-md-9 col-sm-9">
-                    <div class="panel panel-default arrow left">
-                      <div class="panel-heading right">Reply</div>
-                      <div class="panel-body">
-                        <header class="text-left">
-                          <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> <%=comment.created_at%></time>
-                        </header>
-                        <div class="comment-post">
-                          <p>
-                            <%=reply.text%>
-                          </p>
-                        </div>
-                      </div>
+                      <p class="text-secondary text-center"><%= time_ago_in_words(comment.created_at) %></p>
+                    </div>
+                    <div class="col-md-10">
+                      <p><strong><%= link_to reply.registered_user.name+" "+reply.registered_user.last_name, user_profile_path(reply.registered_user.id) %></strong></p>
+                      <p><%=reply.text %></p>
                     </div>
                   </div>
-                </article>
-              <%end %>
+                </div>
+              </div>
             <% end %>
-          </section>
+          </div>
         </div>
-      </div>
+      <%end %>
     </div>
 
     <div class="row ml-0">
