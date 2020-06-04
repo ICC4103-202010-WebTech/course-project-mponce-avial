@@ -41,3 +41,7 @@
     border-bottom: 1px solid black;
     margin-block-end: 20px;
 }
+
+.edit_organization{
+    float: right;
+}

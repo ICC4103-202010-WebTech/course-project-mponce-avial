@@ -97,14 +97,5 @@
 
 .edit_profile{
     float: right;
-    height: 30px;
-    margin-right: 10px;
-    border-right: 2px solid black;
-    border-left: 2px solid black;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    border-radius: 5px;
-    background: #0D5AFF;
-    color: #CCCCCC;
 }
 
