@@ -1,3 +1,8 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
 <%= stylesheet_link_tag "user_profile" %>
 <% if @user_profile.bannerProfile.attached? and @user_profile.imageProfile.attached?%>
   <div class="user_banner" style="background-image: url(<%= rails_blob_url(@user_profile.bannerProfile) %>)">

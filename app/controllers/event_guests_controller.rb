@@ -49,7 +49,7 @@ class EventGuestsController < ApplicationController
   def update
     if params[:date_vote]!=nil
       if @event_guest.update(date_vote: params[:date_vote])
-        redirect_to event_path(@event_guest.event.id)
+        redirect_to event_path(@event_guest.event.id), notice: "Your vote was saved"
       end
     end
   end

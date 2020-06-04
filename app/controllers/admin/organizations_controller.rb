@@ -33,14 +33,14 @@ class Admin::OrganizationsController < AdminController
       @organization_admin.save
     end
 
-    redirect_to admin_organizations_path
+    redirect_to admin_organizations_path, notice: 'Organization was successfully created.'
   end
 
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update
       @organization.update(organization_params)
-      redirect_to admin_organizations_path
+      redirect_to admin_organizations_path, notice: 'Organization was successfully updated.'
   end
 
   # DELETE /organizations/1
@@ -48,7 +48,7 @@ class Admin::OrganizationsController < AdminController
   def destroy
     @organization = Organization.find(params[:id])
     @organization.destroy
-    redirect_to admin_organizations_path
+    redirect_to admin_organizations_path, notice: 'Organization was successfully destroyed.'
   end
 
   private

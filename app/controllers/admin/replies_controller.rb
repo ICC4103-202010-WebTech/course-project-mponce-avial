@@ -40,14 +40,14 @@ class Admin::RepliesController < AdminController
   # PATCH/PUT /comments/1.json
   def update
     @reply.update(text: params[:reply][:text])
-    redirect_to admin_comments_path
+    redirect_to admin_comments_path, notice: 'Reply was successfully updated.'
   end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
     @reply.destroy
-    redirect_to admin_comments_path
+    redirect_to admin_comments_path,notice: 'Reply was successfully destroyed.'
   end
 
   private

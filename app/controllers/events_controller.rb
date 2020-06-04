@@ -64,6 +64,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
+        format.html { redirect_to new_event_path, alert: 'Required fields not complited' }
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -89,7 +90,7 @@ class EventsController < ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to events_path
+    redirect_to events_path, notice: "The event - " + @event.title + " - was deleted"
   end
 
   def create_comment

@@ -37,7 +37,7 @@ class Admin::CommentsController < AdminController
     else
       print("Error")
     end
-
+    flash[:notice] = 'Comment was successfully created.'
     redirect_back(fallback_location: root_path)
   end
 
@@ -45,14 +45,14 @@ class Admin::CommentsController < AdminController
   # PATCH/PUT /comments/1.json
   def update
     @comment.update(text: params[:comment][:text])
-    redirect_to admin_comments_path
+    redirect_to admin_comments_path, notice: 'Comment was successfully updated.'
   end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
     @comment.destroy
-    redirect_to admin_comments_path
+    redirect_to admin_comments_path,notice: 'Comment was successfully destroyed.'
   end
 
   private

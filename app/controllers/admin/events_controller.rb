@@ -38,7 +38,9 @@ class Admin::EventsController < AdminController
       @event_guest.event_id = @event.id
       @event_guest.registered_user_id = @event.event_creator_id
       @event_guest.save
-      redirect_to admin_event_path(@event.id)
+      redirect_to admin_event_path(@event.id), notice: 'Event was successfully created.'
+    else
+      redirect_to edit_admin_event_path, alert: 'Required fields not complited'
     end
   end
 
@@ -46,14 +48,14 @@ class Admin::EventsController < AdminController
   # PATCH/PUT /events/1.json
   def update
     @event.update(event_params)
-    redirect_to admin_event_path(@event.id)
+    redirect_to admin_event_path(@event.id), notice: 'Event was successfully updated.'
   end
 
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
     @event.destroy
-    redirect_to admin_events_path
+    redirect_to admin_events_path,notice: "The event - " + @event.title + " - was deleted"
   end
 
   private
