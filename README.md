@@ -1,8 +1,10 @@
 # README
 
-# AN UPDATED E-R MODEL IS IN THIS REPOSITORY, PLEASE CHECK IT OUT
+# Course Project Part 1
 
-# To run the queries, please use the next command: 
+## AN UPDATED E-R MODEL IS IN THIS REPOSITORY, PLEASE CHECK IT OUT
+
+## To run the queries, please use the next command: 
 ```bash
 rake db:model_queries
 ```
@@ -33,7 +35,7 @@ Things you may want to cover:
 
 * ...
 
-# 13), 14) and 15)
+## 13), 14) and 15)
 
 13) What should happen is that when the event is destroyed, our ActiveRecord 
 will have a callback that will be called after destroying the event, in which 
@@ -64,7 +66,9 @@ After this, the callback of 13) will be called and the EventGuests assosiated wi
 comments_id made by the user and then delete all the entries that have the foreign key "registered_user" equal 
 to the user's id. 
 
-# Summary of implemented features
+# Course Project Part 2
+
+## Summary of implemented features
 
 * Added routes for api and non api page of:
     * inbox
@@ -91,10 +95,53 @@ to the user's id.
 
 * Added html elements to view and some css to some views
 
-# Summary of thing required for this assigment but pending
+## Summary of thing required for this assigment but pending
 
 We didn't make the CSS for the inbox view
 
-# API Tests
+## API Tests
 
 Postman link: https://www.getpostman.com/collections/6579499dc7e32a9305a1
+
+# Course Project Part 3
+
+## Summary of implemented features
+
+* Added CRUD operations and namespace of system administration of:
+    * Organizations
+    * Events
+    * Comments
+
+* Added user profile features:
+    * View the profile
+    * Edit the profile
+    * Edit the user atributes (bio, location, name, last name)
+    * See events that the user has created
+    * See events that the user is invited
+
+* Added organization features:
+   * View the organization
+   * Edit the organization
+   * Show public events
+   
+* Added events features:
+   * View the event (info and banner image)
+   * View the attachemnets (image, videos and pdf)
+   * Vote for the date
+   * Invite people
+   * Delete event
+   * Edit event
+   * Add comments
+   * Shown the comments
+   
+* Added search bar to the navbar:
+   * The search is done in 5 ways:
+      * Search by user
+      * Search by organization
+      * Search event by organization
+      * Search event by title/description
+      * Search event by its creator
+
+## Summary of thing required for this assigment but pending
+
+We didn't make the CSS for the inbox view
