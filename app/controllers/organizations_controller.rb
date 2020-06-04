@@ -12,7 +12,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.json
   def show
-    @organization_events = Event.joins(:organization).where(organization: params[:id])
+    @organization_events = Event.joins(:organization).where(organization: params[:id]).where(visibility: "public")
   end
 
   # GET /organizations/new
