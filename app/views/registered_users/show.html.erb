@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+<h1> User Profile </h1>
+<ul>
+  <li><b>Name:</b> <%=@registered_user.name%></li>
+  <li><b>LastName:</b> <%=@registered_user.last_name%></li>
+  <li><b>Age:</b> <%=@registered_user.age%></li>
+  <li><b>E-Mail:</b> <%=@registered_user.email_address%></li>
+  <li><b>Location:</b> <%=@registered_user.location%></li>
+</ul>
+
+<%= link_to 'Edit', edit_registered_user_path(@registered_user) %> |
+<%= link_to 'Back', registered_users_path %>
