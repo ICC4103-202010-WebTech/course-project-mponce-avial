@@ -6,17 +6,18 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
-<h1>Inbox</h1>
+<div>
+  <h1>Inbox</h1>
+  <div class="btn_new_message">
+    <%= link_to "New Message",new_message_path(),class: ["btn", "btn-primary", "mr-4"]%>
+  </div>
+</div>
 <hr>
 <table>
-  <tr>
-    <th>Sender User</th>
-    <th>Message Text</th>
-  </tr>
   <%@inbox_message_recived.each do |mng| %>
     <div class="card shadow-sm">
       <div class="card-body">
-        <p class="card-text"><%= "Message from"%></p>
+        <strong class="card-text"><%= link_to "Message from: "+ mng.sender_user.name+" "+mng.sender_user.last_name, user_profile_path( mng.sender_user_id) %></strong>
         <p class="card-text"><%= mng.text%></p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
@@ -25,9 +26,5 @@
         </div>
       </div>
     </div>
-    <tr>
-      <td><%=mng.sender_user_id%></td>
-      <td><%=mng.text%></td>
-    </tr>
   <% end %>
 </table>
