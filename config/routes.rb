@@ -76,6 +76,9 @@ Rails.application.routes.draw do
     resources :comments
     resources :replies
 
+    resources :registered_users
+    resources :user_profiles
+
   end
 
   #################################################################################
