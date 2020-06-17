@@ -9,6 +9,7 @@
 <head>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
 
   <style>
     table, th, td {
@@ -19,7 +20,7 @@
 
 <body>
 
-<h2>EVENTS</h2>
+<h2>USERS</h2>
 
 <div>
   <%= link_to "Create User", new_admin_registered_user_path, class: ["btn", "btn-primary", "mr-4"] %>
@@ -30,6 +31,7 @@
     <th>ID</th>
     <th>User</th>
     <th>Role</th>
+    <th>Delete</th>
   </tr>
 
   <%@registered_users.each do |u| %>
@@ -37,6 +39,7 @@
       <td><%=u.id %></td>
       <td><%= link_to u.name + " " + u.last_name, controller: "user_profiles", action: "show", id: u.id%></td>
       <td>TODO</td>
+      <td><%= link_to "-", admin_registered_user_path(u.id), remote: true , data: { confirm: "Are you sure you want delete this user?" },class: "btn btn-danger", method: :delete%></td>
     </tr>
   <% end %>
 </table>
