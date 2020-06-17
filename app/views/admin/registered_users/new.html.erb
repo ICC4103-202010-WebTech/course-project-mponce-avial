@@ -1,5 +1,61 @@
-<h1>New Registered User</h1>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-danger">
+    <%= msg %>
+  </div>
+<% end %>
 
-<%= render 'form', registered_user: @registered_user %>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-<%= link_to 'Back', registered_users_path %>
+<div class="row ml-0 mt-3">
+  <h2>New User</h2>
+</div>
+<div class="row ml-0 mt-2">
+  <p>Please enter the required information to create a New User:</p>
+</div>
+<div class="row ml-0">
+  <%= form_with model: @registered_user, url: admin_registered_users_path, method: :post do |form| %>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "form-control" %>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :age %>
+      <%= form.number_field :age, class: "form-control" %>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :username %>
+      <%= form.text_field :username %>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :email_address %>
+      <%= form.text_field :email_address %>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :password %>
+      <%= form.text_field :password%>
+    </div>
+    <strong>Required</strong>
+    <div class="form-group">
+      <%= form.label :location %>
+      <%= form.text_field :location %>
+    </div>
+
+    <div class="form-group">
+      <%= form.submit "Create", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>
