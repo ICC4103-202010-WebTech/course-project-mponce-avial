@@ -15,6 +15,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
+    @sender_user = RegisteredUser.where(id: 1)
+    @destination_users = RegisteredUser.where.not(id: 1).order("name ASC")
   end
 
   # GET /messages/1/edit
@@ -25,6 +27,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
+    print("JOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOOO")
 
     respond_to do |format|
       if @message.save
