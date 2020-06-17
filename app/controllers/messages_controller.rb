@@ -27,11 +27,10 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-    print("JOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOJOOOOOOOOOOOOOOOOOOOOOO")
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to inbox_path, notice: 'Message was sent.' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
@@ -72,6 +71,6 @@ class MessagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def message_params
-      params.fetch(:message, {})
+      params.fetch(:message, {}).permit(:text,:sender_user_id,:destination_user_id)
     end
 end
