@@ -42,7 +42,7 @@ class Admin::RegisteredUsersController < AdminController
   def update
     respond_to do |format|
       if @registered_user.update(registered_user_params)
-        format.html { redirect_to @registered_user, notice: 'Registered user was successfully updated.' }
+        format.html { redirect_to admin_registered_users_url, notice: 'Registered user was successfully updated.' }
         format.json { render :show, status: :ok, location: @registered_user }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class Admin::RegisteredUsersController < AdminController
   def destroy
     @registered_user.destroy
     respond_to do |format|
-      format.html { redirect_to registered_users_url, notice: 'Registered user was successfully destroyed.' }
+      format.html { redirect_to admin_registered_users_url, notice: 'Registered user was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

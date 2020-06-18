@@ -1,3 +1,7 @@
+<head>
+  <%= csrf_meta_tags %>
+</head>
+
 <div class="row ml-0 mt-3">
   <h2>Edit User Profile</h2>
 </div>
@@ -5,7 +9,7 @@
   <p>Please enter the required information to edit the User Profile:</p>
 </div>
 <div class="row ml-0">
-  <%= form_with model: @user_profile do |form| %>
+  <%= form_with model: @user_profile, url: admin_user_profile_path do |form| %>
 
     <div class="form-group">
       <%= form.label :name %>

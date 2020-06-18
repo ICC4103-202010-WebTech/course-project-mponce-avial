@@ -18,7 +18,7 @@ class Admin::UserProfilesController < AdminController
   def update
     respond_to do |format|
       if @user_profile.update(biography: params[:user_profile][:biography], bannerProfile: params[:user_profile][:bannerProfile], imageProfile: params[:user_profile][:imageProfile]) and @registered_user.update(name: params[:user_profile][:name], last_name: params[:user_profile][:last_name], location: params[:user_profile][:location])
-        format.html { redirect_to @user_profile, notice: 'User profile was successfully updated.' }
+        format.html { redirect_to admin_registered_users_path, notice: 'User was successfully updated.'}
         format.json { render :show, status: :ok, location: @user_profile }
       else
         format.html { render :edit }
