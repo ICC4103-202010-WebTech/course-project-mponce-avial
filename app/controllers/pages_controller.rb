@@ -13,4 +13,10 @@ class PagesController < ApplicationController
       @events = Event.all.where("lower(title) LIKE :search OR lower(description) LIKE :search", search: "%#{@parameter}%")
     end
   end
+
+  def tou
+  end
+
+  def tos
+  end
 end

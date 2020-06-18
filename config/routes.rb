@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   get '/inbox/', to: 'inbox#show'
 
+  get '/tou', to: 'pages#tou', as: 'tou'
+
+  get '/tos', to: 'pages#tos', as: 'tos'
+
   get '/search', to: 'pages#search'
 
   get '/upload_files', to: 'events#upload_files'
