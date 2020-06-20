@@ -43,7 +43,7 @@
       Home
     <% end %></li>
   <% if registered_user_signed_in? %>
-    <li><%= link_to(controller: "/user_profiles", action: "show", id:1  ) do %>
+    <li><%= link_to(controller: "/user_profiles", action: "show", id: current_registered_user.id  ) do %>
         <i class="fa fa-user-circle-o fa-2x"></i>
         Profile
       <% end %></li>
