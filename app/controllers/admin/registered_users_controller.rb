@@ -69,6 +69,6 @@ class Admin::RegisteredUsersController < AdminController
 
     # Only allow a list of trusted parameters through.
     def registered_user_params
-      params.fetch(:registered_user, {}).permit(:name, :last_name, :age, :username, :email_address, :password, :location)
+      params.fetch(:registered_user, {}).permit(:name, :last_name, :age, :username, :email, :password, :location)
     end
 end

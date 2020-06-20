@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
@@ -25,6 +26,14 @@
         <%= submit_tag("Search") %>
       <% end %>
     </span>
+
+    <%if registered_user_signed_in? || system_administrator_signed_in?%>
+      <%= link_to "Log Out", destroy_registered_user_session_path, method: :delete %>
+    <%else%>
+      <%= link_to "Sign In", new_registered_user_session_path %>
+      <%= link_to "Sign Up", new_registered_user_registration_path %>
+    <% end %>
+
   </div>
 </nav>
 
@@ -33,20 +42,22 @@
       <%=image_tag("logo2.png", size: "50x50")%>
       Home
     <% end %></li>
-  <li><%= link_to(controller: "user_profiles", action: "show", id: 1 ) do %>
-      <i class="fa fa-user-circle-o fa-2x"></i>
-      Profile
-    <% end %></li>
+  <% if registered_user_signed_in? %>
+    <li><%= link_to(controller: "/user_profiles", action: "show", id:1  ) do %>
+        <i class="fa fa-user-circle-o fa-2x"></i>
+        Profile
+      <% end %></li>
 
-  <li><%= link_to(events_path)  do %>
-      <i class="fa fa-calendar fa-2x"></i>
-      Events
-    <% end %></li>
+    <li><%= link_to(events_path)  do %>
+        <i class="fa fa-calendar fa-2x"></i>
+        Events
+      <% end %></li>
 
-  <li><%= link_to(organizations_path) do %>
-      <i class="fa fa-users fa-2x"></i>
-      Orgs.
-    <% end %></li>
+    <li><%= link_to(organizations_path) do %>
+        <i class="fa fa-users fa-2x"></i>
+        Orgs.
+      <% end %></li>
+  <%end%>
 </div>
 
 <div class="main">
@@ -57,7 +68,7 @@
 
 <footer>
   <div class="container">
-    <%= link_to "Terms of Use", controller: "pages", action: "tou"%> and <%= link_to "Terms of Service", controller: "pages", action: "tos"%>
+    <%= link_to "Terms of Use", controller: "/pages", action: "tou"%> and <%= link_to "Terms of Service", controller: "/pages", action: "tos"%>
   </div>
 </footer>
 

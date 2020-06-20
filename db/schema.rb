@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_01_015828) do
+ActiveRecord::Schema.define(version: 2020_06_19_013012) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -148,12 +148,18 @@ ActiveRecord::Schema.define(version: 2020_06_01_015828) do
     t.string "last_name"
     t.integer "age"
     t.string "username"
-    t.string "email_address"
     t.string "google_account"
     t.string "password"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_registered_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_registered_users_on_reset_password_token", unique: true
   end
 
   create_table "replies", force: :cascade do |t|
@@ -169,10 +175,17 @@ ActiveRecord::Schema.define(version: 2020_06_01_015828) do
   end
 
   create_table "system_administrators", force: :cascade do |t|
-    t.integer "registered_user_id"
+    t.string "name"
+    t.string "last_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["registered_user_id"], name: "index_system_administrators_on_registered_user_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_system_administrators_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_system_administrators_on_reset_password_token", unique: true
   end
 
   create_table "user_profiles", force: :cascade do |t|
