@@ -42,12 +42,6 @@ class UserProfilesController < ApplicationController
     def set_user_profile
       @user_profile = UserProfile.find(params[:id])
       @registered_user = @user_profile.registered_user
-      if @user_profile == nil
-        @user_profile = UserProfile.new()
-        @user_profile.registered_user = current_registered_user
-        @user_profile.biography = ""
-        @user_profile.save
-      end
     end
 
     # Only allow a list of trusted parameters through.
