@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :system_administrators
-  devise_for :registered_users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
+
+  devise_for :registered_users, controllers: { registrations: 'registered_users/registrations' }
 
   get '/inbox/', to: 'inbox#show'
 

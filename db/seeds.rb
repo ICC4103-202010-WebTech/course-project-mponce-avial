@@ -1,11 +1,11 @@
-user1 = RegisteredUser.create(name: "Andres", last_name: "Vial", username: "andresvial", age: 21, google_account: "", password:"asdf", location: "Santiago")
-user2 = RegisteredUser.create(name: "Matias", last_name: "Ponce", username: "matijojo", age: 21, google_account: "", password:"adfg", location: "Santiago")
-user3 = RegisteredUser.create(name: "Jojo", last_name: "Smith", username: "jotarito", age: 22, google_account: "", password:"sdfg", location: "Santiago")
-user4 = RegisteredUser.create(name: "Julio", last_name: "Castro", username: "jululu", age: 28, google_account: "", password:"toda", location: "Valparaiso")
-user5 = RegisteredUser.create(name: "Nicolas", last_name: "Mena", username: "nicomena", age: 21, google_account: "", password:"asdfa", location: "Santiago")
-user6 = RegisteredUser.create(name: "Valentina", last_name: "Aravena", username: "vale1", age: 19, google_account: "", password:"adfgsda", location: "San Fernando")
-user7 = RegisteredUser.create(name: "Daniel", last_name: "Rodriguez", username: "daniel2", age: 24, google_account: "", password:"sdfsdag", location: "Santiago")
-user8 = RegisteredUser.create(name: "Javiera", last_name: "Sepulveda", username: "javi2", age: 18, google_account: "", password:"toddasa", location: "Valparaiso")
+user1 = RegisteredUser.create :name => "Andres", :last_name => "Vial", :username => "andresvial", :age => 21, :google_account => "", :email => "an@gmail.com", :password => "123123", :password_confirmation => "asdf", :location => "Santiago"
+user2 = RegisteredUser.create :name => "Matias", :last_name => "Ponce", :username => "matijojo", :age => 21, :google_account => "", :email => "ann@gmail.com", :password =>"123123", :password_confirmation => "asdf", :location => "Santiago"
+user3 = RegisteredUser.create :name => "Jojo", :last_name => "Smith", :username => "jotarito", :age => 22, :google_account => "", :email => "annn@gmail.com", :password =>"123123", :password_confirmation => "asdf",location: "Santiago"
+user4 = RegisteredUser.create :name => "Julio", :last_name => "Castro", :username => "jululu", :age => 28, :google_account => "", :email => "annnn@gmail.com", :password => "123123", :password_confirmation => "asdf", :location => "Valparaiso"
+user5 = RegisteredUser.create :name => "Nicolas", :last_name => "Mena", :username => "nicomena", :age => 21, :google_account => "", :email => "ant@gmail.com", :password => "123123", :password_confirmation => "asdf", :location => "Santiago"
+user6 = RegisteredUser.create :name => "Valentina", :last_name => "Aravena", :username => "vale1", :age => 19, :google_account => "", :email => "anr@gmail.com", :password =>"123123", :password_confirmation => "asdf", :location => "San Fernando"
+user7 = RegisteredUser.create :name => "Daniel", :last_name => "Rodriguez", :username => "daniel2", :age => 24, :google_account => "", :email => "ane@gmail.com", :password =>"123213", :password_confirmation => "asdf", :location => "Santiago"
+user8 = RegisteredUser.create :email => 'abc2@example.com', :password => '123123', :password_confirmation => '123123', :name =>'Andres', :last_name => 'Vial', :age => 21, :username => "fasfffwfwef", :location => "dededed"
 
 org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png',description: "The best organization in the world")
 
