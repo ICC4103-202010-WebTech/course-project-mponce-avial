@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @upcoming_event = Event.order(start_date: :desc).limit(4)
+    @upcoming_event = Event.order(start_date: :desc).limit(6)
   end
 
   def search

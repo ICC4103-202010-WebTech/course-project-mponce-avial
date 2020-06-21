@@ -13,6 +13,7 @@ class RegisteredUsers::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @registered_user_last = RegisteredUser.last
+    print("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",@registered_user_last.name)
     @user_profile = UserProfile.new
     @user_profile.id = @registered_user_last.id
     @user_profile.biography = ""
