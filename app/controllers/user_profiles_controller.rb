@@ -5,8 +5,8 @@ class UserProfilesController < ApplicationController
   # GET /user_profiles/1.json
   def show
     @user_profiles = UserProfile.joins(:registered_user)
-    @user_events_created = Event.where(event_creator_id: current_registered_user.id)
-    @user_events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: current_registered_user.id})
+    @user_events_created = Event.where(event_creator_id: @registered_user.id)
+    @user_events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: @registered_user.id})
   end
 
   # GET /user_profiles/1/edit

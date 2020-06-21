@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     begin
       @event_guest = EventGuest.where(event_id: params[:id], registered_user_id: current_registered_user.id).take
     rescue
-
+      @event_guest = nil
     end
     @event_comments = Comment.joins(:event).where(event_id: params[:id]).joins(:registered_user)
     @comment_replies = Reply.joins(:comment).where(comment_id: @event_comments)

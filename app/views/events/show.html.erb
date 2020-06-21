@@ -44,7 +44,7 @@
     <section class="rounded_box">
       <%=@event.description%>
     </section>
-    <% if registered_user_signed_in?%>
+    <% if registered_user_signed_in? and @event_guest != nil%>
       <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
         <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
       </section>
@@ -99,7 +99,7 @@
         </div>
       <%end %>
     </div>
-    <% if registered_user_signed_in?%>
+    <% if registered_user_signed_in? and @event_guest != nil%>
       <div class="row ml-0">
         <%= form_with model: @comments, events_id: @event.id, method: :post do |form| %>
 
