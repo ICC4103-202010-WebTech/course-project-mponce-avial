@@ -14,5 +14,4 @@ class RegisteredUser < ApplicationRecord
   has_many :event_guests, dependent: :destroy
   has_many :messages, dependent: :destroy, foreign_key: "sender_user_id"
   has_many :organization_members, dependent: :destroy
-  has_many :system_administrators, dependent: :destroy
 end

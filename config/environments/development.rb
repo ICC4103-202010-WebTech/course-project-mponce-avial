@@ -62,4 +62,6 @@ Rails.application.configure do
 
   # Action mailer default configuration
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  config.sign_in_after_reset_password = true
 end

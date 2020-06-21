@@ -31,6 +31,10 @@
       <%= form.label :Profile_Image %>
       <%= form.file_field :imageProfile%>
     </div>
+
+
+    <%= link_to "Change your email and/or password", edit_registered_user_registration_path %>
+
     <div class="form-group">
       <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
       <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>

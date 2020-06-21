@@ -16,9 +16,11 @@
     <a class="navbar-brand"><%= link_to "E-Calendar", root_path %></a>
     <ul class="navbar-nav mr-auto">
     </ul>
-    <li class="nav-link"><%= link_to(inbox_path) do %>
-        <i class="fa fa-inbox"></i>
-      <% end %></li>
+    <% if registered_user_signed_in? %>
+      <li class="nav-link"><%= link_to(inbox_path) do %>
+          <i class="fa fa-inbox"></i>
+        <% end %></li>
+    <%end %>
     <span class="form-inline my-2 my-lg-0">
       <%= form_tag("/search", method: "get") do %>
         <%= label_tag(:q, "") %>
