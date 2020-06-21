@@ -23,17 +23,19 @@ class Admin::RepliesController < AdminController
   # POST /comments
   # POST /comments.json
   def create
-    @reply = Reply.new(reply_params)
+    @reply = Reply.new(text: params[:text])
+    @reply.registered_user_id = 1
+    @reply.profile_picture = "j"
+    @reply.comment_id = params[:comment_id]
 
-    respond_to do |format|
-      if @reply.save
-        format.html { redirect_to @reply, notice: 'Reply was successfully created.' }
-        format.json { render :show, status: :created, location: @reply }
-      else
-        format.html { render :new }
-        format.json { render json: @reply.errors, status: :unprocessable_entity }
-      end
+    if @reply.save
+      print("Success")
+    else
+      print("Error")
     end
+
+    flash[:notice] = 'Comment was successfully created.'
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /comments/1

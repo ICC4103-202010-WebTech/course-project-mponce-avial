@@ -98,15 +98,28 @@ class EventsController < ApplicationController
   end
 
   def create_comment
-    @comment = Comment.new(text: params[:text])
-    @comment.registered_user_id = current_registered_user.id
-    @comment.profile_picture = "j"
-    @comment.event_id = params[:events_id]
+    if params[:type] == "reply"
+      @reply = Reply.new(text: params[:text])
+      @reply.registered_user_id = current_registered_user.id
+      @reply.profile_picture = "j"
+      @reply.comment_id = params[:comment_id]
 
-    if @comment.save
-      print("Success")
+      if @reply.save
+        print("Success")
+      else
+        print("Error")
+      end
     else
-      print("Error")
+      @comment = Comment.new(text: params[:text])
+      @comment.registered_user_id = current_registered_user.id
+      @comment.profile_picture = "j"
+      @comment.event_id = params[:events_id]
+
+      if @comment.save
+        print("Success")
+      else
+        print("Error")
+      end
     end
 
     redirect_back(fallback_location: root_path)
