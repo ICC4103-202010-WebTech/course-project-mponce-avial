@@ -12,13 +12,13 @@ class RegisteredUsers::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    @registered_user_last = RegisteredUser.last
-    print("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",@registered_user_last.name)
-    @user_profile = UserProfile.new
-    @user_profile.id = @registered_user_last.id
-    @user_profile.biography = ""
-    @user_profile.registered_user = @registered_user_last
-    @user_profile.save
+    #@registered_user_last = RegisteredUser.last
+    #print("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",@registered_user_last.name)
+    #@user_profile = UserProfile.new
+    #@user_profile.id = @registered_user_last.id
+    #@user_profile.biography = ""
+    #@user_profile.registered_user = @registered_user_last
+    #@user_profile.save
    end
 
   # GET /resource/edit

@@ -6,6 +6,7 @@ class RegisteredUser < ApplicationRecord
          :trackable
   validates :email, format: {with: /\A[a-z0-9\+\-_\.]+@[a-z\d\-.]+\.[a-z]+\z/i}, uniqueness: true
   validates :username, uniqueness: true
+  before_create :build_user_profile
   has_many :events, dependent: :destroy, foreign_key: "event_creator_id"
   has_one :user_profile, dependent: :destroy
   has_one :blacklist, dependent: :destroy, foreign_key: "blacklist_owner_id"
