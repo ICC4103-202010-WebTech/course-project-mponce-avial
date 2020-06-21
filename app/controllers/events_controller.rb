@@ -5,14 +5,18 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     #@events = Event.all
-    @events_created = Event.where(event_creator_id: 1)
-    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: 1})
+    @events_created = Event.where(event_creator_id: current_registered_user.id)
+    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: current_registered_user.id})
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @event_guest = EventGuest.where(event_id: params[:id], registered_user_id: 1).take
+    begin
+      @event_guest = EventGuest.where(event_id: params[:id], registered_user_id: current_registered_user.id).take
+    rescue
+
+    end
     @event_comments = Comment.joins(:event).where(event_id: params[:id]).joins(:registered_user)
     @comment_replies = Reply.joins(:comment).where(comment_id: @event_comments)
     @event_images = EventImage.joins(:event).where(event_id: params[:id])
@@ -23,8 +27,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @user_creator = RegisteredUser.all.limit(1)
-    @organizations = Organization.joins(:organization_admins).where(organization_admins: {admin_id: 1})
+    @user_creator = RegisteredUser.find(current_registered_user.id)
+    @organizations = Organization.joins(:organization_admins).where(organization_admins: {admin_id: current_registered_user.id})
   end
 
   # GET /events/1/edit
@@ -64,7 +68,7 @@ class EventsController < ApplicationController
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
-        format.html { redirect_to new_event_path, alert: 'Required fields not complited' }
+        format.html { redirect_to new_event_path, alert: 'Required fields not completed' }
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
@@ -95,7 +99,7 @@ class EventsController < ApplicationController
 
   def create_comment
     @comment = Comment.new(text: params[:text])
-    @comment.registered_user_id = 1
+    @comment.registered_user_id = current_registered_user.id
     @comment.profile_picture = "j"
     @comment.event_id = params[:events_id]
 

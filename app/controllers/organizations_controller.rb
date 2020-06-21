@@ -5,8 +5,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations.json
   def index
     #@organizations = Organization.all
-    @organizations_created = Organization.joins(:organization_admins).where(organization_admins: {admin_id: 1})
-    @organizations_joined = Organization.joins(:organization_members).where(organization_members: {registered_user_id: 1})
+    @organizations_created = Organization.joins(:organization_admins).where(organization_admins: {admin_id: current_registered_user.id})
+    @organizations_joined = Organization.joins(:organization_members).where(organization_members: {registered_user_id: current_registered_user.id})
   end
 
   # GET /organizations/1
@@ -30,7 +30,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     respond_to do |format|
       if @organization.save
-        @organization_admin = OrganizationAdmin.new(admin_id: 1,organization_id: @organization.id)
+        @organization_admin = OrganizationAdmin.new(admin_id: current_registered_user.id, organization_id: @organization.id)
         @organization_admin.save
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render :show, status: :created, location: @organization }

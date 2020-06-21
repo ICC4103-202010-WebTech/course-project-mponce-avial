@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @sender_user = RegisteredUser.where(id: 1)
-    @destination_users = RegisteredUser.where.not(id: 1).order("name ASC")
+    @sender_user = RegisteredUser.where(id: current_registered_user.id)
+    @destination_users = RegisteredUser.where.not(id: current_registered_user.id).order("name ASC")
   end
 
   # GET /messages/1/edit

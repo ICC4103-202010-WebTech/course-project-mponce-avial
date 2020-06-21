@@ -29,7 +29,7 @@
 
 <body>
   <section class="section_left">
-    <% if @event.event_creator_id == 1 %>
+    <% if registered_user_signed_in? and @event.event_creator_id == current_registered_user.id %>
       <div class="button_line">
         <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
         <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
@@ -44,10 +44,11 @@
     <section class="rounded_box">
       <%=@event.description%>
     </section>
-    <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
-
-      <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
-    </section>
+    <% if registered_user_signed_in?%>
+      <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
+        <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
+      </section>
+    <%end %>
 
     <div class="container">
       <%@event_comments.each do |comment| %>
@@ -98,19 +99,20 @@
         </div>
       <%end %>
     </div>
+    <% if registered_user_signed_in?%>
+      <div class="row ml-0">
+        <%= form_with model: @comments, events_id: @event.id, method: :post do |form| %>
 
-    <div class="row ml-0">
-      <%= form_with model: @comments, events_id: @event.id, method: :post do |form| %>
-
-        <div class="form-group">
-          <%= form.label :comment%>
-          <%= form.text_field :text,size: 90,placeholder: "Write comment ..."  ,class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= form.submit "Comment",class: ["btn", "btn-primary"] %>
-        </div>
-      <% end %>
-    </div>
+          <div class="form-group">
+            <%= form.label :comment%>
+            <%= form.text_field :text,size: 90,placeholder: "Write comment ..."  ,class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= form.submit "Comment",class: ["btn", "btn-primary"] %>
+          </div>
+        <% end %>
+      </div>
+    <%end %>
 
   </section>
 

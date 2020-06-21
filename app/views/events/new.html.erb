@@ -40,8 +40,7 @@
       <%= form.select(:visibility,%w{ public private}) %>
     </div>
     <div class="form-group">
-      <%= form.label :event_creator %>
-      <%= form.select(:event_creator_id, @user_creator.map{ |c| [c.name, c.id]})%>
+      <%= form.hidden_field :event_creator_id, :value => current_registered_user.id %>
     </div>
     <div class="form-group">
       <%= form.label :organization %>
