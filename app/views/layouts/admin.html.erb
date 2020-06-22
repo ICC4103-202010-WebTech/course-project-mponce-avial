@@ -6,6 +6,7 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <%= csrf_meta_tags %>
 </head>
 
 <body>
@@ -13,6 +14,13 @@
 
 <div class="sidebar">
   <h3>ADMIN</h3>
+
+  <%if system_administrator_signed_in?%>
+    <li><%= link_to "Log Out", destroy_system_administrator_session_path, method: :delete %>
+  <%else%></li>
+    <li><%= link_to "Sign In", new_system_administrator_session_path %></li>
+    <li><%= link_to "Sign Up", new_system_administrator_registration_path %></li>
+  <% end %>
 
   <li><%= link_to(admin_events_path)  do %>
       <i class="fa fa-calendar fa-2x"></i>

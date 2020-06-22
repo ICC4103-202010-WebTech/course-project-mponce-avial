@@ -5,6 +5,7 @@ user4 = RegisteredUser.create :email => "annnn@gmail.com", :password => '123123'
 user5 = RegisteredUser.create :email => "ant@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Nicolas', :last_name => 'Mena', :age => 21, :username => "nicomena", :location => "Santiago"
 user6 = RegisteredUser.create :email => "antt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Valentina', :last_name => 'Aravena', :age => 21, :username => "valel", :location => "Santiago"
 user7 = RegisteredUser.create :email => "anttt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Daniel', :last_name => 'Rodriguez', :age => 21, :username => "daniel2", :location => "Santiago"
+user8 = RegisteredUser.create :email => 'abc2@example.com', :password => '123123', :password_confirmation => '123123', :name =>'Andres', :last_name => 'Vial', :age => 21, :username => "fasfffwfwef", :location => "dededed"
 
 org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png',description: "The best organization in the world")
 
@@ -87,6 +88,11 @@ profileuser6.save!
 profileuser7 = UserProfile.new(profile_picture: "p3.png", banner_picture: "p3b.png",biography: "Ora Ora Ora")
 profileuser7.registered_user = user7
 profileuser7.save!
+
+profileuser8 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.png",biography: "Hola, Buenas Tardes")
+profileuser8.registered_user = user8
+profileuser8.save!
+
 
 
 org_admin1 = OrganizationAdmin.new()
