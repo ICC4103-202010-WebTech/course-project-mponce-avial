@@ -17,9 +17,6 @@
 
   <%if system_administrator_signed_in?%>
     <li><%= link_to "Log Out", destroy_system_administrator_session_path, method: :delete %>
-  <%else%></li>
-    <li><%= link_to "Sign In", new_system_administrator_session_path %></li>
-    <li><%= link_to "Sign Up", new_system_administrator_registration_path %></li>
   <% end %>
 
   <li><%= link_to(admin_events_path)  do %>
