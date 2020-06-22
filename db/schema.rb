@@ -148,7 +148,6 @@ ActiveRecord::Schema.define(version: 2020_06_19_013012) do
     t.string "last_name"
     t.integer "age"
     t.string "username"
-    t.string "google_account"
     t.string "password"
     t.string "location"
     t.datetime "created_at", precision: 6, null: false

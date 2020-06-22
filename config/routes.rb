@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "pages#home"
 
-  devise_for :registered_users, controllers: { registrations: 'registered_users/registrations' }
+  devise_for :registered_users, controllers: { registrations: 'registered_users/registrations' , omniauth_callbacks: 'registered_users/omniauth_callbacks' }
 
   get '/inbox/', to: 'inbox#show'
 

@@ -1,11 +1,10 @@
-user1 = RegisteredUser.create :email => "an@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Andres', :last_name => 'Vial', :age => 21, :username => "andresvial", :location => "Santiago", :google_account => ""
-user2 = RegisteredUser.create :email => "ann@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Matias', :last_name => 'Ponce', :age => 21, :username => "matijojo", :location => "Santiago", :google_account => ""
-user3 = RegisteredUser.create :email => "annn@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Jojo', :last_name => 'Smith', :age => 21, :username => "jotarito", :location => "Santiago", :google_account => ""
-user4 = RegisteredUser.create :email => "annnn@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Julio', :last_name => 'Castro', :age => 21, :username => "jululu", :location => "Santiago", :google_account => ""
-user5 = RegisteredUser.create :email => "ant@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Nicolas', :last_name => 'Mena', :age => 21, :username => "nicomena", :location => "Santiago", :google_account => ""
-user6 = RegisteredUser.create :email => "antt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Valentina', :last_name => 'Aravena', :age => 21, :username => "valel", :location => "Santiago", :google_account => ""
-user7 = RegisteredUser.create :email => "anttt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Daniel', :last_name => 'Rodriguez', :age => 21, :username => "daniel2", :location => "Santiago", :google_account => ""
-user8 = RegisteredUser.create :email => 'abc2@example.com', :password => '123123', :password_confirmation => '123123', :name =>'Andres', :last_name => 'Vial', :age => 21, :username => "fasfffwfwef", :location => "dededed", :google_account => ""
+user1 = RegisteredUser.create :email => "an@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Andres', :last_name => 'Vial', :age => 21, :username => "andresvial", :location => "Santiago"
+user2 = RegisteredUser.create :email => "ann@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Matias', :last_name => 'Ponce', :age => 21, :username => "matijojo", :location => "Santiago"
+user3 = RegisteredUser.create :email => "annn@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Jojo', :last_name => 'Smith', :age => 21, :username => "jotarito", :location => "Santiago"
+user4 = RegisteredUser.create :email => "annnn@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Julio', :last_name => 'Castro', :age => 21, :username => "jululu", :location => "Santiago"
+user5 = RegisteredUser.create :email => "ant@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Nicolas', :last_name => 'Mena', :age => 21, :username => "nicomena", :location => "Santiago"
+user6 = RegisteredUser.create :email => "antt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Valentina', :last_name => 'Aravena', :age => 21, :username => "valel", :location => "Santiago"
+user7 = RegisteredUser.create :email => "anttt@gmail.com", :password => '123123', :password_confirmation => '123123', :name =>'Daniel', :last_name => 'Rodriguez', :age => 21, :username => "daniel2", :location => "Santiago"
 
 org1 = Organization.create(name: "Organization 1",organization_banner: 'o1.png',description: "The best organization in the world")
 
@@ -88,11 +87,6 @@ profileuser6.save!
 profileuser7 = UserProfile.new(profile_picture: "p3.png", banner_picture: "p3b.png",biography: "Ora Ora Ora")
 profileuser7.registered_user = user7
 profileuser7.save!
-
-profileuser8 = UserProfile.new(profile_picture: "p4.png", banner_picture: "p4b.png",biography: "Hola, Buenas Tardes")
-profileuser8.registered_user = user8
-profileuser8.save!
-
 
 
 org_admin1 = OrganizationAdmin.new()
