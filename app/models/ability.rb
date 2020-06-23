@@ -12,7 +12,7 @@ class Ability
         can :create, Organization
         can :manage, Event, :event_creator_id => user.id
         can :manage, UserProfile, :registered_user_id => user.id
-        can [:update, :destroy], Organization do |org|
+        can :manage, Organization do |org|
           OrganizationAdmin.where(:organization_id => org.id).pluck(:admin_id).include? user.id
         end
       end
