@@ -5,15 +5,14 @@ class Ability
 
   def initialize(user)
     if user.present?
-      # Admin users should be able to manage all
-      # Customers should only manage their orders, manage
-      # their own Customer object, and read Events
-      # Unregistered users should only be able to read Events.
       if user.class.name == "SystemAdministrator"
         can :manage, :all
       elsif user.class.name == "RegisteredUser"
         can :read, :all
         can :manage, Event, :event_creator_id => user.id
+        can :manage, Organization do |org|
+          org.organization_admin_ids.include? user.id
+        end
       end
     end
 
