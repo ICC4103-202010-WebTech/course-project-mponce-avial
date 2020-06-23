@@ -9,8 +9,9 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.datetime :date1
       t.datetime :date2
       t.datetime :date3
-      t.string :date_rule
+      t.boolean :date_rule
       t.string :visibility
+      t.integer :number_of_voters
       t.references :organization
       t.references :event_creator
 

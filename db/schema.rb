@@ -97,8 +97,9 @@ ActiveRecord::Schema.define(version: 2020_06_19_013012) do
     t.datetime "date1"
     t.datetime "date2"
     t.datetime "date3"
-    t.string "date_rule"
+    t.boolean "date_rule"
     t.string "visibility"
+    t.integer "number_of_voters"
     t.integer "organization_id"
     t.integer "event_creator_id"
     t.datetime "created_at", precision: 6, null: false

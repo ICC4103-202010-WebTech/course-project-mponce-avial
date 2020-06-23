@@ -32,12 +32,16 @@
       <%= form.text_field :location, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= form.label :date_rule %>
-      <%= form.datetime_local_field :date_rule %>
+      <%= form.label :Automatic_final_date? %>
+      <%=form.select :date_rule, [['Yes', true], ['No', false]]%>
     </div>
     <div class="form-group">
       <%= form.label :visibility %>
       <%= form.select(:visibility,%w{ public private}) %>
+    </div>
+    <div class="form-group">
+      <%= form.label :number_of_voters %>
+      <%= form.number_field(:number_of_voters, options = {})%>
     </div>
     <div class="form-group">
       <%= form.hidden_field :event_creator_id, :value => current_registered_user.id %>
