@@ -23,11 +23,13 @@ class EventsController < ApplicationController
     @event_images = EventImage.joins(:event).where(event_id: params[:id])
     @event_videos = EventVideo.joins(:event).where(event_id: params[:id])
     @event_pdfs = EventPdf.joins(:event).where(event_id: params[:id])
+
     @event_vote_1 = EventGuest.where(event_id: params[:id]).where(date_vote: 1).count
     @event_vote_2 = EventGuest.where(event_id: params[:id]).where(date_vote: 2).count
     @event_vote_3 = EventGuest.where(event_id: params[:id]).where(date_vote: 3).count
     @total_votes = @event_vote_1 + @event_vote_2 + @event_vote_3
-    if @event.date_rule == true and @total_votes > @event.number_of_voters and  @event.final_date == nil
+
+    if @event.date_rule = true and @total_votes > @event.number_of_voters and  @event.final_date = nil
       if @event_vote_1 = [@event_vote_1,@event_vote_2,@event_vote_3].max
         @event.final_date = @event.date1
         @event.save

@@ -34,6 +34,9 @@
         <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
         <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
         <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+        <% if @event.date_rule == false%>
+          <div><%= link_to "Define Final Date", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+        <% end %>
         <div><h4>Report</h4></div>
       </div>
     <% end %>
@@ -43,13 +46,14 @@
     <section class="rounded_box">
       <%=@event.description%>
     </section>
-    <% if registered_user_signed_in? and @event_guest != nil and @event.final_date = nil%>
+
+    <% if registered_user_signed_in? and @event_guest != nil and @event.final_date == nil%>
       <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
         <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
       </section>
-    <%else%>
+    <%elsif registered_user_signed_in? and @event_guest != nil and @event.final_date != nil%>
       <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
-        <%=@event.final_date%>
+        <h3>Final Event Date <%=@event.final_date%></h3>
       </section>
     <%end %>
 
@@ -146,6 +150,7 @@
     <%end %>
 
   </section>
+
 
   <aside class="section_right">
     <h1>Files</h1>
