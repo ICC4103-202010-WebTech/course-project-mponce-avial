@@ -22,6 +22,22 @@ class EventsController < ApplicationController
     @event_images = EventImage.joins(:event).where(event_id: params[:id])
     @event_videos = EventVideo.joins(:event).where(event_id: params[:id])
     @event_pdfs = EventPdf.joins(:event).where(event_id: params[:id])
+    @event_vote_1 = EventGuest.where(event_id: params[:id]).where(date_vote: 1).count
+    @event_vote_2 = EventGuest.where(event_id: params[:id]).where(date_vote: 2).count
+    @event_vote_3 = EventGuest.where(event_id: params[:id]).where(date_vote: 3).count
+    @total_votes = @event_vote_1 + @event_vote_2 + @event_vote_3
+    if @event.date_rule == true and @total_votes > @event.number_of_voters and  @event.final_date == nil
+      if @event_vote_1 = [@event_vote_1,@event_vote_2,@event_vote_3].max
+        @event.final_date = @event.date1
+        @event.save
+      elsif @event_vote_2 = [@event_vote_1,@event_vote_2,@event_vote_3].max
+        @event.final_date == @event.date2
+        @event.save
+      elsif @event_vote_3 = [@event_vote_1,@event_vote_2,@event_vote_3].max
+        @event.final_date == @event.date3
+        @event.save
+      end
+    end
   end
 
   # GET /events/new
@@ -133,6 +149,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility, :date1, :date2, :date3, :organization_id,:event_creator_id,:bannerEvent,imgEvent: [],videosEvent: [],pdfEvent: [])
+      params.fetch(:event, {}).permit(:title,:description,:location,:final_date,:date_rule,:visibility, :date1, :date2, :date3, :organization_id,:event_creator_id,:bannerEvent,:number_of_voters,imgEvent: [],videosEvent: [],pdfEvent: [])
     end
 end

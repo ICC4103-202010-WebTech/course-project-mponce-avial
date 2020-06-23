@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  validates :title, :description, :presence => true
+  validates :title, :description,:number_of_voters, :presence => true
   belongs_to :event_creator, :class_name => 'RegisteredUser', :foreign_key => 'event_creator_id'
   belongs_to :organization,optional: true
   has_many :comments, dependent: :destroy

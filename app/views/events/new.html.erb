@@ -39,9 +39,10 @@
       <%= form.label :visibility %>
       <%= form.select(:visibility,%w{ public private}) %>
     </div>
+    <strong>Required</strong>
     <div class="form-group">
       <%= form.label :number_of_voters %>
-      <%= form.number_field(:number_of_voters, options = {})%>
+      <%= form.number_field(:number_of_voters, in: 1..500)%>
     </div>
     <div class="form-group">
       <%= form.hidden_field :event_creator_id, :value => current_registered_user.id %>

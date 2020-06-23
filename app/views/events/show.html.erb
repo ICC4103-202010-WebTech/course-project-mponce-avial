@@ -43,9 +43,13 @@
     <section class="rounded_box">
       <%=@event.description%>
     </section>
-    <% if registered_user_signed_in? and @event_guest != nil%>
+    <% if registered_user_signed_in? and @event_guest != nil and @event.final_date = nil%>
       <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
         <h2><%= link_to "Vote for the date here", edit_event_event_guest_path(@event.id, @event_guest.id), class: ["btn", "btn-primary"] %></h2>
+      </section>
+    <%else%>
+      <section class="vote_box" data-toggle="modal" data-target="#exampleModal">
+        <%=@event.final_date%>
       </section>
     <%end %>
 

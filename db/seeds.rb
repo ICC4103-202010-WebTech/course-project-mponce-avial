@@ -19,16 +19,16 @@ org5 = Organization.create(name: "Organization 5",organization_banner: 'o5.png',
 
 org6 = Organization.create(name: "Organization 6",organization_banner: 'o6.png',description: "The best organization in the world")
 
-event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: true,visibility: "private",number_of_voters: 3)
-event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: true,visibility: "public",number_of_voters: 4)
-event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: false,visibility: "private",number_of_voters: 5)
-event4 = Event.new(title: "RichardCon", description: "Convencion de richards", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: true,visibility: "public",number_of_voters: 10)
-event5 = Event.new(title: "WebCon", description: "Convencion de Web", banner:"banner.png", location: "Arica", final_date: DateTime.now ,date_rule: false,visibility: "public",number_of_voters: 11)
-event6 = Event.new(title: "Asado Familiar", description: "Asado para reunir a la familia", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: true,visibility: "public",number_of_voters: 7)
-event7 = Event.new(title: "Junta Piola", description: "Junta de amigos", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: true,visibility: "public",number_of_voters: 4)
-event8 = Event.new(title: "Carrete en casa", description: "Carrete de amigos", banner:"banner.png", location: "Valparaiso", final_date: DateTime.now ,date_rule: false,visibility: "private",number_of_voters: 19)
-event9 = Event.new(title: "Partido de Futbol", description: "Partido", banner:"banner.png", location: "Melipilla", final_date: DateTime.now ,date_rule: false,visibility: "public",number_of_voters: 29)
-event10 = Event.new(title: "Partido de Basketball", description: "Partido", banner:"banner.png", location: "Santiago", final_date: DateTime.now ,date_rule: false,visibility: "public",number_of_voters: 5)
+event1 = Event.new(title: "JulioCon", description: "Convencion de julios", banner:"banner.png", location: "Melipilla",date_rule: true,visibility: "private",number_of_voters: 3)
+event2 = Event.new(title: "JojoCon", description: "Convencion de Jojo", banner:"banner.png", location: "Santiago",date_rule: true,visibility: "public",number_of_voters: 4)
+event3 = Event.new(title: "MatiasCon", description: "Convencion de matias", banner:"banner.png", location: "Santiago",date_rule: false,visibility: "private",number_of_voters: 5)
+event4 = Event.new(title: "RichardCon", description: "Convencion de richards", banner:"banner.png", location: "Melipilla" ,date_rule: true,visibility: "public",number_of_voters: 10)
+event5 = Event.new(title: "WebCon", description: "Convencion de Web", banner:"banner.png", location: "Arica",date_rule: false,visibility: "public",number_of_voters: 11)
+event6 = Event.new(title: "Asado Familiar", description: "Asado para reunir a la familia", banner:"banner.png", location: "Melipilla",date_rule: true,visibility: "public",number_of_voters: 7)
+event7 = Event.new(title: "Junta Piola", description: "Junta de amigos", banner:"banner.png", location: "Santiago",date_rule: true,visibility: "public",number_of_voters: 4)
+event8 = Event.new(title: "Carrete en casa", description: "Carrete de amigos", banner:"banner.png", location: "Valparaiso",date_rule: false,visibility: "private",number_of_voters: 19)
+event9 = Event.new(title: "Partido de Futbol", description: "Partido", banner:"banner.png", location: "Melipilla",date_rule: false,visibility: "public",number_of_voters: 29)
+event10 = Event.new(title: "Partido de Basketball", description: "Partido", banner:"banner.png", location: "Santiago",date_rule: false,visibility: "public",number_of_voters: 5)
 
 
 event1.event_creator = user2
