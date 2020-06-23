@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   post 'events/:events_id', to: "events#create_comment"
 
+  get '/members', to: "organizations#members"
+
   #Admin namespace
   namespace :api, defaults: { format: :json } do
     namespace :v1 do

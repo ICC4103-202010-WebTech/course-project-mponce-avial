@@ -23,11 +23,13 @@
   </div>
   <% end %>
 </head>
-<%if can? :update, @organization %>
+
   <div class="edit_organization">
-    <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
+    <%= link_to "Members", members_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
+    <%if can? :update, @organization %>
+      <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
+    <%end %>
   </div>
-<%end %>
 
 <h2>Events</h2>
 <hr>
