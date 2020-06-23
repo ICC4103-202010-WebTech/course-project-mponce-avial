@@ -1,0 +1,81 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<h2><%=@organization.name.upcase %> MEMBERS </h2>
+
+<h3>Admins</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@organizations.each do |org| %>
+    <tr>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+      <td><%= link_to "-", admin_organization_path(org.id), remote: true , data: { confirm: "Are you sure you want delete this organization?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Members</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@organizations.each do |org| %>
+    <tr>
+      <td><%= link_to org.name, controller: "organizations", action: "show", id: org.id%></td>
+      <td><%= link_to "-", admin_organization_path(org.id), remote: true , data: { confirm: "Are you sure you want delete this organization?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Add Admin</h3>
+
+<%= form_with model: @organization_admin do |form| %>
+
+  <%= form.hidden_field :organization, value: @organization.id %>
+
+  <div class="form-group">
+    <%= form.label :Name %>
+    <%= form.select(:admin, @users.map{ |c| [c.name + c.last_name, c.id]})%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+  </div>
+<% end %>
+
+
+<h3>Add Member</h3>
+
+<%= form_with model: @organization_member do |form| %>
+
+  <%= form.hidden_field :organization, value: @organization.id %>
+
+  <div class="form-group">
+    <%= form.label :Name %>
+    <%= form.select(:registered_user, @users.map{ |c| [c.name + c.last_name, c.id]})%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+  </div>
+<% end %>

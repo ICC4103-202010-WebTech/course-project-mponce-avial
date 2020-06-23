@@ -1,6 +1,6 @@
 <h1>Define Final Date</h1>
 
-<% if registered_user_signed_in? and @event.number_of_voters < @total_votes and @event.final_date == nil%>
+<% if registered_user_signed_in? and @event.number_of_voters <= @total_votes and @event.final_date == nil%>
 
   <h4>Date 1: <%= @event.date1%> [Votes: <%=@event_vote_1%>]</h4>
   <h4>Date 2: <%= @event.date2%> [Votes: <%=@event_vote_2%>]</h4>
@@ -18,7 +18,7 @@
       </div>
     <% end %>
   </div>
-<%elsif  registered_user_signed_in? and @event.number_of_voters < @total_votes and @event.final_date != nil%>
+<%elsif  registered_user_signed_in? and @event.number_of_voters <= @total_votes and @event.final_date != nil%>
   <h2>*The final date was chosen*</h2>
 <%else%>
   <h2>*The voting has not closed*</h2>

@@ -9,10 +9,11 @@ class Ability
         can :manage, :all
       elsif user.class.name == "RegisteredUser"
         can :read, :all
+        can :create, Organization
         can :manage, Event, :event_creator_id => user.id
         can :manage, UserProfile, :registered_user_id => user.id
-        can :manage, Organization do |org|
-          org.organization_admin_ids.include? user.id
+        can [:update, :destroy], Organization do |org|
+          OrganizationAdmin.where(:organization_id => org.id).pluck(:admin_id).include? user.id
         end
       end
     end

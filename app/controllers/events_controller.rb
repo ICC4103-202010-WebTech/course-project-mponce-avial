@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @rule = @event.date_rule
     begin
       @event_guest = EventGuest.where(event_id: params[:id], registered_user_id: current_registered_user.id).take
     rescue
@@ -29,18 +30,20 @@ class EventsController < ApplicationController
     @event_vote_3 = EventGuest.where(event_id: params[:id]).where(date_vote: 3).count
     @total_votes = @event_vote_1 + @event_vote_2 + @event_vote_3
 
-    if @event.date_rule = true and @total_votes > @event.number_of_voters and  @event.final_date = nil
-      if @event_vote_1 = [@event_vote_1,@event_vote_2,@event_vote_3].max
+    if @event.date_rule == true and @total_votes >= @event.number_of_voters and  @event.final_date == nil
+      if @event_vote_1 == [@event_vote_1,@event_vote_2,@event_vote_3].max
         @event.final_date = @event.date1
         @event.save
-      elsif @event_vote_2 = [@event_vote_1,@event_vote_2,@event_vote_3].max
-        @event.final_date == @event.date2
+      elsif @event_vote_2 == [@event_vote_1,@event_vote_2,@event_vote_3].max
+        @event.final_date = @event.date2
         @event.save
-      elsif @event_vote_3 = [@event_vote_1,@event_vote_2,@event_vote_3].max
-        @event.final_date == @event.date3
+      elsif @event_vote_3 == [@event_vote_1,@event_vote_2,@event_vote_3].max
+        @event.final_date = @event.date3
         @event.save
       end
     end
+
+    @date = @event.final_date
   end
 
   # GET /events/new
@@ -72,9 +75,9 @@ class EventsController < ApplicationController
 
   def define_final_date
     @event = Event.find(params[:event_id])
-    @event_vote_1 = EventGuest.where(event_id: params[:id]).where(date_vote: 1).count
-    @event_vote_2 = EventGuest.where(event_id: params[:id]).where(date_vote: 2).count
-    @event_vote_3 = EventGuest.where(event_id: params[:id]).where(date_vote: 3).count
+    @event_vote_1 = EventGuest.where(event_id: @event.id).where(date_vote: 1).count
+    @event_vote_2 = EventGuest.where(event_id: @event.id).where(date_vote: 2).count
+    @event_vote_3 = EventGuest.where(event_id: @event.id).where(date_vote: 3).count
     @total_votes = @event_vote_1 + @event_vote_2 + @event_vote_3
   end
 
