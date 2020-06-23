@@ -1,7 +1,6 @@
 <head>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 </head>
@@ -16,18 +15,18 @@
 
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
+  <div class="form_group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
+  <div class="form_group">
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="form_group">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
@@ -38,5 +37,5 @@
   </div>
 <% end %>
 
-<%= link_to "Sign in with Google", registered_user_google_oauth2_omniauth_authorize_path %>
+<%= link_to "Sign in with Google", registered_user_google_oauth2_omniauth_authorize_path  ,class: ["btn", "btn-primary"]%>
 <%= render "devise/shared/links" %>

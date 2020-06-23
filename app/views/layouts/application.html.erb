@@ -32,10 +32,10 @@
     </span>
 
     <%if registered_user_signed_in? || system_administrator_signed_in?%>
-      <%= link_to "Log Out", destroy_registered_user_session_path, method: :delete %>
+      <%= link_to "Log Out", destroy_registered_user_session_path, method: :delete%>
     <%else%>
-      <%= link_to "Sign In", new_registered_user_session_path %>
-      <%= link_to "Sign Up", new_registered_user_registration_path %>
+      <%= link_to "Sign In", new_registered_user_session_path%>
+      <%= link_to "Sign Up", new_registered_user_registration_path%>
     <% end %>
 
   </div>
