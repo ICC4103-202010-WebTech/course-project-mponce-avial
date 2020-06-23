@@ -1,0 +1,25 @@
+<h1>Define Final Date</h1>
+
+<% if registered_user_signed_in? and @event.number_of_voters < @total_votes and @event.final_date == nil%>
+
+  <h4>Date 1: <%= @event.date1%> [Votes: <%=@event_vote_1%>]</h4>
+  <h4>Date 2: <%= @event.date2%> [Votes: <%=@event_vote_2%>]</h4>
+  <h4>Date 3: <%=@event.date3%> [Votes: <%=@event_vote_3%>]</h4>
+
+  <div class="row ml-0">
+    <%= form_with model: @event do |form| %>
+      <div class="form-group">
+        <%= form.label :Choose_the_final_date %>
+        <%=form.select :final_date, [['Date 1', @event.date1], ['Date 2', @event.date2], ['Date 3', @event.date3]]%>
+      </div>
+      <div class="form-group">
+        <%= form.submit "Edit", class: ["btn", "btn-primary"] %>
+        <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+      </div>
+    <% end %>
+  </div>
+<%elsif  registered_user_signed_in? and @event.number_of_voters < @total_votes and @event.final_date != nil%>
+  <h2>*The final date was chosen*</h2>
+<%else%>
+  <h2>*The voting has not closed*</h2>
+<%end%>

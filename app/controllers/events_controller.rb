@@ -70,6 +70,14 @@ class EventsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def define_final_date
+    @event = Event.find(params[:event_id])
+    @event_vote_1 = EventGuest.where(event_id: params[:id]).where(date_vote: 1).count
+    @event_vote_2 = EventGuest.where(event_id: params[:id]).where(date_vote: 2).count
+    @event_vote_3 = EventGuest.where(event_id: params[:id]).where(date_vote: 3).count
+    @total_votes = @event_vote_1 + @event_vote_2 + @event_vote_3
+  end
+
   def remove
     @event = params[:event_id]
   end

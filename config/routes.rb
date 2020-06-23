@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get '/videos', to: 'events#videos'
 
+  get '/define_final_date', to: 'events#define_final_date'
+
   post 'events/:events_id', to: "events#create_comment"
 
   #Admin namespace
