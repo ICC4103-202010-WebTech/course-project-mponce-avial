@@ -10,6 +10,7 @@ class Ability
       elsif user.class.name == "RegisteredUser"
         can :read, :all
         can :manage, Event, :event_creator_id => user.id
+        can :manage, UserProfile, :registered_user_id => user.id
         can :manage, Organization do |org|
           org.organization_admin_ids.include? user.id
         end

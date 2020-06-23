@@ -35,9 +35,11 @@
     <p>Last connection : <%=@registered_user.last_sign_in_at%></p>
   <% end %>
   <div>
-    <div class="edit_profile">
-      <%= link_to "Edit Profile",edit_user_profile_path(:user_profile_id => @user_profile.id),class: ["btn", "btn-primary", "mr-4"]%>
-    </div>
+    <%if can? :update, @user_profile %>
+      <div class="edit_profile">
+        <%= link_to "Edit Profile",edit_user_profile_path(:user_profile_id => @user_profile.id),class: ["btn", "btn-primary", "mr-4"]%>
+      </div>
+    <%end %>
     <h3>Biography:</h3>
     <div class="biography">
       <h3><%=@user_profile.biography%></h3>
