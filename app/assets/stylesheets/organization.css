@@ -42,6 +42,9 @@
     margin-block-end: 20px;
 }
 
+.button_line{
+    text-align: center;
+}
 .edit_organization{
     float: right;
 }
