@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<html>
+
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<h2>REPORTS</h2>
+<br>
+<h2>Users</h2>
+<table>
+  <tr>
+    <th>User Reported</th>
+    <th>User Sender</th>
+    <th>Message</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@reports_users.each do |u| %>
+    <tr>
+      <td><%=link_to RegisteredUser.find(u.reported_id).name + " "+RegisteredUser.find(u.reported_id).last_name , controller: "user_profiles", action: "show", id: u.reported_id%></td>
+      <td><%= link_to u.user_report.name + " " + u.user_report.last_name, controller: "user_profiles", action: "show", id: u.user_report.id%></td>
+      <td><%= u.message%></td>
+      <td><%= link_to "-", admin_blacklists_path(u.id), remote: true , data: { confirm: "Are you sure you want delete this event?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<h2>Events</h2>
+<table>
+  <tr>
+    <th>Event Reported</th>
+    <th>User Sender</th>
+    <th>Message</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@reports_events.each do |u| %>
+    <tr>
+      <td><%=link_to Event.find(u.reported_id).title, controller: "events", action: "show", id: u.reported_id%></td>
+      <td><%= link_to u.user_report.name + " " + u.user_report.last_name, controller: "user_profiles", action: "show", id: u.user_report.id%></td>
+      <td><%= u.message%></td>
+      <td><%= link_to "-", admin_blacklists_path(u.id), remote: true , data: { confirm: "Are you sure you want delete this event?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<h2>Organization</h2>
+<table>
+  <tr>
+    <th>Organization Reported</th>
+    <th>User Sender</th>
+    <th>Message</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@reports_organizations.each do |u| %>
+    <tr>
+      <td><%=link_to Organization.find(u.reported_id).name, controller: "organizations", action: "show", id: u.reported_id%></td>
+      <td><%= link_to u.user_report.name + " " + u.user_report.last_name, controller: "user_profiles", action: "show", id: u.user_report.id%></td>
+      <td><%= u.message%></td>
+      <td><%= link_to "-", admin_blacklists_path(u.id), remote: true , data: { confirm: "Are you sure you want delete this event?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>

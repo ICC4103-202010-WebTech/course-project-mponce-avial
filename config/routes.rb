@@ -63,6 +63,8 @@ Rails.application.routes.draw do
       resource :system_administrators do
         resources :registered_users
       end
+
+      resources :blacklists
     end
   end
 
@@ -90,6 +92,7 @@ Rails.application.routes.draw do
 
     resources :registered_users
     resources :user_profiles
+    resources :blacklists
 
   end
 
