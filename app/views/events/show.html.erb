@@ -61,6 +61,10 @@
     <%@event_comments.each do |comment| %>
       <div class="card">
         <div class="card-body">
+          <div class="row ml-0 mt-2 mb-3">
+            <%= button_to 'Edit Comment', edit_comment_path(comment.id),  method: :get, class: ["btn", "btn-primary", "mr-4"]%>
+            <%= button_to 'Delete Comment', comment_path(comment.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+          </div>
           <div class="row">
             <div class="col-md-2">
               <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
@@ -99,6 +103,10 @@
                   <div class="col-md-10">
                     <p><strong><%= link_to reply.registered_user.name+" "+reply.registered_user.last_name, user_profile_path(reply.registered_user.id) %></strong></p>
                     <p><%=reply.text %></p>
+                    <div class="row ml-0 mt-2 mb-3">
+                      <%= button_to 'Edit Reply', edit_reply_path(reply.id), method: :get, class: ["btn", "btn-primary", "mr-4"]%>
+                      <%= button_to 'Delete Reply', reply_path(reply.id), method: :delete, class: ["btn", "btn-primary", "mr-4"]%>
+                    </div>
                   </div>
                 </div>
               </div>

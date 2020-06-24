@@ -25,8 +25,8 @@
 </head>
 
   <div class="button_line">
+    <%= link_to "Members", members_path(:organization => @organization),class: ["btn", "btn-primary", "mr-4"] %>
     <%if can? :update, @organization %>
-      <%= link_to "Members", members_path(:organization => @organization),class: ["btn", "btn-primary", "mr-4"] %>
       <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
     <%end %>
     <div><%= link_to "Report",new_blacklist_path(:reported_id => @organization.id,:reported_type=>"organization"), class: ["btn", "btn-primary", "mr-4"] %></div>

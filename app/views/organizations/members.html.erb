@@ -21,13 +21,17 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Delete</th>
+    <%if can? :update, @org %>
+      <th>Delete</th>
+    <%end %>
   </tr>
 
   <%@organization_admins.each do |adm| %>
     <tr>
       <td><%= link_to adm.admin.name + " " + adm.admin.last_name, controller: "user_profiles", action: "show", id: adm.admin.id%></td>
-      <td><%= link_to "-", organization_admin_path(adm.id), remote: true , data: { confirm: "Are you sure you want delete this admin?" },class: "btn btn-danger", method: :delete%></td>
+      <%if can? :update, @org %>
+        <td><%= link_to "-", organization_admin_path(adm.id), remote: true , data: { confirm: "Are you sure you want delete this admin?" },class: "btn btn-danger", method: :delete%></td>
+      <%end %>
     </tr>
   <% end %>
 </table>
@@ -36,46 +40,52 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Delete</th>
+    <%if can? :update, @org %>
+      <th>Delete</th>
+    <%end %>
   </tr>
 
   <%@organization_members.each do |mem| %>
     <tr>
       <td><%= link_to mem.registered_user.name + " " + mem.registered_user.last_name, controller: "user_profiles", action: "show", id: mem.registered_user.id%></td>
-      <td><%= link_to "-", organization_member_path(mem.id), remote: true , data: { confirm: "Are you sure you want delete this member?" },class: "btn btn-danger", method: :delete%></td>
+      <%if can? :update, @org %>
+        <td><%= link_to "-", organization_member_path(mem.id), remote: true , data: { confirm: "Are you sure you want delete this member?" },class: "btn btn-danger", method: :delete%></td>
+      <%end %>
     </tr>
   <% end %>
 </table>
 
-<h3>Add Admin</h3>
+<%if can? :update, @org %>
+  <h3>Add Admin</h3>
 
-<%= form_with model: @admin do |form| %>
+  <%= form_with model: @admin do |form| %>
 
-  <%= form.hidden_field :organization, value: @org.id %>
+    <%= form.hidden_field :organization, value: @org.id %>
 
-  <div class="form-group">
-    <%= form.label :Name %>
-    <%= form.select(:admin, @users_not_admin.map{ |c| [c.name + " " + c.last_name, c.id]})%>
-  </div>
+    <div class="form-group">
+      <%= form.label :Name %>
+      <%= form.select(:admin, @users_not_admin.map{ |c| [c.name + " " + c.last_name, c.id]})%>
+    </div>
 
-  <div class="form-group">
-    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
-  </div>
-<% end %>
+    <div class="form-group">
+      <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+    </div>
+  <% end %>
 
 
-<h3>Add Member</h3>
+  <h3>Add Member</h3>
 
-<%= form_with model: @member do |form| %>
+  <%= form_with model: @member do |form| %>
 
-  <%= form.hidden_field :organization, value: @org.id %>
+    <%= form.hidden_field :organization, value: @org.id %>
 
-  <div class="form-group">
-    <%= form.label :Name %>
-    <%= form.select(:registered_user, @users_not_members.map{ |c| [c.name + " " + c.last_name, c.id]})%>
-  </div>
+    <div class="form-group">
+      <%= form.label :Name %>
+      <%= form.select(:registered_user, @users_not_members.map{ |c| [c.name + " " + c.last_name, c.id]})%>
+    </div>
 
-  <div class="form-group">
-    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
-  </div>
+    <div class="form-group">
+      <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+    </div>
+  <% end %>
 <% end %>
