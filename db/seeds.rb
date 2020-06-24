@@ -156,47 +156,6 @@ orgmem6.organization = org6
 orgmem6.registered_user = user6
 orgmem6.save!
 
-bck_ls_1 = Blacklist.new()
-bck_ls_1.blacklist_owner = user1
-bck_ls_1.banned_user = user2
-bck_ls_1.save!
-
-bck_ls_2 = Blacklist.new()
-bck_ls_2.blacklist_owner = user2
-bck_ls_2.banned_user = user3
-bck_ls_2.save!
-
-bck_ls_3 = Blacklist.new()
-bck_ls_3.blacklist_owner = user3
-bck_ls_3.banned_user = user1
-bck_ls_3.save!
-
-bck_ls_4 = Blacklist.new()
-bck_ls_4.blacklist_owner = user4
-bck_ls_4.banned_user = user2
-bck_ls_4.save!
-
-bck_ls_5 = Blacklist.new()
-bck_ls_5.blacklist_owner = user5
-bck_ls_5.banned_user = user3
-bck_ls_5.save!
-
-bck_ls_6 = Blacklist.new()
-bck_ls_6.blacklist_owner = user6
-bck_ls_6.banned_user = user7
-bck_ls_6.save!
-
-bck_ls_7 = Blacklist.new()
-bck_ls_7.blacklist_owner = user7
-bck_ls_7.banned_user = user5
-bck_ls_7.save!
-
-bck_ls_8 = Blacklist.new()
-bck_ls_8.blacklist_owner = user8
-bck_ls_8.banned_user = user4
-bck_ls_8.save!
-
-
 com1 = Comment.new(profile_picture: 'p1.png',text: 'hola',image: 'p2.png')
 com1.event = event1
 com1.registered_user = user1

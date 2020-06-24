@@ -15,6 +15,10 @@ class BlacklistsController < ApplicationController
   # GET /blacklists/new
   def new
     @blacklist = Blacklist.new
+    @reported_type = params[:reported_type]
+    if @reported_type = "event"
+      @reported = Event.find(params[:reported_id])
+    end
   end
 
   # GET /blacklists/1/edit
@@ -24,15 +28,17 @@ class BlacklistsController < ApplicationController
   # POST /blacklists
   # POST /blacklists.json
   def create
-    @blacklist = Blacklist.new(blacklist_params)
+    @blacklist = Blacklist.new(reported_type: params[:blacklist][:reported_type],reported_id: params[:blacklist][:reported_id],user_report_id: params[:blacklist][:user_report], message: params[:blacklist][:message])
 
     respond_to do |format|
       if @blacklist.save
-        format.html { redirect_to @blacklist, notice: 'Blacklist was successfully created.' }
-        format.json { render :show, status: :created, location: @blacklist }
-      else
-        format.html { render :new }
-        format.json { render json: @blacklist.errors, status: :unprocessable_entity }
+        if @blacklist.reported_type = "event"
+          redirect_to event_path(@blacklist.reported_id)
+        elsif @blacklist.reported_type = "organization"
+          redirect_to organizations_path(@blacklist.reported_id)
+        elsif @blacklist.reported_type = "user"
+          redirect_to user_profile_path(@blacklist.reported_id)
+        end
       end
     end
   end
@@ -69,6 +75,6 @@ class BlacklistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def blacklist_params
-      params.fetch(:blacklist, {})
+      params.fetch(:blacklist, {}).permit(:reported_type,:reported_id,:user_report_id,:message)
     end
 end

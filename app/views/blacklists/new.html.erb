@@ -1,5 +1,23 @@
-<h1>New Blacklist</h1>
+<h1>Report</h1>
 
-<%= render 'form', blacklist: @blacklist %>
-
-<%= link_to 'Back', blacklists_path %>
+<div class="row ml-0">
+  <%= form_with model: @blacklist do |form| %>
+    <div class="form-group">
+      <%= form.hidden_field :reported_type, value: @reported_type %>
+    </div>
+    <div class="form-group">
+      <%= form.hidden_field :reported_id, value: @reported.id%>
+    </div>
+    <div class="form-group">
+      <%= form.hidden_field :user_report, value: current_registered_user.id %>
+    </div>
+    <div class="form-group">
+      <%= form.label :Message %>
+      <%= form.text_area :message, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= form.submit "Report", class: ["btn", "btn-primary"] %>
+      <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    </div>
+  <% end %>
+</div>

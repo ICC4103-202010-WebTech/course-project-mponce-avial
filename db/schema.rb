@@ -34,12 +34,13 @@ ActiveRecord::Schema.define(version: 2020_06_19_013012) do
   end
 
   create_table "blacklists", force: :cascade do |t|
-    t.integer "blacklist_owner_id"
-    t.integer "banned_user_id"
+    t.string "reported_type"
+    t.integer "reported_id"
+    t.integer "user_report_id"
+    t.string "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["banned_user_id"], name: "index_blacklists_on_banned_user_id"
-    t.index ["blacklist_owner_id"], name: "index_blacklists_on_blacklist_owner_id"
+    t.index ["user_report_id"], name: "index_blacklists_on_user_report_id"
   end
 
   create_table "comments", force: :cascade do |t|

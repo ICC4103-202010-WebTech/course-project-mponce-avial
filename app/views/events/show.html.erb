@@ -39,9 +39,8 @@
       <% end %>
     </div>
   <% else %>
-    <div><%= link_to "Report",define_final_date_path(:event_id => @event.id), class: ["btn", "btn-primary"] %></div>
+    <div><%= link_to "Report",new_blacklist_path(:reported_id => @event.id,:reported_type=>"evento"), class: ["btn", "btn-primary"] %></div>
   <% end %>
-
 
   <h2>Description:</h2>
   <section class="rounded_box">
