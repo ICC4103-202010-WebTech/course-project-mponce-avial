@@ -105,7 +105,7 @@ Postman link: https://www.getpostman.com/collections/6579499dc7e32a9305a1
 
 # Course Project Part 3
 
-## Summary of implemented features
+## Summary of implemented features:
 
 NOTE: to access the admin namespace, you have to go to localhost:3000/admin
 
@@ -143,6 +143,19 @@ NOTE: to access the admin namespace, you have to go to localhost:3000/admin
       * Search event by organization
       * Search event by title/description
       * Search event by its creator
+      
+# Course Project Part 4 (FINAL)
+
+## Summary of implemented features:
+
+NOTE: to access the admin namespace, you have to go to localhost:3000/admin, we dont plan to make a button for this because in the logic of an actual page this would be the case.
+
+* Added User authentication (with Devise gem) logic:
+   * You can register with an email and password or you can log in with a google account.
+   * You can request E-Calendar to send you a recovery password email if you forgot your password.
+   * You can change your email address and password (there is a link for this located in the edit section of your profile).
+   * In the same section as before, you can also delete your account (although it will be very sad if you do it).
+   * You can select "remember me" when you log in to maintain your session even if you close the page.
 
 ## Summary of thing required for this assigment but pending
 
