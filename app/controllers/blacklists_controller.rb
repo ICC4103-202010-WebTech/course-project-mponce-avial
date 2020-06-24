@@ -14,13 +14,14 @@ class BlacklistsController < ApplicationController
 
   # GET /blacklists/new
   def new
+    @blacklist = Blacklist.new
     @reported_type = params[:reported_type]
-    @r_type = @reported_type
-    if @r_type = "event"
+    @r = @reported_type
+    if @reported_type = "event"
       @reported = Event.find(params[:reported_id])
-    elsif @r_type = "organization"
+    elsif @reported_type = "organization"
       @reported = Organization.find(params[:reported_id])
-    elsif @r_type = "user"
+    elsif @reported_type = "user"
       @reported = RegisteredUser.find(params[:reported_id])
     end
   end
