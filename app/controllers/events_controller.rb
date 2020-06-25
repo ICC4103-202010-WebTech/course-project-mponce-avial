@@ -7,7 +7,7 @@ class EventsController < ApplicationController
   def index
     #@events = Event.all
     @events_created = Event.where(event_creator_id: current_registered_user.id)
-    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: current_registered_user.id})
+    @events_joined = Event.joins(:event_guests).where(event_guests:{registered_user_id: current_registered_user.id}).where.not(event_creator_id: current_registered_user.id)
   end
 
   # GET /events/1
