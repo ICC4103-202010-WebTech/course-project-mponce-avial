@@ -9,7 +9,6 @@ class RegisteredUser < ApplicationRecord
   before_create :build_user_profile
   has_many :events, dependent: :destroy, foreign_key: "event_creator_id"
   has_one :user_profile, dependent: :destroy
-  has_one :blacklist, dependent: :destroy, foreign_key: "blacklist_owner_id"
   has_many :organization_admins, dependent: :destroy, foreign_key: "admin_id"
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy

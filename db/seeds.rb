@@ -360,3 +360,7 @@ epdf1.save!
 epdf2 = EventPdf.new(pdf: 'p2.pdf')
 epdf2.event = event2
 epdf2.save!
+
+b1 = Blacklist.create(reported_type: 'event', message: 'wyfhweifgeyuwefewfwef', reported_id: '1', user_report_id: '5' )
+b2 = Blacklist.create(reported_type: 'organization', message: 'eeeeeeeeeeeeeeeeeeeeeeeeeeeee', reported_id: '3', user_report_id: '5' )
+b3 = Blacklist.create(reported_type: 'user', message: 'aaaaaaaaaaaaaaaaaaaaaaa', reported_id: '3', user_report_id: '5' )
