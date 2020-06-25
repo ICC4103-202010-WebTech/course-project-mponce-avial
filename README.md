@@ -205,4 +205,4 @@ MORE IMPORTANT NOTE: to create an admin, you have to do it by running the rake a
 
 ## Summary of thing required for this assigment but pending or bugs:
 
-* The reply button is not working on a comment if the page your are in was redirect from somewhere else, it should be fixed if you reload the page
+* The reply button is not working on a comment if the page your are in was redirect from somewhere else, it should be fixed if you reload the page (sometimes, we don't know how to tirgger the bug anymore)
