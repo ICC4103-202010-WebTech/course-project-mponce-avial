@@ -107,6 +107,9 @@ Rails.application.routes.draw do
     resources :event_images
     resources :event_pdfs
     resources :event_videos
+    resources :comments do
+      resources :replies
+    end
   end
 
   resources :organizations do

@@ -1,11 +1,11 @@
 <div class="row ml-0 mt-3">
-  <h2>Edit Reply</h2>
+  <h2>Edit Comment</h2>
 </div>
 <div class="row ml-0 mt-2">
-  <p>Please enter the required information to edit the Reply:</p>
+  <p>Please enter the required information to edit the Comment:</p>
 </div>
 <div class="row ml-0">
-  <%= form_with model: @reply, url: admin_reply_path do |form| %>
+  <%= form_with model: @comment do |form| %>
 
     <div class="form-group">
       <%= form.label :text %>

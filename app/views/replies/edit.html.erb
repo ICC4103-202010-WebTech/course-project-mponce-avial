@@ -5,7 +5,7 @@
   <p>Please enter the required information to edit the Reply:</p>
 </div>
 <div class="row ml-0">
-  <%= form_with model: @reply, url: admin_reply_path do |form| %>
+  <%= form_with model: @reply do |form| %>
 
     <div class="form-group">
       <%= form.label :text %>
