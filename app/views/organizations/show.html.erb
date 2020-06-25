@@ -29,7 +29,7 @@
     <%if can? :update, @organization %>
       <%= link_to "Edit Organization",edit_organization_path(:organization_id => @organization.id),class: ["btn", "btn-primary", "mr-4"] %>
       <%= link_to "Delete Organization", organization_path(@organization.id), method: :delete, class: ["btn", "btn-danger", "mr-4"] %>
-    <% else %>
+    <% elsif registered_user_signed_in? %>
       <div><%= link_to "Report",new_blacklist_path(:reported_id => @organization.id,:reported_type=>"organization"), class: ["btn", "btn-danger", "mr-4"] %></div>
     <% end %>
   </div>

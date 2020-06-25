@@ -44,7 +44,7 @@
 
   <div class="form-group">
     <%= form.submit "Invite", class: ["btn", "btn-primary"] %>
-    <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
+    <%= link_to "Back", event_path(@event.id), class: ["btn", "btn-secondary"] %>
   </div>
 <% end %>
 <% end %>

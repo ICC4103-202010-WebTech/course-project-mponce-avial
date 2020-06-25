@@ -17,11 +17,11 @@ class BlacklistsController < ApplicationController
     @blacklist = Blacklist.new
     @reported_type = params[:reported_type]
     @r = @reported_type
-    if @reported_type = "event"
+    if @reported_type == "event"
       @reported = Event.find(params[:reported_id])
-    elsif @reported_type = "organization"
+    elsif @reported_type == "organization"
       @reported = Organization.find(params[:reported_id])
-    elsif @reported_type = "user"
+    elsif @reported_type == "user"
       @reported = RegisteredUser.find(params[:reported_id])
     end
   end

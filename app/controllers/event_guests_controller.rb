@@ -40,9 +40,8 @@ class EventGuestsController < ApplicationController
     @event_guest.event_id = params[:event_guest][:event]
     @event_guest.registered_user_id = params[:event_guest][:invite]
 
-    if @event_guest.save
-      redirect_to event_path(@event_guest.event.id)
-    end
+    @event_guest.save
+    redirect_back(fallback_location: root_path)
   end
 
   # PATCH/PUT /event_guests/1

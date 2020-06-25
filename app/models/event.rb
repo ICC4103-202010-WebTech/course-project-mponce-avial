@@ -11,4 +11,13 @@ class Event < ApplicationRecord
   has_many_attached :imgEvent
   has_many_attached :videosEvent
   has_many_attached :pdfEvent
+
+  before_destroy :delete_blacklists
+
+  private
+  def delete_blacklists
+    Blacklist.where(:reported_type => "event", :reported_id => self.id).each { |b|
+      b.destroy
+    }
+  end
 end
