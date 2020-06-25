@@ -24,6 +24,7 @@ class EventGuestsController < ApplicationController
     end
 
     @users= RegisteredUser.where.not(id: @already_invited )
+    @event_guests = EventGuest.where(event_id: params[:event_id]).where.not(registered_user_id: @event.event_creator_id)
   end
 
   # GET /event_guests/1/edit
@@ -58,10 +59,7 @@ class EventGuestsController < ApplicationController
   # DELETE /event_guests/1.json
   def destroy
     @event_guest.destroy
-    respond_to do |format|
-      format.html { redirect_to event_guests_url, notice: 'Event guest was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

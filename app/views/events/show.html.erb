@@ -33,13 +33,16 @@
       <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
       <div><%= button_to 'Destroy', @event, method: :delete, class: ["btn", "btn-primary", "mr-4"]%></div>
       <div><%= link_to "Upload Files",upload_files_path(:event_id => @event.id), method: "get",class: ["btn", "btn-primary", "mr-4"] %></div>
-      <div><%= link_to "Invite", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+      <div><%= link_to "Guests", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
       <% if @rule == false%>
         <div><%= link_to "Define Final Date",define_final_date_path(:event_id => @event.id), class: ["btn", "btn-primary"] %></div>
       <% end %>
     </div>
   <% else %>
-    <div><%= link_to "Report",new_blacklist_path(:reported_id => @event.id,:reported_type=>"event"), class: ["btn", "btn-primary"] %></div>
+    <div class="button_line">
+      <div><%= link_to "Guests", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+      <div><%= link_to "Report",new_blacklist_path(:reported_id => @event.id,:reported_type=>"event"), class: ["btn", "btn-primary"] %></div>
+    </div>
   <% end %>
 
   <h2>Description:</h2>

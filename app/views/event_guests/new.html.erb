@@ -3,7 +3,35 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
-<h1>Invite People to the Event</h1>
+<style>
+  table, th, td {
+    border: 1px solid black;
+  }
+</style>
+
+<h1>Event Guests</h1>
+<h5>Event created by: <%= link_to @event.event_creator.name + " " + @event.event_creator.last_name, controller: "user_profiles", action: "show", id: @event.event_creator.id%></h5>
+<table>
+  <tr>
+    <th>Invited</th>
+    <%if can? :update, @event%>
+      <th>Delete</th>
+    <%end %>
+  </tr>
+  <%@event_guests.each do |e| %>
+    <tr>
+      <td><%= link_to e.registered_user.name + " " + e.registered_user.last_name, controller: "user_profiles", action: "show", id: e.registered_user.id%></td>
+      <%if can? :update, @event %>
+        <td><%= link_to "-", event_guest_path(e.id), remote: true , data: { confirm: "Are you sure you want delete this guest?" },class: "btn btn-danger", method: :delete%></td>
+      <%end %>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<%if can? :update, @event %>
+<h3>Invite People to the Event</h3>
 
 <%= form_with model: @event_guest do |form| %>
 
@@ -18,4 +46,5 @@
     <%= form.submit "Invite", class: ["btn", "btn-primary"] %>
     <%= link_to "Back", :back, class: ["btn", "btn-secondary"] %>
   </div>
+<% end %>
 <% end %>
