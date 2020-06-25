@@ -31,7 +31,7 @@
       <% end %>
     </span>
 
-    <%if registered_user_signed_in? || system_administrator_signed_in?%>
+    <%if registered_user_signed_in?%>
       <%= link_to "Log Out", destroy_registered_user_session_path, method: :delete%>
     <%else%>
       <%= link_to "Sign In", new_registered_user_session_path%>
