@@ -148,9 +148,11 @@ NOTE: to access the admin namespace, you have to go to localhost:3000/admin
 
 ## Summary of implemented features:
 
-NOTE: to access the admin namespace, you have to go to localhost:3000/admin, we dont plan to make a button for this because in the logic of an actual page this would be the case.
+NOTE 1: to access the admin namespace, you have to go to localhost:3000/admin, we dont plan to make a button for this because in the logic of an actual page this would be the case.
 
-MORE IMPORTANT NOTE: to create an admin, you have to do it by running the rake admin:create_admin command, which will create an admin account with the email: admin@ecalendar.com
+NOTE 2: to create an admin, you have to do it by running the rake admin:create_admin command, which will create an admin account with the email: admin@ecalendar.com
+
+NOTE 3: if you can't find the recovery password email, search in the spam section, and move it to your main mailbox for the links to appear on the body of the email (because gmail automatically removes links of spam emails).
 
 * Added User authentication (with Devise gem) logic:
    * You can register with an email and password or you can log in with a google account.
