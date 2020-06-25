@@ -38,15 +38,13 @@ class Admin::BlacklistsController < AdminController
   def create
     @blacklist = Blacklist.new(reported_type: params[:blacklist][:reported_type],reported_id: params[:blacklist][:reported_id],user_report_id: params[:blacklist][:user_report], message: params[:blacklist][:message])
 
-    respond_to do |format|
-      if @blacklist.save
-        if @blacklist.reported_type = "event"
-          redirect_to event_path(@blacklist.reported_id)
-        elsif @blacklist.reported_type = "organization"
-          redirect_to organizations_path(@blacklist.reported_id)
-        elsif @blacklist.reported_type = "user"
-          redirect_to user_profile_path(@blacklist.reported_id)
-        end
+    if @blacklist.save
+      if @blacklist.reported_type == "event"
+        redirect_to event_path(@blacklist.reported_id)
+      elsif @blacklist.reported_type == "organization"
+        redirect_to organization_path(@blacklist.reported_id)
+      elsif @blacklist.reported_type == "user"
+        redirect_to user_profile_path(@blacklist.reported_id)
       end
     end
   end

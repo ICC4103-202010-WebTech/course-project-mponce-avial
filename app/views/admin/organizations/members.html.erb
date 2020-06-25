@@ -1,0 +1,81 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+<head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+
+  <style>
+    table, th, td {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+
+<h2><%=@org.name.upcase %> MEMBERS </h2>
+
+<h3>Admins</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@organization_admins.each do |adm| %>
+    <tr>
+      <td><%= link_to adm.admin.name + " " + adm.admin.last_name, admin_user_profile_path(adm.admin.id)%></td>
+      <td><%= link_to "-", admin_organization_admin_path(adm.id), remote: true , data: { confirm: "Are you sure you want delete this admin?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Members</h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Delete</th>
+  </tr>
+
+  <%@organization_members.each do |mem| %>
+    <tr>
+      <td><%= link_to mem.registered_user.name + " " + mem.registered_user.last_name, controller: "user_profiles", action: "show", id: mem.registered_user.id%></td>
+      <td><%= link_to "-", admin_organization_member_path(mem.id), remote: true , data: { confirm: "Are you sure you want delete this member?" },class: "btn btn-danger", method: :delete%></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Add Admin</h3>
+
+<%= form_with model: @admin do |form| %>
+
+  <%= form.hidden_field :organization, value: @org.id %>
+
+  <div class="form-group">
+    <%= form.label :Name %>
+    <%= form.select(:admin, @users_not_admin.map{ |c| [c.name + " " + c.last_name, c.id]})%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+  </div>
+<% end %>
+
+
+<h3>Add Member</h3>
+
+<%= form_with model: @member do |form| %>
+
+  <%= form.hidden_field :organization, value: @org.id %>
+
+  <div class="form-group">
+    <%= form.label :Name %>
+    <%= form.select(:registered_user, @users_not_members.map{ |c| [c.name + " " + c.last_name, c.id]})%>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Add", class: ["btn", "btn-primary"] %>
+  </div>
+<% end %>

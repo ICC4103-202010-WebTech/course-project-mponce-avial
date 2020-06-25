@@ -72,6 +72,8 @@ Rails.application.routes.draw do
   #System administrator namespace
   namespace :admin do
 
+    get '/members', to: "organizations#members"
+
     root 'events#index'
 
     resources :organizations do
@@ -93,6 +95,9 @@ Rails.application.routes.draw do
     resources :registered_users
     resources :user_profiles
     resources :blacklists
+
+    resources :organization_admins
+    resources :organization_members
 
   end
 

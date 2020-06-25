@@ -40,7 +40,7 @@
         <%= link_to "Edit Profile",edit_user_profile_path(:user_profile_id => @user_profile.id),class: ["btn", "btn-primary", "mr-4"]%>
       </div>
     <%else %>
-      <div class="edit_profile"><%= link_to "Report",new_blacklist_path(:reported_id => @user_profile.id,:reported_type=>"user"), class: ["btn", "btn-primary", "mr-4"] %></div>
+      <div class="edit_profile"><%= link_to "Report",new_blacklist_path(:reported_id => @user_profile.id,:reported_type=>"user"), class: ["btn", "btn-danger", "mr-4"] %></div>
     <%end %>
     <h3>Biography:</h3>
     <div class="biography">

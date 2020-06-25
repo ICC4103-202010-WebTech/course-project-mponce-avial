@@ -36,6 +36,28 @@ class Admin::OrganizationsController < AdminController
     redirect_to admin_organizations_path, notice: 'Organization was successfully created.'
   end
 
+  def members
+    @org = Organization.find(params[:organization])
+    @organization_admins = OrganizationAdmin.where(:organization => @org.id)
+    @organization_members = OrganizationMember.where(:organization => @org.id)
+
+    @already_users=[]
+
+    @organization_admins.each do |e|
+      @already_users.push(e.admin_id)
+    end
+
+    @organization_members.each do |e|
+      @already_users.push(e.registered_user_id)
+    end
+
+    @users_not_admin= RegisteredUser.where.not(id: @already_users )
+    @users_not_members= RegisteredUser.where.not(id: @already_users )
+
+    @member = OrganizationMember.new
+    @admin = OrganizationAdmin.new
+  end
+
   # PATCH/PUT /organizations/1
   # PATCH/PUT /organizations/1.json
   def update

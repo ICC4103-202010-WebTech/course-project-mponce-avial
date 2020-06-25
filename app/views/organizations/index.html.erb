@@ -3,6 +3,12 @@
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
 <body>
 <h2 class="text-center">USER ORGANIZATIONS</h2>
 
