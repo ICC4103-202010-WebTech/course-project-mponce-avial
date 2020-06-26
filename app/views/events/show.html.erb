@@ -25,14 +25,14 @@
   <div class="event_banner">
   </div>
   <div>
-    <h2 class="event_banner_left_side">Creation Date: <%=@event.created_at%></h2>
-    <h2 class="event_banner_right_side">Location: <%=@event.location%></h2>
+    <h3 class="event_banner_left_side">Creation Date: <%=@event.created_at%></h3>
+    <h3 class="event_banner_right_side">Location: <%=@event.location%></h3>
   </div>
 <% end %>
 
 <body>
 <section class="section_left">
-  <div><%= link_to "Guests", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
+  <div class="button_line"><%= link_to "Guests", new_event_event_guest_path(@event.id), class: ["btn", "btn-primary"] %></div>
   <% if registered_user_signed_in? and @event.event_creator_id == current_registered_user.id %>
     <div class="button_line">
       <div><%= link_to "Edit Event",edit_event_path(:event => @event.id),class: ["btn", "btn-primary", "mr-4"] %></div>
