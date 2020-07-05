@@ -20,8 +20,8 @@
         <article class="row">
           <div class="col-md-2 col-sm-2 hidden-xs">
             <figure class="thumbnail">
-              <% if UserProfile.find(@comment.registered_user.id).imageProfile.attached? %>
-                <%= image_tag(UserProfile.find(@comment.registered_user.id).imageProfile, class:"img-responsive")%>
+              <% if UserProfile.find(@comment.registered_user.user_profile.id).imageProfile.attached? %>
+                <%= image_tag(UserProfile.find(@comment.registered_user.user_profile.id).imageProfile, class:"img-responsive")%>
               <% else %>
                 <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
               <% end %>
@@ -48,8 +48,8 @@
           <article class="row">
             <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
               <figure class="thumbnail">
-                <% if UserProfile.find(reply.registered_user.id).imageProfile.attached? %>
-                  <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img-responsive")%>
+                <% if UserProfile.find(reply.registered_user.user_profile.id).imageProfile.attached? %>
+                  <%= image_tag(UserProfile.find(reply.registered_user.user_profile.id).imageProfile, class:"img-responsive")%>
                 <% else %>
                   <img class="img-responsive" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
                 <% end %>

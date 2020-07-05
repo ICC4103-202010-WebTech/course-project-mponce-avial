@@ -52,8 +52,8 @@
             </div>
             <div class="row">
               <div class="col-md-2">
-                <% if UserProfile.find(comment.registered_user.id).imageProfile.attached? %>
-                  <%= image_tag(UserProfile.find(comment.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
+                <% if UserProfile.find(comment.registered_user.user_profile.id).imageProfile.attached? %>
+                  <%= image_tag(UserProfile.find(comment.registered_user.user_profile.id).imageProfile, class:"img img-rounded img-fluid")%>
                 <% else %>
                   <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
                 <% end %>
@@ -73,8 +73,8 @@
                 <div class="card-body">
                   <div class="row">
                     <div class="col-md-2">
-                      <% if UserProfile.find(reply.registered_user.id).imageProfile.attached? %>
-                        <%= image_tag(UserProfile.find(reply.registered_user.id).imageProfile, class:"img img-rounded img-fluid")%>
+                      <% if UserProfile.find(reply.registered_user.user_profile.id).imageProfile.attached? %>
+                        <%= image_tag(UserProfile.find(reply.registered_user.user_profile.id).imageProfile, class:"img img-rounded img-fluid")%>
                       <% else %>
                         <img class="img img-rounded img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
                       <% end %>
