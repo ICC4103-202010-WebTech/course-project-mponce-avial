@@ -30,7 +30,6 @@
   <tr>
     <th>ID</th>
     <th>User</th>
-    <th>Role</th>
     <th>Last Connection</th>
     <th>Delete</th>
   </tr>
@@ -39,7 +38,6 @@
     <tr>
       <td><%=u.id %></td>
       <td><%= link_to u.name + " " + u.last_name, controller: "user_profiles", action: "show", id: u.id%></td>
-      <td>TODO</td>
       <td><%=u.last_sign_in_at %></td>
       <td><%= link_to "-", admin_registered_user_path(u.id), remote: true , data: { confirm: "Are you sure you want delete this user?" },class: "btn btn-danger", method: :delete%></td>
     </tr>
